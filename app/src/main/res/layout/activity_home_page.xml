@@ -13,12 +13,76 @@
         android:background="?attr/colorPrimary"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:background="@color/colorAccent"
-        android:theme="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"/>
+        android:layout_margin="2dp"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="10dp"
+        android:id="@+id/cardView">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtCredit"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/credit"
+                android:textColor="@color/colorPrimary"
+                android:textSize="26sp" />
+
+
+            <ImageView
+                android:id="@+id/img_coin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/txtCredit"
+                android:src="@drawable/coins" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cardView"
+        android:layout_alignTop="@+id/button"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="33dp"
+        android:text="@string/my_shop" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button3"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"
+        android:text="@string/store" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="18dp"
+        android:text="@string/competition"
+        android:id="@+id/button2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/cardView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="142dp"
+        android:layout_marginEnd="67dp"
+        android:text="@string/learn"
+        android:id="@+id/button" />
 
 </RelativeLayout>
