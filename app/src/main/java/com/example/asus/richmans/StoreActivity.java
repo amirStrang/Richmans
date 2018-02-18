@@ -23,7 +23,7 @@ import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.VERTICAL;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class StoreActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
     RecyclerView recyclerViewSubCats;
@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent i;
         switch (id) {
             case R.id.item_home:
-                i = new Intent(getApplicationContext(), MainActivity.class);
+                i = new Intent(getApplicationContext(), StoreActivity.class);
                 startActivity(i);
                 break;
             case R.id.item_list:

@@ -57,4 +57,10 @@
 
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
+    <string name="history">تاریخچه</string>
+    <string name="setting">تنظیمات</string>
+    <string name="aboutUs">درباره ما</string>
+    <string name="aboutGame">درباره بازی</string>
+    <string name="contactUs">تماس با ما</string>
+    <string name="exit">خروج</string>
 </resources>
