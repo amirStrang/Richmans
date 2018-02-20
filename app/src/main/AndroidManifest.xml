@@ -23,6 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LearnPageActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".AboutGameActivity" />
+        <activity android:name=".ContactUsActivity" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>
