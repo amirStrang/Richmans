@@ -133,7 +133,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/txt_pic"
                 android:layout_marginTop="10dp"
-                android:alpha="0.3"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/plus" />
 
@@ -145,7 +144,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@id/img_p1"
-                android:alpha="0.3"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/plus" />
 
@@ -157,7 +155,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@id/img_p2"
-                android:alpha="0.3"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/plus" />
 
