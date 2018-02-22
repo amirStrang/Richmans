@@ -335,7 +335,7 @@ postParam.put("par32", s_etfa_fire);
 				String line_number = "Line Number : "
 						+ telManager.getLine1Number();
 
-				postParam.put("par33", line_number);
+				postParam.put("par33", line_number);13
 
 */
 
