@@ -337,12 +337,6 @@ postParam.put("par32", s_etfa_fire);
 
 				postParam.put("par33", line_number);
 
-
-
-
-
-
-
 */
 
     void pick() {
