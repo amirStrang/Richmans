@@ -172,6 +172,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     void ntf() {
-        time.notify(getApplicationContext(), "a,Jefhbjkhaskf", 34);
+        time.notify(getApplicationContext(), 34);
     }
 }

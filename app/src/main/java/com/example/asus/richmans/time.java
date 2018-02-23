@@ -16,8 +16,7 @@ import android.support.v4.app.NotificationCompat;
 public class time {
     private static final String NOTIFICATION_TAG = "time";
 
-    public static void notify(final Context context,
-                              final String exampleString, final int number) {
+    public static void notify(final Context context, final int number) {
         final Resources res = context.getResources();
 
         final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
