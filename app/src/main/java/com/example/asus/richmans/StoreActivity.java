@@ -43,6 +43,17 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "ماشین های اداری",
             "لوازم جانبی کالای دیجیتال"
     };
+
+    int[] cat_mobile_images = {
+            R.drawable.mobile,
+            R.drawable.tablet_ebook_reader,
+            R.drawable.laptop,
+            R.drawable.camera,
+            R.drawable.computer_parts,
+            R.drawable.office_machines,
+            R.drawable.accessories_main,
+    };
+
     String[] cat_cloth_names = {
             "مردانه",
             "زنانه",
@@ -52,6 +63,18 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "ساعت",
             "اکسسوری لوازم شخصی"
     };
+
+    int[] cat_cloth_images = {
+            R.drawable.men,
+            R.drawable.wemen,
+            R.drawable.kids_apparel,
+            R.drawable.sports,
+            R.drawable.atr,
+            R.drawable.watch_clock,
+            R.drawable.pesonal_appliance_accessories,
+    };
+
+
     String[] cat_home_names = {
             "صوتی و تصویری",
             "لوازم خانگی برقی",
@@ -63,8 +86,25 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "ابزار غیر برقی",
             "ابزار برقی",
             "باغبانی",
-            "نور و روشنایی"
+            "نور و روشنایی",
+            "خوراکی و آشامیدنی"
     };
+
+    int[] cat_home_images = {
+            R.drawable.video_audio_entertainment,
+            R.drawable.home_appliance,
+            R.drawable.home_kitchen,
+            R.drawable.serving,
+            R.drawable.decorative,
+            R.drawable.towel,
+            R.drawable.cleaning,
+            R.drawable.non_electrical_tools,
+            R.drawable.power_tools,
+            R.drawable.gardening,
+            R.drawable.lighting,
+            R.drawable.food
+    };
+
     String[] cat_cosmetic_names = {
             "لوازم آرایشی",
             "لوازم بهداشتی",
@@ -73,25 +113,61 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "زیورآلات",
             "ابزار سلامت"
     };
+
+    int[] cat_cosmetic_images = {
+            R.drawable.beauty,
+            R.drawable.hair_clipper,
+            R.drawable.electrical_personal_care,
+            R.drawable.sunglasses,
+            R.drawable.jewelery,
+            R.drawable.health_care,
+    };
+
     String[] cat_culture_names = {
             "کتاب و مجلات",
             "لوازم التحریر",
             "صنایع دستی",
             "فرش",
             "آلات موسیسقی",
+            "موسیقی",
             "فیلم",
             "نرم افزار و بازی",
             "محتوای آموزشی"
     };
+
+    int[] cat_culture_images = {
+            R.drawable.publication,
+            R.drawable.stationery,
+            R.drawable.handicraft,
+            R.drawable.carpet,
+            R.drawable.musicalinstruments,
+            R.drawable.music_audio_content,
+            R.drawable.film_video_content,
+            R.drawable.software_games,
+            R.drawable.multimedia_training_pack,
+    };
+
     String[] cat_sport_names = {
             "پوشاک ورزشی",
             "کفش ورزشی",
             "لوازم ورزشی",
             "دوچرخه و لوازم جانبی",
             "تجهیزات سفر",
-            "اسباب سفر",
+            "اسباب بازی",
             "حیوانات خانگی"
     };
+
+    int[] cat_sport_images = {
+
+            R.drawable.sports_wear,
+            R.drawable.sportshoes,
+            R.drawable.sports,
+            R.drawable.bicycle,
+            R.drawable.traveling_equipment,
+            R.drawable.toys,
+            R.drawable.pet,
+    };
+
     String[] cat_kids_names = {
             "ایمنی و مراقبت",
             "غذاخوری",
@@ -101,6 +177,17 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "سرگرمی و آموزشی",
             "خواب کودک"
     };
+
+    int[] cat_kids_images = {
+            R.drawable.safety_and_care,
+            R.drawable.dining_accessories,
+            R.drawable.personal,
+            R.drawable.health_and_bathroom_yools,
+            R.drawable.travel,
+            R.drawable.entertainment_and_games_equipment,
+            R.drawable.baby_bedding,
+    };
+
     String[] cat_car_names = {
             "خودرو",
             "لوازم جانبی خودرو",
@@ -110,6 +197,17 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "لوازم مصرفی موتور سیکلت",
             "انبارداری صنعتی"
     };
+
+    int[] cat_car_images = {
+            R.drawable.cars,
+            R.drawable.car_accessory_parts,
+            R.drawable.consumable_parts,
+            R.drawable.motorbike,
+            R.drawable.atr,
+            R.drawable.watch_clock,
+            R.drawable.pesonal_appliance_accessories,
+    };
+
     String[] cat_service_names = {
             "دندانپزشکی",
             "باشگاه",
@@ -118,24 +216,17 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "تور مسافرتی",
             "کنسرت"
     };
-    int[] images = {
-            R.drawable.sample1,
-            R.drawable.sample2,
-            R.drawable.sample3,
-            R.drawable.sample4,
-            R.drawable.sample5,
-            R.drawable.sample1,
-            R.drawable.sample2,
-            R.drawable.sample3,
-            R.drawable.sample4,
-            R.drawable.sample5,
-            R.drawable.sample1,
-            R.drawable.sample2,
-            R.drawable.sample3,
-            R.drawable.sample4,
-            R.drawable.sample5,
+
+    int[] cat_service_images = {
+            R.drawable.men,
+            R.drawable.wemen,
+            R.drawable.kids_apparel,
+            R.drawable.sports,
+            R.drawable.atr,
+            R.drawable.watch_clock,
+            R.drawable.watch_clock,
     };
-    //
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,9 +266,9 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
         recyclerViewSubCats = (RecyclerView) findViewById(R.id.rec_subCats);
         List<SubCategory> subCats = new ArrayList<>();
         //initialize list
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < cat_mobile_images.length; i++) {
             SubCategory subCategory = new SubCategory();
-            subCategory.image = images[i];
+            subCategory.image = cat_mobile_images[i];
             subCategory.name = cat_mobile_names[i];
             subCats.add(subCategory);
         }
@@ -202,9 +293,9 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
         List<SubCategory> subCats = new ArrayList<>();
         switch (id) {
             case R.id.btn_cat1:
-                for (int i = 0; i < cat_service_names.length; i++) {
+                for (int i = 0; i < cat_mobile_images.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_mobile_images[i];
                     subCategory.name = cat_mobile_names[i];
                     subCats.add(subCategory);
                 }
@@ -213,7 +304,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat2:
                 for (int i = 0; i < cat_cloth_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_cloth_images[i];
                     subCategory.name = cat_cloth_names[i];
                     subCats.add(subCategory);
                 }
@@ -222,7 +313,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat3:
                 for (int i = 0; i < cat_home_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_home_images[i];
                     subCategory.name = cat_home_names[i];
                     subCats.add(subCategory);
                 }
@@ -231,7 +322,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat4:
                 for (int i = 0; i < cat_cosmetic_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_cosmetic_images[i];
                     subCategory.name = cat_cosmetic_names[i];
                     subCats.add(subCategory);
                 }
@@ -240,7 +331,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat5:
                 for (int i = 0; i < cat_culture_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_culture_images[i];
                     subCategory.name = cat_culture_names[i];
                     subCats.add(subCategory);
                 }
@@ -249,7 +340,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat6:
                 for (int i = 0; i < cat_sport_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_sport_images[i];
                     subCategory.name = cat_sport_names[i];
                     subCats.add(subCategory);
                 }
@@ -258,7 +349,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat7:
                 for (int i = 0; i < cat_kids_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_kids_images[i];
                     subCategory.name = cat_kids_names[i];
                     subCats.add(subCategory);
                 }
@@ -267,7 +358,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat8:
                 for (int i = 0; i < cat_car_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_car_images[i];
                     subCategory.name = cat_car_names[i];
                     subCats.add(subCategory);
                 }
@@ -276,7 +367,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.btn_cat9:
                 for (int i = 0; i < cat_service_names.length; i++) {
                     SubCategory subCategory = new SubCategory();
-                    subCategory.image = images[i];
+                    subCategory.image = cat_service_images[i];
                     subCategory.name = cat_service_names[i];
                     subCats.add(subCategory);
                 }
@@ -304,6 +395,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.item_home:
                 i = new Intent(getApplicationContext(), StoreActivity.class);
                 startActivity(i);
+                this.finish();
                 break;
             case R.id.item_list:
 
@@ -311,6 +403,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             case R.id.item_my_shop:
                 i = new Intent(getApplicationContext(), MyShopActivity.class);
                 startActivity(i);
+                this.finish();
                 break;
         }
         return true;
