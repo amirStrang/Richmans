@@ -31,7 +31,6 @@
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".AboutGameActivity" />
         <activity android:name=".ContactUsActivity" />
-        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>

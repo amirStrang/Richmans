@@ -6,4 +6,5 @@
     <color name="colorRaisedButton">#00BFA5</color>
     <color name="colorRaisedButtonText">#ffffff</color>
     <color name="colorBackground">#F5F5F5</color>
+    <color name="colorProgressBar">#FBC02D</color>
 </resources>

@@ -2,8 +2,10 @@ package com.example.asus.richmans;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,6 +13,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     RelativeLayout btnLearn, btnStore, btnMyStore, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnSetting;
     TextView txtCredit;
+    ProgressBar prbCredit;
+    Handler progressBarHandler;
+    Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +33,21 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         btnHistory = (RelativeLayout) findViewById(R.id.btn_history);
         btnLearn = (RelativeLayout) findViewById(R.id.btn_learn);
         btnMyStore = (RelativeLayout) findViewById(R.id.btn_my_store);
-        btnSetting = (RelativeLayout) findViewById(R.id.btn_setting);
+        btnSetting = (RelativeLayout) findViewById(R.id.btn_reset);
         btnStore = (RelativeLayout) findViewById(R.id.btn_store);
 
         txtCredit = (TextView) findViewById(R.id.txtCredit);
+
+        prbCredit = (ProgressBar) findViewById(R.id.prb_credit);
+        prbCredit.setProgress(20);
+        prbCredit.setMax(100);
+        progressBarHandler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                //
+            }
+        };
 
         btnAboutGame.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
@@ -50,32 +66,36 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         switch (id) {
             case R.id.btn_about_us:
-
+                i = new Intent(HomePageActivity.this, AboutUsActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_about_game:
-
+                i = new Intent(HomePageActivity.this, AboutGameActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_contact_us:
-
+                i = new Intent(HomePageActivity.this, ContactUsActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_history:
-
+                i = new Intent(HomePageActivity.this, HistoryActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_learn:
-
+                i = new Intent(HomePageActivity.this, LearnPageActivity.class);
+                startActivity(i);
                 break;
-            case R.id.btn_setting:
-
+            case R.id.btn_reset:
+                //reset credit and history changing
+                txtCredit.setText("0");
                 break;
             case R.id.btn_my_store:
                 i = new Intent(HomePageActivity.this, MyShopActivity.class);
                 startActivity(i);
-                this.finish();
                 break;
             case R.id.btn_store:
                 i = new Intent(HomePageActivity.this, StoreActivity.class);
                 startActivity(i);
-                this.finish();
                 break;
         }
     }

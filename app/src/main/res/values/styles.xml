@@ -19,4 +19,10 @@
 
     </style>
 
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar.Horizontal">
+
+        <item name="colorAccent">@color/colorProgressBar</item>
+
+    </style>
+
 </resources>
