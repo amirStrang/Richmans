@@ -269,24 +269,30 @@ public class AddNewProductActivity extends AppCompatActivity {
         btnSubmitProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etName.getText().toString().equals("")) {
+                    etName.setError("داشتن نام الزامی است");
+                    return;
+                }
+                if (etDescription.getText().toString().equals("")) {
+                    etDescription.setError("داشتن توضیحات الزامی است");
+                    return;
+                }
+                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
+                    tt("داشتن سه عکس الزامی است");
+                    return;
+                }
 
             }
         });
     }
 
-
-    /*
-     sabt = (Button) findViewById(R.id.m_sabt);
-		sabt.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				 if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
-				 tt("داشتن سه عکس الزامی است");
-				 return;
-				 }
+    void tt(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
 
 
+
+   /*
 
 
 postParam.put("par32", s_etfa_fire);
@@ -338,6 +344,7 @@ postParam.put("par32", s_etfa_fire);
 				postParam.put("par33", line_number);13
 
 */
+
 
     void pick() {
 
