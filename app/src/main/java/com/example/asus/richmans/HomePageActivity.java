@@ -22,11 +22,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
-import static java.security.AccessController.getContext;
-
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
@@ -40,6 +35,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_home_page);
 
         init();
+
+        ntf();
 
         loadCredit("http://techiesatish.com/demo_api/spinner.php");
 
@@ -174,4 +171,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    void ntf() {
+        time.notify(getApplicationContext(), "a,Jefhbjkhaskf", 34);
+    }
 }
