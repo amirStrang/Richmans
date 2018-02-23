@@ -224,7 +224,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             R.drawable.sports,
             R.drawable.atr,
             R.drawable.watch_clock,
-            R.drawable.pesonal_appliance_accessories,
+            R.drawable.watch_clock,
     };
 
 
