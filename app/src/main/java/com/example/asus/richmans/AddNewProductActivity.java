@@ -282,6 +282,8 @@ public class AddNewProductActivity extends AppCompatActivity {
                     return;
                 }
 
+                //post
+
             }
         });
     }
