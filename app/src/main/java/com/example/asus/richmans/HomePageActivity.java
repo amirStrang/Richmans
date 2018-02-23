@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -28,6 +29,7 @@ import static java.security.AccessController.getContext;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Toolbar toolbar;
     RelativeLayout btnLearn, btnStore, btnMyStore, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnSetting;
     TextView txtCredit;
     ProgressBar prbCredit;
@@ -44,6 +46,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         btnAboutGame = (RelativeLayout) findViewById(R.id.btn_about_game);
         btnAboutUs = (RelativeLayout) findViewById(R.id.btn_about_us);
         btnContactUs = (RelativeLayout) findViewById(R.id.btn_contact_us);

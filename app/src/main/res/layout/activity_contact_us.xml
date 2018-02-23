@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.asus.richmans.ContactUsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <TextView
+        android:id="@+id/txt_communication_paths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="20dp"
+        android:text="@string/communication_paths"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/txt_communication_paths"
+        android:layout_below="@id/txt_communication_paths"
+        android:src="@drawable/email" />
+
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_email"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_email"
+        android:text="ایمیل"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txt_email_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txt_email"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_toStartOf="@id/txt_email"
+        android:text="madresetavangari@gmail.com"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/img_telegram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/img_email"
+        android:layout_below="@+id/img_email"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/telegram" />
+
+    <ImageView
+        android:id="@+id/img_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_telegram"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_telegram"
+        android:src="@drawable/channel" />
+
+    <TextView
+        android:id="@+id/txt_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_channel"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_channel"
+        android:text="کانال تلگرام"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/txt_email_address"
+        android:layout_below="@id/txt_channel"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="0dp"
+        android:text="\@madrasetavangari"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/img_answerID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/img_channel"
+        android:layout_below="@id/img_channel"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/answer" />
+
+    <TextView
+        android:id="@+id/txt_answerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_answerID"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_answerID"
+        android:text="آیدی تلگرام جهت ارسال نظرات و سوالات"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/txt_email_address"
+        android:layout_below="@id/txt_answerId"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:text="\@hamid8r5ir"
+        android:textSize="16sp" />
+
+</RelativeLayout>
