@@ -27,10 +27,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".LearnPageActivity" />
-        <activity android:name=".HistoryActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".AboutGameActivity" />
         <activity android:name=".ContactUsActivity" />
+        <activity
+            android:name=".HistoryActivity"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

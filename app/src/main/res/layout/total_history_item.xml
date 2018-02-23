@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txt_begin_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:text="تاریخ شروع دوره" />
+
+    <TextView
+        android:id="@+id/txt_begin_period_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txt_begin_period"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:text="3/3/1397" />
+
+    <TextView
+        android:id="@+id/txt_end_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/txt_begin_period"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:text="تاریخ پایان دوره" />
+
+    <TextView
+        android:id="@+id/txt_end_period_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txt_end_period"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:text="3/29/1397" />
+
+    <TextView
+        android:id="@+id/txt_max_credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/txt_end_period"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:text="بیشترین اعتبار روزانه" />
+
+    <TextView
+        android:id="@+id/txt_max_credit_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txt_max_credit"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:text="195000" />
+
+</RelativeLayout>
