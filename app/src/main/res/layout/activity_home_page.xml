@@ -126,8 +126,7 @@
         android:layout_alignStart="@id/btn_store"
         android:layout_below="@+id/btn_store"
         android:layout_marginTop="5dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/my_shop">
+        android:background="@color/colorPrimary">
 
 
         <ImageView
