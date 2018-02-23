@@ -33,7 +33,6 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/credit"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:visibility="invisible" />
@@ -44,7 +43,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/txtCredit"
+                android:layout_toEndOf="@+id/txtCredit"
                 android:src="@drawable/coins" />
 
             <ProgressBar

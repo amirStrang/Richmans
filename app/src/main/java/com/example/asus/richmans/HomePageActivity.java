@@ -9,6 +9,23 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import static java.security.AccessController.getContext;
+
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
     RelativeLayout btnLearn, btnStore, btnMyStore, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnSetting;
@@ -21,6 +38,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_home_page);
 
         init();
+
+        loadCredit("http://techiesatish.com/demo_api/spinner.php");
 
     }
 
@@ -88,4 +107,66 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
+    void inc(final int from, final int to) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                txtCredit.setText(from + "");
+                if (from < to)
+                    inc(from + 1000, to);
+            }
+        }, 10);
+    }
+
+    private void loadCredit(String url) {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    int prog = jsonObject.getInt("success") * 753000;
+
+                    prbCredit.setVisibility(View.INVISIBLE);
+                    txtCredit.setVisibility(View.VISIBLE);
+
+                    inc(0, prog);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }, new Response.ErrorListener() {
+
+            @Override
+
+            public void onErrorResponse(VolleyError error) {
+
+                error.printStackTrace();
+
+            }
+
+        });
+
+        int socketTimeout = 30000;
+
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        stringRequest.setRetryPolicy(policy);
+
+        requestQueue.add(stringRequest);
+
+    }
+
 }
