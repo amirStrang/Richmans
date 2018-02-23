@@ -21,6 +21,7 @@
         android:layout_below="@id/toolbar"
         android:layout_margin="20dp"
         android:text="@string/communication_paths"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -41,6 +42,7 @@
         android:layout_marginEnd="10dp"
         android:layout_toStartOf="@id/img_email"
         android:text="ایمیل"
+        android:textColor="@android:color/black"
         android:textSize="17sp" />
 
     <TextView
@@ -81,6 +83,7 @@
         android:layout_marginEnd="10dp"
         android:layout_toStartOf="@id/img_channel"
         android:text="کانال تلگرام"
+        android:textColor="@android:color/black"
         android:textSize="16sp" />
 
     <TextView
@@ -110,6 +113,7 @@
         android:layout_marginEnd="10dp"
         android:layout_toStartOf="@id/img_answerID"
         android:text="آیدی تلگرام جهت ارسال نظرات و سوالات"
+        android:textColor="@android:color/black"
         android:textSize="16sp" />
 
     <TextView
