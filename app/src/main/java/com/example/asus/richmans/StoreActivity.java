@@ -195,7 +195,6 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             "موتور سیکلت",
             "لوازم جانبی موتور سیکلت",
             "لوازم مصرفی موتور سیکلت",
-            "انبارداری صنعتی"
     };
 
     int[] cat_car_images = {
@@ -203,9 +202,8 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
             R.drawable.car_accessory_parts,
             R.drawable.consumable_parts,
             R.drawable.motorbike,
-            R.drawable.atr,
-            R.drawable.watch_clock,
-            R.drawable.pesonal_appliance_accessories,
+            R.drawable.helmets,
+            R.drawable.motor_tools,
     };
 
     String[] cat_service_names = {
@@ -218,13 +216,12 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
     };
 
     int[] cat_service_images = {
-            R.drawable.men,
-            R.drawable.wemen,
-            R.drawable.kids_apparel,
-            R.drawable.sports,
-            R.drawable.atr,
-            R.drawable.watch_clock,
-            R.drawable.watch_clock,
+            R.drawable.dentist,
+            R.drawable.gym,
+            R.drawable.edu_class,
+            R.drawable.hotel,
+            R.drawable.tor_travel,
+            R.drawable.consert,
     };
 
 
