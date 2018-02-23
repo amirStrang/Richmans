@@ -14,8 +14,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     RelativeLayout btnLearn, btnStore, btnMyStore, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnSetting;
     TextView txtCredit;
     ProgressBar prbCredit;
-    Handler progressBarHandler;
-    Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +37,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         txtCredit = (TextView) findViewById(R.id.txtCredit);
 
         prbCredit = (ProgressBar) findViewById(R.id.prb_credit);
-        prbCredit.setProgress(20);
-        prbCredit.setMax(100);
-        progressBarHandler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                //
-            }
-        };
 
         btnAboutGame.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
