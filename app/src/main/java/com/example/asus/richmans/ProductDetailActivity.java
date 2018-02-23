@@ -1,5 +1,6 @@
 package com.example.asus.richmans;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import me.relex.circleindicator.CircleIndicator;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ProductDetailActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -40,6 +42,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 //change total price
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     private void init() {

@@ -2,6 +2,7 @@ package com.example.asus.richmans;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -29,6 +30,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddNewProductActivity extends AppCompatActivity {
 
@@ -79,7 +82,8 @@ public class AddNewProductActivity extends AppCompatActivity {
             "ابزار غیر برقی",
             "ابزار برقی",
             "باغبانی",
-            "نور و روشنایی"
+            "نور و روشنایی",
+            "خوراکی و آشامیدنی"
     };
     String[] subCats3 = {
             "لوازم آرایشی",
@@ -124,7 +128,6 @@ public class AddNewProductActivity extends AppCompatActivity {
             "موتور سیکلت",
             "لوازم جانبی موتور سیکلت",
             "لوازم مصرفی موتور سیکلت",
-            "انبارداری صنعتی"
     };
     String[] subCats8 = {
             "دندانپزشکی",
@@ -293,6 +296,10 @@ public class AddNewProductActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
    /*
 

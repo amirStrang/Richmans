@@ -1,8 +1,11 @@
 package com.example.asus.richmans;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AboutGameActivity extends AppCompatActivity {
 
@@ -15,5 +18,10 @@ public class AboutGameActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
