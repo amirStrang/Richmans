@@ -188,16 +188,17 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 //        pendingIntent = PendingIntent.getService(HomePageActivity.this, 0, myIntent, 0);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 8);
-        calendar.set(Calendar.MINUTE, 11);
-        calendar.set(Calendar.SECOND, 40);
+        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.AM_PM, Calendar.PM);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-//                calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-                calendar.getTimeInMillis(), 60000, pendingIntent);
 
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+//                calendar.getTimeInMillis(), 24 * 60 * 60 * 1000, pendingIntent);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+                calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 }
