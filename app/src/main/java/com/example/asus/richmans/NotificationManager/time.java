@@ -1,4 +1,4 @@
-package com.example.asus.richmans;
+package com.example.asus.richmans.NotificationManager;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -13,10 +13,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.asus.richmans.R;
+import com.example.asus.richmans.StoreActivity;
+
 public class time {
     private static final String NOTIFICATION_TAG = "time";
 
-    public static void notify(final Context context, final int number) {
+    public static void notify(final Context context) {
         final Resources res = context.getResources();
 
         final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
@@ -33,10 +36,10 @@ public class time {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setLargeIcon(picture)
                 .setTicker(ticker)
-                .setNumber(number)
+                .setNumber(77)
                 .addAction(
                         R.drawable.ic_action_stat_share,
-                        "خرید کردن در فروشگاه ثروتمندان",
+                        "خرید کردن از فروشگاه ثروتمندان",
                         PendingIntent.getActivity(
                                 context,
                                 0,

@@ -1,6 +1,5 @@
 package com.example.asus.richmans;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,8 +21,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -111,11 +108,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
         }
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void inc(final int from, final int to) {
