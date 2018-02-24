@@ -54,7 +54,7 @@ public class GproductCustomListAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.product_horizontal_item, null);
+            convertView = inflater.inflate(R.layout.myshop_product_horizontal_item, null);
 
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
@@ -69,7 +69,7 @@ public class GproductCustomListAdapter extends BaseAdapter {
         thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
 
         // name
-        name.setText(m.getName());
+        name.setText(m.getName() + "");
 
         // price
         price.setText(m.getPrice());
