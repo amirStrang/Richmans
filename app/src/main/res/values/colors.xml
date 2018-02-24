@@ -8,4 +8,14 @@
     <!--<color name="colorBackground">#F5F5F5</color>-->
     <color name="colorBackground">#ffffff</color>
     <color name="colorProgressBar">#FBC02D</color>
+
+    <color name="genre">#000000</color>
+    <color name="year">#3c7b01</color>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_start_color">#ffffff</color>
+    <color name="list_row_end_color">#ffffff</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+
+
 </resources>
