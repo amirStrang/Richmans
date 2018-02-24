@@ -21,7 +21,6 @@ import static android.support.v7.widget.RecyclerView.VERTICAL;
 public class MyShopActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    RecyclerView recProducts;
     FloatingActionButton btnAddNew;
 
     @Override
@@ -51,36 +50,7 @@ public class MyShopActivity extends AppCompatActivity {
 
         btnAddNew = (FloatingActionButton) findViewById(R.id.btn_add_new);
 
-        recProducts = (RecyclerView) findViewById(R.id.rec_products);
         List<Product> products = new ArrayList<>();
-
-        //sample init
-        for (int i = 0; i < 5; i++) {
-            Product product = new Product();
-            product.name = "موبایل";
-            product.price = "1000000";
-            product.description = "یه گوشی خیلی خوب :)";
-            product.ID = 1;
-            product.images.add(R.drawable.sample4);
-            products.add(product);
-        }
-
-//        //initialize list
-//        for (int i = 0; i < length; i++) {
-//            Product product = new Product();
-//            product.name = ...;
-//            product.ID = ....;
-//            product.images = ....;
-//            product.price = ....;
-//            product.description = ...;
-//            products.add(product);
-//        }
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recProducts.setLayoutManager(linearLayoutManager);
-        recProducts.setHasFixedSize(true);
-        recProducts.setAdapter(new ProductRecyclerAdapter(getApplicationContext(), products));
-        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
-        recProducts.addItemDecoration(itemDecor);
 
     }
 }
