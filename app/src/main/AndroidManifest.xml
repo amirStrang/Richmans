@@ -31,6 +31,20 @@
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".AboutGameActivity" />
         <activity android:name=".ContactUsActivity" />
+
+        <receiver
+            android:name=".NotificationManager.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+
+        </receiver>
+
+        <service
+            android:name=".NotificationManager.MyNewIntentService"
+            android:exported="false">
+
+        </service>
+
     </application>
 
 </manifest>

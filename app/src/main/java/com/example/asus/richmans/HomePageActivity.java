@@ -1,5 +1,8 @@
 package com.example.asus.richmans;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,10 +21,13 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.asus.richmans.NotificationManager.MyReceiver;
 import com.example.asus.richmans.NotificationManager.time;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -172,7 +178,26 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    private PendingIntent pendingIntent;
+
     void ntf() {
-        time.notify(getApplicationContext());
+
+        Intent notifyIntent = new Intent(this, MyReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
+                1, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        pendingIntent = PendingIntent.getService(HomePageActivity.this, 0, myIntent, 0);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.MINUTE, 11);
+        calendar.set(Calendar.SECOND, 40);
+        calendar.set(Calendar.AM_PM, Calendar.PM);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+//                calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+                calendar.getTimeInMillis(), 60000, pendingIntent);
+
     }
 }
