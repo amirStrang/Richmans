@@ -18,6 +18,7 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.asus.richmans.NotificationManager.time;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -172,6 +173,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     void ntf() {
-        time.notify(getApplicationContext(), 34);
+        time.notify(getApplicationContext());
     }
 }
