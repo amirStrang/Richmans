@@ -33,7 +33,7 @@ public class HistoryTab2 extends Fragment {
 
             playHistory.beginPeriodDate = "1/1/1396";
             playHistory.endPeriodDate = "1/2/1396";
-            playHistory.maxCredit = "50000";
+//            playHistory.maxCredit = "50000";
 
             histories.add(playHistory);
         }

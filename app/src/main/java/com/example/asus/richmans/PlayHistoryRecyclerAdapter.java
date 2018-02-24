@@ -31,7 +31,7 @@ public class PlayHistoryRecyclerAdapter extends RecyclerView.Adapter<PlayHistory
 
         holder.txtBeginPeriodDate.setText(playHistory.beginPeriodDate);
         holder.txtEndPeriodDate.setText(playHistory.endPeriodDate);
-        holder.txtMaxCreditValue.setText(playHistory.maxCredit);
+//        holder.txtMaxCreditValue.setText(playHistory.maxCredit);
     }
 
     @Override

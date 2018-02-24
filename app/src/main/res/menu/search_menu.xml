@@ -5,10 +5,6 @@
         android:id="@+id/item_search"
         android:icon="@drawable/magnify"
         android:title="@string/search"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/item_my_store"
-        android:icon="@drawable/store"
-        android:title="@string/my_shop"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom" />
 </menu>

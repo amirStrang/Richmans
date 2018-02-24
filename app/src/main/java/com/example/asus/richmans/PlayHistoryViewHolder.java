@@ -13,6 +13,6 @@ public class PlayHistoryViewHolder extends RecyclerView.ViewHolder {
 
         txtBeginPeriodDate = (TextView) itemView.findViewById(R.id.txt_begin_period_date);
         txtEndPeriodDate = (TextView) itemView.findViewById(R.id.txt_end_period_date);
-        txtMaxCreditValue = (TextView) itemView.findViewById(R.id.txt_max_credit_value);
+//        txtMaxCreditValue = (TextView) itemView.findViewById(R.id.txt_max_credit_value);
     }
 }

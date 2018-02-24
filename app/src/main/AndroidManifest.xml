@@ -37,16 +37,13 @@
         <receiver
             android:name=".NotificationManager.MyReceiver"
             android:enabled="true"
-            android:exported="false">
-
-        </receiver>
+            android:exported="false"></receiver>
 
         <service
             android:name=".NotificationManager.MyNewIntentService"
-            android:exported="false">
+            android:exported="false"></service>
 
-        </service>
-
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

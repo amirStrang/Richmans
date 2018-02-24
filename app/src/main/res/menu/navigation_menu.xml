@@ -12,7 +12,7 @@
 
         <item
             android:id="@+id/item_my_shop"
-            android:icon="@drawable/cart_black"
+            android:icon="@drawable/store_black"
             android:title="@string/my_shop" />
     </group>
 
