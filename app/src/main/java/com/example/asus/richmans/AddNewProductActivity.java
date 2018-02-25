@@ -15,6 +15,8 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,11 +27,29 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -280,12 +300,23 @@ public class AddNewProductActivity extends AppCompatActivity {
                     etDescription.setError("داشتن توضیحات الزامی است");
                     return;
                 }
+
+                // price handle
+
+
                 if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
                     tt("داشتن سه عکس الزامی است");
                     return;
                 }
 
                 //post
+                Send("http://ahmaditest.sepantahost.com/api/AddToMyShop",
+                        "09123456789",
+                        spinnerCat.getSelectedItem().toString(),
+                        spinnerSubCat.getSelectedItem().toString(),
+                        etName.getText().toString(),
+                        etDescription.getText().toString(),
+                        "50000");
 
             }
         });
@@ -295,6 +326,130 @@ public class AddNewProductActivity extends AppCompatActivity {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
+    void Send(final String URL, String ID, String cat, String subcat, String name, String Des, String price) {
+        Log.d("req", "___send started");
+
+        final Map<String, String> postParam = new HashMap<String, String>();
+
+        postParam.put("Code", ID);
+        postParam.put("Name", name);
+        postParam.put("Note", Des);
+        postParam.put("Price", price);
+        postParam.put("CategoryName", cat);
+        postParam.put("SubCatName", subcat);
+
+        //pics
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
+            options.inDither = true;
+            options.inSampleSize = 8;
+
+            Bitmap bm1 = BitmapFactory.decodeFile(pic_path1, options);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bm1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] b = baos.toByteArray();
+
+            String encodedImage1 = Base64.encodeToString(b,
+                    Base64.DEFAULT);
+            // tt(encodedImage1.length()+"");
+
+            postParam.put("Image1", encodedImage1);
+
+            Bitmap bm2 = BitmapFactory.decodeFile(pic_path2, options);
+            ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+            bm2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
+            byte[] b2 = baos2.toByteArray();
+
+            String encodedImage2 = Base64.encodeToString(b2,
+                    Base64.DEFAULT);
+            postParam.put("Image2", encodedImage2);
+
+            Bitmap bm3 = BitmapFactory.decodeFile(pic_path3, options);
+            ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+            bm3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
+            byte[] b3 = baos3.toByteArray();
+
+            String encodedImage3 = Base64.encodeToString(b3,
+                    Base64.DEFAULT);
+            postParam.put("Image3", encodedImage3);
+        } catch (Exception e) {
+            //
+        }
+
+
+        ////////////////////////////////////////////////////////
+
+        final Thread send = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                JSONObject obj = new JSONObject(postParam);
+
+                postData(URL, obj);
+
+            }
+        });
+
+        send.start();
+    }
+
+    public void postData(String url, JSONObject obj) {
+        // Create a new HttpClient and Post Header
+        HttpParams myParams = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(myParams, 10000);
+        HttpConnectionParams.setSoTimeout(myParams, 10000);
+        HttpClient httpclient = new DefaultHttpClient(myParams);
+
+        try {
+            HttpPost httppost = new HttpPost(url.toString());
+            httppost.setHeader("Content-type", "application/json");
+
+            StringEntity se = new StringEntity(obj.toString());
+            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            httppost.setEntity(se);
+
+            HttpResponse response = httpclient.execute(httppost);
+            final String temp = EntityUtils.toString(response.getEntity());
+
+            //handle temp
+            if (temp.length() != 0) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+//                        res.setText(temp);
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+//                        res.setText("No Response");
+                    }
+                });
+            }
+
+
+        } catch (ClientProtocolException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    res.setText("No Response");
+                }
+            });
+
+        } catch (IOException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    res.setText("No Response");
+                }
+            });
+        }
+
+
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -307,46 +462,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 postParam.put("par32", s_etfa_fire);
 
 
-				try {
-					BitmapFactory.Options options = new BitmapFactory.Options();
-
-					options.inPreferredConfig = Bitmap.Config.RGB_565;
-					options.inDither = true;
-					options.inSampleSize = 8;
-
-					Bitmap bm1 = BitmapFactory.decodeFile(pic_path1, options);
-					ByteArrayOutputStream baos = new ByteArrayOutputStream();
-					bm1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-					byte[] b = baos.toByteArray();
-
-					String encodedImage1 = Base64.encodeToString(b,
-							Base64.DEFAULT);
-					// tt(encodedImage1.length()+"");
-
-					postParam.put("par34", encodedImage1);
-
-					Bitmap bm2 = BitmapFactory.decodeFile(pic_path2, options);
-					ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
-					bm2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
-					byte[] b2 = baos2.toByteArray();
-
-					String encodedImage2 = Base64.encodeToString(b2,
-							Base64.DEFAULT);
-					postParam.put("par35", encodedImage2);
-
-					Bitmap bm3 = BitmapFactory.decodeFile(pic_path3, options);
-					ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
-					bm3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
-					byte[] b3 = baos3.toByteArray();
-
-					String encodedImage3 = Base64.encodeToString(b3,
-							Base64.DEFAULT);
-					postParam.put("par36", encodedImage3);
-				} catch (Exception e) {
-					//
-				}
-
-				// permission web and phone data for get phnumber here
+								// permission web and phone data for get phnumber here
 				String line_number = "Line Number : "
 						+ telManager.getLine1Number();
 
