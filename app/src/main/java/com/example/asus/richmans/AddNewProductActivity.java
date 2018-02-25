@@ -2,6 +2,7 @@ package com.example.asus.richmans;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -326,8 +327,14 @@ public class AddNewProductActivity extends AppCompatActivity {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
+    private ProgressDialog pDialog;
+
     void Send(final String URL, String ID, String cat, String subcat, String name, String Des, String price) {
         Log.d("req", "___send started");
+        pDialog = new ProgressDialog(this);
+        // Showing progress dialog before making http request
+        pDialog.setMessage("لطفا صبر کنید");
+        pDialog.show();
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
@@ -419,6 +426,9 @@ public class AddNewProductActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 //                        res.setText(temp);
+                        hidePDialog();
+                        // closing activity for confirming
+                        AddNewProductActivity.this.finish();
                     }
                 });
             } else {
@@ -449,6 +459,13 @@ public class AddNewProductActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
     }
 
     @Override
