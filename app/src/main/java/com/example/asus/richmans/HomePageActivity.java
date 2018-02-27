@@ -116,7 +116,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
             case R.id.btn_share:
-                //
+                share();
+                break;
         }
     }
 
@@ -205,5 +206,23 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
+    void share() {
+        String subject = "sub";
+        String message = "mess";
+        String to = "to";
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+
+        i.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+        i.putExtra(Intent.EXTRA_TEXT, message);
+
+        i.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(i, "Select your app :"));
     }
 }
