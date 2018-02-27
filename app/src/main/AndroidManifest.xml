@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name="com.example.asus.richmans.app.AppController"
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,11 +22,7 @@
         <activity android:name=".AddNewProductActivity" />
         <activity android:name=".ProductsListActivity" />
         <activity android:name=".HomePageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LearnPageActivity" />
         <activity android:name=".HistoryActivity" />
@@ -37,13 +33,21 @@
         <receiver
             android:name=".NotificationManager.MyReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <service
             android:name=".NotificationManager.MyNewIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
 
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".GetPhoneActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterCodeActivity"></activity>
     </application>
 
 </manifest>

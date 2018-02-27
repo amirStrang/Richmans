@@ -1,11 +1,11 @@
 package com.example.asus.richmans;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -16,7 +16,7 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
 
     private List<SubCategory> subCats;
     private Context context;
-    private String[] allSubCats = {
+    final private String[] allSubCats = {
             "موبایل",
             "تبلت و کتابخوان",
             "لپ تاپ",
@@ -101,12 +101,13 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
             @Override
             public void onClick(View v) {
                 //go to Product list
-//                String subCatName = holder.name.toString();
+                String subCatName = holder.name.toString();
+                Intent i = new Intent(context, ProductsListActivity.class);
+                context.startActivity(i);
 //                switch (subCatName) {
 //                    case allSubCats[0]:
 //                        Toast.makeText(context, "ssss", Toast.LENGTH_SHORT).show();
 //                        break;
-//                ....
 //                }
             }
         });

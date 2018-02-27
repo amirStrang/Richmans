@@ -54,6 +54,8 @@ public class ProductsListActivity extends AppCompatActivity {
 //        //initialize list
 //        for (int i = 0; i < length; i++) {
 //            Product product = new Product();
+
+
 //            product.name = ...;
 //            product.ID = ....;
 //            product.images = ....;
@@ -61,12 +63,12 @@ public class ProductsListActivity extends AppCompatActivity {
 //            product.description = ...;
 //            products.add(product);
 //        }
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recProducts.setLayoutManager(linearLayoutManager);
-        recProducts.setHasFixedSize(true);
-        recProducts.setAdapter(new ProductRecyclerAdapter(getApplicationContext(), products));
-        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
-        recProducts.addItemDecoration(itemDecor);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+//        recProducts.setLayoutManager(linearLayoutManager);
+//        recProducts.setHasFixedSize(true);
+//        recProducts.setAdapter(new ProductRecyclerAdapter(getApplicationContext(), products));
+//        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
+//        recProducts.addItemDecoration(itemDecor);
 
     }
 }
