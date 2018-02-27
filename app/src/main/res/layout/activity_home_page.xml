@@ -80,21 +80,21 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:text="بازی"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:id="@+id/txt_day"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:text="روز"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/black" />
 
                     </LinearLayout>
 
