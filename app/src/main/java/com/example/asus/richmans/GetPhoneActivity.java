@@ -124,8 +124,13 @@ public class GetPhoneActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+               /*
                         hidePDialog();
                         tt("خطا در ارسال داده");
+                */
+                        //////////////sample
+                        tran();
+                        //////////////sample
                     }
                 });
             } else {
@@ -142,7 +147,6 @@ public class GetPhoneActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    res.setText("No Response");
                 }
             });
 
@@ -150,7 +154,6 @@ public class GetPhoneActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    res.setText("No Response");
                 }
             });
         }
