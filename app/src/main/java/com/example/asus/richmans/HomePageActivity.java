@@ -191,10 +191,10 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 //        pendingIntent = PendingIntent.getService(HomePageActivity.this, 0, myIntent, 0);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.AM_PM, Calendar.PM);
+//        calendar.set(Calendar.AM_PM, Calendar.PM);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
