@@ -74,7 +74,7 @@ public class GetPhoneActivity extends AppCompatActivity {
 
     private ProgressDialog pDialog;
 
-    void Send(final String URL, String phn) {
+    void Send(final String URL, final String phn) {
         Log.d("req", "___send started");
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("لطفا صبر کنید");
@@ -93,7 +93,7 @@ public class GetPhoneActivity extends AppCompatActivity {
 
                 JSONObject obj = new JSONObject(postParam);
 
-                postData(URL, obj);
+                postData(URL, obj, phn);
 
             }
         });
@@ -101,7 +101,7 @@ public class GetPhoneActivity extends AppCompatActivity {
         send.start();
     }
 
-    public void postData(String url, JSONObject obj) {
+    public void postData(String url, JSONObject obj, final String phn) {
         // Create a new HttpClient and Post Header
         HttpParams myParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(myParams, 10000);
@@ -129,7 +129,7 @@ public class GetPhoneActivity extends AppCompatActivity {
                         tt("خطا در ارسال داده");
                 */
                         //////////////sample
-                        tran();
+                        tran(phn);
                         //////////////sample
                     }
                 });
@@ -137,7 +137,7 @@ public class GetPhoneActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tran();
+                        tran(phn);
                     }
                 });
             }
@@ -172,8 +172,9 @@ public class GetPhoneActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    void tran() {
+    void tran(String phn) {
         Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
+        i.putExtra("phn", phn);
         startActivity(i);
         this.finish();
     }
