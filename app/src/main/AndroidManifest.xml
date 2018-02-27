@@ -40,7 +40,7 @@
             android:exported="false" />
 
         <activity android:name=".SearchActivity" />
-        <activity android:name=".GetPhoneActivity" >
+        <activity android:name=".GetPhoneActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
