@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/get_phone_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.asus.richmans.GetPhoneActivity">
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="360dp"
+        android:layout_alignBottom="@+id/main_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/view_back_border" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="360dp"
+        android:layout_alignBottom="@+id/main_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.5"
+        android:background="@drawable/view_shadow_border" />
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="250dp"
+        android:layout_height="360dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/view_white_border">
+
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/hello"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_please_enter_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_hello"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/please_enter_phone"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_alignEnd="@+id/tv_please_enter_code"
+            android:layout_alignStart="@+id/tv_please_enter_code"
+            android:layout_below="@+id/tv_please_enter_code"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewLine"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="09121234567"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btn_regiser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_code"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/flat_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/send_code"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -3,11 +3,13 @@
     <color name="colorPrimary">#FBC02D</color>
     <color name="colorPrimaryDark">#F9A825</color>
     <color name="colorAccent">#00BFA5</color>
+    <color name="colorLightPrimary">#FDD835</color>
     <color name="colorRaisedButton">#00BFA5</color>
     <color name="colorRaisedButtonText">#ffffff</color>
     <!--<color name="colorBackground">#F5F5F5</color>-->
     <color name="colorBackground">#ffffff</color>
     <color name="colorProgressBar">#FBC02D</color>
+    <color name="colorShadow">#EEEEEE</color>
 
     <color name="genre">#000000</color>
     <color name="year">#3c7b01</color>
