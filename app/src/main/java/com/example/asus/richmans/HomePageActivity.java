@@ -188,7 +188,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         Intent notifyIntent = new Intent(this, MyReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 1, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        pendingIntent = PendingIntent.getService(HomePageActivity.this, 0, myIntent, 0);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 23);
