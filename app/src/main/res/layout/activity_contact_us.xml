@@ -87,6 +87,7 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/tchannel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/txt_email_address"
@@ -117,6 +118,7 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/tid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/txt_email_address"

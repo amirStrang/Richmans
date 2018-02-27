@@ -3,6 +3,7 @@ package com.example.asus.richmans;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -209,20 +210,13 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     void share() {
-        String subject = "sub";
-        String message = "mess";
-        String to = "to";
+        String message = "ما را دنبال کنید";
 
         Intent i = new Intent(Intent.ACTION_SEND);
-
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
-
-        i.putExtra(Intent.EXTRA_SUBJECT, subject);
-
         i.putExtra(Intent.EXTRA_TEXT, message);
-
         i.setType("message/rfc822");
-
         startActivity(Intent.createChooser(i, "Select your app :"));
     }
+
+
 }
