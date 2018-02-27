@@ -22,7 +22,6 @@ public class RegisterCodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_code);
-
         init();
 
         mainLayout.setOnClickListener(null);
@@ -42,5 +41,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
         etLayoutCode = (TextInputLayout) findViewById(R.id.et_layout_code);
         btnRegister = (Button) findViewById(R.id.btn_regiser);
         mainLayout = (RelativeLayout) findViewById(R.id.register_activity_layout);
+
+
     }
 }
