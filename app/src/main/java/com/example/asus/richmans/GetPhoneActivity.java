@@ -27,6 +27,9 @@ public class GetPhoneActivity extends AppCompatActivity {
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etPhone.getText().equals("")){
+
+                }
                 Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
                 startActivity(i);
                 GetPhoneActivity.this.finish();

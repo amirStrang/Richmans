@@ -473,21 +473,6 @@ public class AddNewProductActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-   /*
-
-
-postParam.put("par32", s_etfa_fire);
-
-
-								// permission web and phone data for get phnumber here
-				String line_number = "Line Number : "
-						+ telManager.getLine1Number();
-
-				postParam.put("par33", line_number);13
-
-*/
-
-
     void pick() {
 
         final CharSequence[] options = {"دوربین", "گالری"};
