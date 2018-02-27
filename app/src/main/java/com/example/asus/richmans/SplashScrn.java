@@ -23,16 +23,6 @@ public class SplashScrn extends AppCompatActivity {
         if (!isNetworkAvailable(getBaseContext())) {
             tt("دستگاه به اینترنت متصل نیست");
         } else {
-//            try {
-//                File f = new File(getFilesDir().getAbsolutePath() + "/.ShData/LoginData.txt");
-//                if (!f.exists()) {
-//                    Intent i = new Intent(this, Login.class);
-//                    startActivity(i);
-//                    this.finish();
-//                }
-//            } catch (Exception e) {
-//                //
-//            }
             String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
             if (str.equals("")) {
                 Intent i = new Intent(SplashScrn.this, GetPhoneActivity.class);

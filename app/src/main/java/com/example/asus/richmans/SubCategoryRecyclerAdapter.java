@@ -102,6 +102,7 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
             public void onClick(View v) {
                 //go to Product list
                 String subCatName = holder.name.toString();
+
                 Intent i = new Intent(context, ProductsListActivity.class);
                 context.startActivity(i);
 //                switch (subCatName) {
