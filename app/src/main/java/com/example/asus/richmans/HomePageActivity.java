@@ -106,7 +106,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_reset:
                 //reset credit and history changing
-                txtCredit.setText("0");
+                i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_my_store:
                 i = new Intent(HomePageActivity.this, MyShopActivity.class);
