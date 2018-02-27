@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_tutorial"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/img_tutorial"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/sample1" />
+
+
+    <TextView
+        android:id="@+id/txt_tutorial_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_tutorial"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_tutorial"
+        android:text="@string/tutorial_name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_tutorial_explain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_tutorial_name"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toStartOf="@id/img_tutorial"
+        android:maxLines="3"
+        android:text="@string/tutorial_explain" />
+
+</RelativeLayout>

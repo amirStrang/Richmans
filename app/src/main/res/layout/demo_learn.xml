@@ -32,15 +32,26 @@
                 android:text="@string/in_the_name_of_god"
                 android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_in_the_name_of_god"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="بازی ثروتمندان، فقط یک بازی نیست"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/txt_in_the_name_of_god"
+                android:layout_below="@id/txt_title"
                 android:layout_margin="10dp"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-                android:text="@string/about_game"
+                android:text="@string/tutorial1"
                 android:textSize="16sp" />
 
 

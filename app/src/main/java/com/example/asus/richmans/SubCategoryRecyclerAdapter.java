@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -27,7 +26,7 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
     public SubCategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.subcat_recycler_item, parent, false);
+                .inflate(R.layout.item_subcat_recycler, parent, false);
         return new SubCategoryViewHolder(view);
     }
 

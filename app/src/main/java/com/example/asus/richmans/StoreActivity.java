@@ -24,8 +24,6 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static android.support.v7.widget.RecyclerView.VERTICAL;
-
 public class StoreActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
@@ -283,7 +281,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
         recyclerViewSubCats.setLayoutManager(linearLayoutManager);
         recyclerViewSubCats.setHasFixedSize(true);
         recyclerViewSubCats.setAdapter(new SubCategoryRecyclerAdapter(getApplicationContext(), subCats));
-        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
+        DividerItemDecoration itemDecor = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerViewSubCats.addItemDecoration(itemDecor);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

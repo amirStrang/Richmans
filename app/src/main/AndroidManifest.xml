@@ -54,7 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SetBaseMoneyActivity"></activity>
+        <activity android:name=".SetBaseMoneyActivity" />
     </application>
 
 </manifest>
