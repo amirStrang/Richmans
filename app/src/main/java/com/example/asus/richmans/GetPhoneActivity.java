@@ -1,9 +1,9 @@
 package com.example.asus.richmans;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,13 +29,14 @@ public class GetPhoneActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
                 startActivity(i);
+                GetPhoneActivity.this.finish();
                 //sent mesage
             }
         });
     }
 
     void init() {
-        etPhone = (EditText) findViewById(R.id.et_code);
+        etPhone = (EditText) findViewById(R.id.et_phone);
         etLayoutPhone = (TextInputLayout) findViewById(R.id.et_layout_code);
         btnSendCode = (Button) findViewById(R.id.btn_regiser);
         mainLayout = (RelativeLayout) findViewById(R.id.get_phone_activity_layout);

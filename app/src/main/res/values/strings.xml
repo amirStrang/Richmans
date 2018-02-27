@@ -78,4 +78,5 @@
     <string name="send_code">ارسال پیام کد تایید</string>
     <string name="please_enter_code">لطفا کد ارسال شده به دستگاهتان را وارد کنید</string>
     <string name="code">کد</string>
+    <string name="share">دعوت دوستان</string>
 </resources>

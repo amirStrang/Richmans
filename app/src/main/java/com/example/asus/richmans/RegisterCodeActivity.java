@@ -24,15 +24,23 @@ public class RegisterCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_code);
 
         init();
+
+        mainLayout.setOnClickListener(null);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterCodeActivity.this, HomePageActivity.class));
+                //checking
+                Intent i = new Intent(RegisterCodeActivity.this, HomePageActivity.class);
+                startActivity(i);
+                RegisterCodeActivity.this.finish();
             }
         });
     }
 
     private void init() {
+        etCode = (EditText) findViewById(R.id.et_code);
+        etLayoutCode = (TextInputLayout) findViewById(R.id.et_layout_code);
         btnRegister = (Button) findViewById(R.id.btn_regiser);
+        mainLayout = (RelativeLayout) findViewById(R.id.register_activity_layout);
     }
 }
