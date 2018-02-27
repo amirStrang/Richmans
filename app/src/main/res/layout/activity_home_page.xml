@@ -261,6 +261,7 @@
                 android:layout_alignEnd="@id/btn_learn"
                 android:layout_alignStart="@+id/btn_store"
                 android:layout_below="@+id/btn_about_us"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/colorPrimary">
 
