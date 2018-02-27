@@ -27,9 +27,11 @@ public class GetPhoneActivity extends AppCompatActivity {
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etPhone.getText().equals("")){
-
+                if (etPhone.getText().toString().equals("") || etPhone.getText().toString().length() != 11) {
+                    etPhone.setError("شماره تلفن را صحیح وارد کنید");
+                    return;
                 }
+                reg();
                 Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
                 startActivity(i);
                 GetPhoneActivity.this.finish();
@@ -44,4 +46,9 @@ public class GetPhoneActivity extends AppCompatActivity {
         btnSendCode = (Button) findViewById(R.id.btn_regiser);
         mainLayout = (RelativeLayout) findViewById(R.id.get_phone_activity_layout);
     }
+
+    void reg() {
+
+    }
+
 }
