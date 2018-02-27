@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +41,18 @@ public class ProductsListActivity extends AppCompatActivity {
         recProducts = (RecyclerView) findViewById(R.id.rec_products);
         List<Product> products = new ArrayList<>();
 
+        tt(getIntent().getStringExtra("URI"));
+
         //sample init
-        for (int i = 0; i < 5; i++) {
-            Product product = new Product();
-            product.name = "موبایل";
-            product.price = "1000000";
-            product.description = "یه گوشی خیلی خوب :)";
-            product.ID = 1;
-            product.images.add(R.drawable.sample4);
-            products.add(product);
-        }
+//        for (int i = 0; i < 5; i++) {
+//            Product product = new Product();
+//            product.name = "موبایل";
+//            product.price = "1000000";
+//            product.description = "یه گوشی خیلی خوب :)";
+//            product.ID = 1;
+//            product.images.add(R.drawable.sample4);
+//            products.add(product);
+//        }
 
 //        //initialize list
 //        for (int i = 0; i < length; i++) {
@@ -71,4 +74,9 @@ public class ProductsListActivity extends AppCompatActivity {
 //        recProducts.addItemDecoration(itemDecor);
 
     }
+
+    void tt(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
 }
