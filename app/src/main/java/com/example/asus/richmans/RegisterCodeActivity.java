@@ -53,7 +53,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etCode.getText().toString().equals("") || etCode.getText().toString().length() != 11) {
+                if (etCode.getText().toString().equals("") || etCode.getText().toString().length() != 5) {
                     etCode.setError("کد را صحیح وارد کنید");
                     return;
                 }
@@ -143,8 +143,6 @@ public class RegisterCodeActivity extends AppCompatActivity {
                     }
                 });
             }
-
-
         } catch (ClientProtocolException e) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -198,14 +196,6 @@ public class RegisterCodeActivity extends AppCompatActivity {
             pw.flush();
             pw.close();
             f.close();
-            //////////
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tt("خوش آمدید");
-                }
-            });
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             //tt(e.getMessage());
