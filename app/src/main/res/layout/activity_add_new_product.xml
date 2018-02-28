@@ -224,6 +224,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/card_description"
                 android:layout_margin="5dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/colorAccent"
                 android:text="@string/add_to_my_shop" />
 

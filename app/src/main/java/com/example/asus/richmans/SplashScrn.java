@@ -53,9 +53,10 @@ public class SplashScrn extends AppCompatActivity {
         try {
             in = new BufferedReader(new FileReader(new File(filePath)));
             while ((line = in.readLine()) != null) stringBuilder.append(line);
-
         } catch (FileNotFoundException e) {
+            //
         } catch (IOException e) {
+            //
         }
 
         return stringBuilder.toString();
