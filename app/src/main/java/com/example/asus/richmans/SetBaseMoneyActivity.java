@@ -121,7 +121,6 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
             HttpResponse response = httpclient.execute(httppost);
             final String temp = EntityUtils.toString(response.getEntity());
 
-            //handle temp
             if (!temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
