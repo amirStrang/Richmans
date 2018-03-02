@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 
-class BuyHistoryRecyclerAdapter extends RecyclerView.Adapter<BuyHistoryViewHolder> {
+public class BuyHistoryRecyclerAdapter extends RecyclerView.Adapter<BuyHistoryViewHolder> {
 
     private List<BuyHistory> histories;
     private Context context;

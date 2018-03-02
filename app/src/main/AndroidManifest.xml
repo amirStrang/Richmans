@@ -55,6 +55,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SetBaseMoneyActivity" />
+        <activity android:name=".TextTutorialActivity" />
     </application>
 
 </manifest>

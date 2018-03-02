@@ -3,7 +3,7 @@ package com.example.asus.richmans;
 import java.util.ArrayList;
 import java.util.List;
 
-class Product {
+public class Product {
     String name;
     String price;
     int ID;

@@ -1,6 +1,7 @@
 package com.example.asus.richmans;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
 
     @Override
     public void onBindViewHolder(TutorialViewHolder holder, int position) {
-        Tutorial tutorial = tutorials.get(position);
+        final Tutorial tutorial = tutorials.get(position);
 
         holder.txtName.setText(tutorial.name);
         holder.txtExplain.setText(tutorial.explain);
@@ -37,7 +38,10 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent i = new Intent(context,)
+                Intent i = new Intent(context, TextTutorialActivity.class);
+                i.putExtra("name", tutorial.name);
+                i.putExtra("explain", tutorial.explain);
+                context.startActivity(i);
             }
         });
     }

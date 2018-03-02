@@ -4,8 +4,6 @@ package com.example.asus.richmans.app;
  * Created by Mr.Anonymous on 2/24/2018.
  */
 
-import com.example.asus.richmans.util.LruBitmapCache;
-
 import android.app.Application;
 import android.text.TextUtils;
 
@@ -13,6 +11,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.example.asus.richmans.R;
+import com.example.asus.richmans.util.LruBitmapCache;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppController extends Application {
 
@@ -27,6 +29,11 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/BKoodakBold.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 
     public static synchronized AppController getInstance() {

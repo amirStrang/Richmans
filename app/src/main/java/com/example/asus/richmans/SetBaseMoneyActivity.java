@@ -1,11 +1,14 @@
 package com.example.asus.richmans;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SetBaseMoneyActivity extends AppCompatActivity {
 
@@ -33,5 +36,10 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     private void init() {
         etBaseMoney = (EditText) findViewById(R.id.et_base_money);
         btnStart = (Button) findViewById(R.id.btn_start);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

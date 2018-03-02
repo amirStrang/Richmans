@@ -1,5 +1,6 @@
 package com.example.asus.richmans;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -33,6 +34,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //buy
+                showDialog();
             }
         });
 
@@ -40,6 +42,23 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onScrollStateChange(NumberPicker view, int scrollState) {
                 //change total price
+            }
+        });
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.activity_dialog);
+        dialog.setCancelable(false);
+        dialog.show();
+
+        TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
+        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
     }
@@ -67,6 +86,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         numberPicker = (NumberPicker) findViewById(R.id.number_picker);
 
     }
+
 
     //initialize
 //        txtName.setText();

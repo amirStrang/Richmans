@@ -1,6 +1,7 @@
 package com.example.asus.richmans;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,6 +35,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class GetPhoneActivity extends AppCompatActivity {
 
     EditText etPhone;
@@ -66,6 +69,11 @@ public class GetPhoneActivity extends AppCompatActivity {
         etLayoutPhone = (TextInputLayout) findViewById(R.id.et_layout_code);
         btnSendCode = (Button) findViewById(R.id.btn_regiser);
         mainLayout = (RelativeLayout) findViewById(R.id.get_phone_activity_layout);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void reg(String phn) {

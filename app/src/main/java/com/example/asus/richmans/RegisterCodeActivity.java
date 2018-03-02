@@ -1,6 +1,7 @@
 package com.example.asus.richmans;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -35,6 +36,8 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class RegisterCodeActivity extends AppCompatActivity {
 
     EditText etCode;
@@ -67,6 +70,11 @@ public class RegisterCodeActivity extends AppCompatActivity {
         etLayoutCode = (TextInputLayout) findViewById(R.id.et_layout_code);
         btnRegister = (Button) findViewById(R.id.btn_regiser);
         mainLayout = (RelativeLayout) findViewById(R.id.register_activity_layout);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void save(String code, String phn) {

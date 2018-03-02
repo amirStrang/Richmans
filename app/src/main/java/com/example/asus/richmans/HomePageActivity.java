@@ -2,6 +2,7 @@ package com.example.asus.richmans;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -76,6 +79,11 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         btnReset.setOnClickListener(this);
         btnStore.setOnClickListener(this);
         btnShare.setOnClickListener(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

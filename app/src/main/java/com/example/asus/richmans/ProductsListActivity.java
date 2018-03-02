@@ -1,10 +1,8 @@
 package com.example.asus.richmans;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -13,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
-
-import static android.support.v7.widget.RecyclerView.VERTICAL;
 
 public class ProductsListActivity extends AppCompatActivity {
 
@@ -27,11 +23,6 @@ public class ProductsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_list);
 
         init();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void init() {
@@ -73,6 +64,11 @@ public class ProductsListActivity extends AppCompatActivity {
 //        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
 //        recProducts.addItemDecoration(itemDecor);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void tt(String msg) {

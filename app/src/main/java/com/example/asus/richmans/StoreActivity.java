@@ -293,6 +293,7 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
         drawerToggle.syncState();
     }
 
+
     public void GoToCat(View view) {
         int id = view.getId();
         List<SubCategory> subCats = new ArrayList<>();

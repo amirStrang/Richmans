@@ -1,5 +1,6 @@
 package com.example.asus.richmans;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -86,5 +89,10 @@ public class SearchActivity extends AppCompatActivity {
 //        recProducts.setAdapter(new ProductRecyclerAdapter(getApplicationContext(), products));
 //        DividerItemDecoration itemDecor = new DividerItemDecoration(this, VERTICAL);
 //        recProducts.addItemDecoration(itemDecor);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
