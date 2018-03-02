@@ -43,6 +43,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     TextView txtCredit, txtDay;
     ProgressBar prbCredit;
 
+    String phn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         ntf();
 
-        loadCredit("http://techiesatish.com/demo_api/spinner.php");
+        phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
+
+        loadCredit("http://techiesatish.com/demo_api/spinner.php?phn=" + phn);
 
     }
 
@@ -118,9 +122,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
             case R.id.btn_reset:
-                String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
-                i.putExtra("phn", str);
+                i.putExtra("phn", phn);
                 startActivity(i);
                 break;
             case R.id.btn_my_store:
