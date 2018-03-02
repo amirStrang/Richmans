@@ -78,7 +78,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     }
 
     void save(String code, String phn) {
-        Send("http://ahmaditest.sepantahost.com/api/", phn, code);
+        Send("http://ahmaditest.sepantahost.com/api/Identify", phn, code);
     }
 
     private ProgressDialog pDialog;
@@ -130,16 +130,15 @@ public class RegisterCodeActivity extends AppCompatActivity {
             final String temp = EntityUtils.toString(response.getEntity());
 
             //handle temp
-            if (!temp.equals(1)) {
+            if (!temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-               /*
                         hidePDialog();
                         tt("خطا در ارسال داده");
-                */
+
                         //////////////sample
-                        tran(phn);
+//                        tran(phn);
                         //////////////sample
                     }
                 });
@@ -184,7 +183,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
 
     void tran(String phn) {
         SaveMe(phn);
-        Intent i = new Intent(RegisterCodeActivity.this, HomePageActivity.class);
+        Intent i = new Intent(RegisterCodeActivity.this, SetBaseMoneyActivity.class);
         i.putExtra("phn", phn);
         startActivity(i);
         this.finish();

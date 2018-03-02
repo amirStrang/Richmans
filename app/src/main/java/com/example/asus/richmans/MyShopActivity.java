@@ -15,9 +15,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.asus.richmans.adapter.GproductCustomListAdapter;
+import com.example.asus.richmans.adapter.MproductCustomListAdapter;
 import com.example.asus.richmans.app.AppController;
-import com.example.asus.richmans.model.Gproduct;
+import com.example.asus.richmans.model.Mproduct;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,12 +35,12 @@ public class MyShopActivity extends AppCompatActivity {
 
     private static final String TAG = MyShopActivity.class.getSimpleName();
 
-    // Gproducts json url
+    // Mproducts json url
     private static final String url = "https://api.androidhive.info/json/movies.json";
     private ProgressDialog pDialog;
-    private List<Gproduct> productList = new ArrayList<Gproduct>();
+    private List<Mproduct> productList = new ArrayList<Mproduct>();
     private ListView listView;
-    private GproductCustomListAdapter adapter;
+    private MproductCustomListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class MyShopActivity extends AppCompatActivity {
             }
         });
         listView = (ListView) findViewById(R.id.list);
-        adapter = new GproductCustomListAdapter(this, productList);
+        adapter = new MproductCustomListAdapter(this, productList);
         listView.setAdapter(adapter);
 
         pDialog = new ProgressDialog(this);
@@ -75,10 +75,11 @@ public class MyShopActivity extends AppCompatActivity {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
-                                Gproduct product = new Gproduct();
+                                Mproduct product = new Mproduct();
                                 product.setName(obj.getString("title"));
                                 product.setThumbnailUrl(obj.getString("image"));
                                 product.setPrice(obj.get("rating") + "");
+                                product.setCat(obj.getString("title"));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();

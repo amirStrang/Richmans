@@ -30,4 +30,14 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/rating" />
 
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/rating" />
+
+
 </RelativeLayout>

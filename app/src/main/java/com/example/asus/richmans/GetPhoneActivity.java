@@ -77,7 +77,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     }
 
     void reg(String phn) {
-        Send("http://ahmaditest.sepantahost.com/api/", phn);
+        Send("http://ahmaditest.sepantahost.com/api/Register", phn);
     }
 
     private ProgressDialog pDialog;
@@ -125,19 +125,20 @@ public class GetPhoneActivity extends AppCompatActivity {
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);
-            final String temp = EntityUtils.toString(response.getEntity());
+            String temp = EntityUtils.toString(response.getEntity());
+
+            temp = temp.substring(1, temp.length() - 1);
 
             //handle temp
-            if (!temp.equals(1)) {
+            if (!temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-               /*
                         hidePDialog();
                         tt("خطا در ارسال داده");
-                */
+
                         //////////////sample
-                        tran(phn);
+//                        tran(phn);
                         //////////////sample
                     }
                 });
