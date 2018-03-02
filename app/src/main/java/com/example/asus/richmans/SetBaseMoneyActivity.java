@@ -51,10 +51,6 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
                     return;
                 }
                 setBase(etBaseMoney.getText().toString(), getIntent().getStringExtra("phn"));
-
-                Intent i = new Intent(SetBaseMoneyActivity.this, HomePageActivity.class);
-                startActivity(i);
-                SetBaseMoneyActivity.this.finish();
             }
         });
     }
@@ -157,8 +153,6 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 
     private void hidePDialog() {

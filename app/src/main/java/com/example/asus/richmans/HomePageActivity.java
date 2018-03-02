@@ -27,6 +27,11 @@ import com.example.asus.richmans.NotificationManager.MyReceiver;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Calendar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -113,8 +118,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
             case R.id.btn_reset:
-                //reset credit and history changing
+                String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
+                i.putExtra("phn", str);
                 startActivity(i);
                 break;
             case R.id.btn_my_store:
@@ -227,5 +233,21 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         startActivity(Intent.createChooser(i, "Select your app :"));
     }
 
+    public String readFileAsString(Context context, String filePath) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        BufferedReader in = null;
+
+        try {
+            in = new BufferedReader(new FileReader(new File(filePath)));
+            while ((line = in.readLine()) != null) stringBuilder.append(line);
+        } catch (FileNotFoundException e) {
+            //
+        } catch (IOException e) {
+            //
+        }
+
+        return stringBuilder.toString();
+    }
 
 }
