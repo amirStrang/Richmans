@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.NumberPicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -21,7 +21,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     CircleIndicator indicator;
     TextView txtName, txtPrice, txtDescription;
     Button btnBuy;
-    NumberPicker numberPicker;
+    EditText etNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +35,6 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //buy
                 showDialog();
-            }
-        });
-
-        numberPicker.setOnScrollListener(new NumberPicker.OnScrollListener() {
-            @Override
-            public void onScrollStateChange(NumberPicker view, int scrollState) {
-                //change total price
             }
         });
     }
@@ -84,12 +77,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         txtName = (TextView) findViewById(R.id.txt_name);
         txtName.setText(getIntent().getStringArrayExtra("product")[0]);
-        txtPrice = (TextView) findViewById(R.id.txt_price);
+        txtPrice = (TextView) findViewById(R.id.txt_product_price);
         txtPrice.setText(getIntent().getStringArrayExtra("product")[1]);
         txtDescription = (TextView) findViewById(R.id.txt_description);
         txtDescription.setText(getIntent().getStringArrayExtra("product")[2]);
         btnBuy = (Button) findViewById(R.id.btn_buy);
-        numberPicker = (NumberPicker) findViewById(R.id.number_picker);
+        etNumber = (EditText) findViewById(R.id.et_number);
 
     }
 }

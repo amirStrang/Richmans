@@ -61,7 +61,7 @@
                 android:layout_height="1dp"
                 android:layout_below="@id/txt_name"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorBackground"/>
+                android:background="@color/colorBackground" />
 
             <TextView
                 android:id="@+id/txt_price"
@@ -71,6 +71,7 @@
                 android:layout_below="@id/line1"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
+                android:padding="5dp"
                 android:text="@string/price"
                 android:textColor="@android:color/holo_green_light" />
 
@@ -82,17 +83,21 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_toStartOf="@+id/txt_price"
+                android:padding="5dp"
                 android:text="@string/product_price"
                 android:textColor="@android:color/holo_green_light" />
 
-            <NumberPicker
-                android:id="@+id/number_picker"
-                android:layout_width="wrap_content"
+            <EditText
+                android:padding="2dp"
+                android:id="@+id/et_number"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/txt_price"
                 android:layout_alignTop="@id/txt_price"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/txt_number" />
+                android:layout_toEndOf="@id/txt_number"
+                android:gravity="bottom|center_horizontal"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/txt_number"
@@ -102,6 +107,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@id/txt_price"
                 android:layout_marginStart="20dp"
+                android:padding="5dp"
                 android:text="@string/number" />
 
             <View
@@ -110,7 +116,7 @@
                 android:layout_height="1dp"
                 android:layout_below="@id/txt_price"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorBackground"/>
+                android:background="@color/colorBackground" />
 
 
             <TextView

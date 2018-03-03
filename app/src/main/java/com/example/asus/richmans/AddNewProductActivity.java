@@ -1,6 +1,5 @@
 package com.example.asus.richmans;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -44,11 +43,8 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,7 +53,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class AddNewProductActivity extends AppCompatActivity {
 
     Button btnSubmitProduct;
-    EditText etName, etDescription;
+    EditText etName, etDescription, etPrice;
     Spinner spinnerCat, spinnerSubCat;
     ImageView img1, img2, img3;
     TextView txtSubCat;
@@ -170,11 +166,17 @@ public class AddNewProductActivity extends AppCompatActivity {
         img2 = (ImageView) findViewById(R.id.img_p2);
         img3 = (ImageView) findViewById(R.id.img_p3);
         txtSubCat = (TextView) findViewById(R.id.txt_sub_cat);
+        etPrice = (EditText) findViewById(R.id.et_price);
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cats);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCat.setAdapter(adapter);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 
@@ -468,10 +470,6 @@ public class AddNewProductActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     void pick() {
 
