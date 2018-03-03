@@ -18,13 +18,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 
 public class HistoryCustomListAdapter extends BaseAdapter {
     private Activity activity;
     private LayoutInflater inflater;
     private List<History> historyList;
-    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
     public HistoryCustomListAdapter(Activity activity, List<History> historyList) {
         this.activity = activity;
@@ -53,7 +51,7 @@ public class HistoryCustomListAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.item_product_horizontal, null);
+            convertView = inflater.inflate(R.layout.item_history2, null);
 
         TextView from = (TextView) convertView.findViewById(R.id.fromdate);
         TextView to = (TextView) convertView.findViewById(R.id.todate);
@@ -61,11 +59,11 @@ public class HistoryCustomListAdapter extends BaseAdapter {
 
         History m = historyList.get(position);
 
-        from.setText(m.getFrom());
+        from.setText(m.getFrom() + "");
 
-        to.setText(m.getTo());
+        to.setText(m.getTo() + "");
 
-        day.setText(m.getDay());
+        day.setText(m.getDay() + "");
 
         return convertView;
     }

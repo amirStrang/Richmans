@@ -45,7 +45,6 @@ public class HistoryTab1 extends Fragment {
 
     private static final String TAG = "Tab1";
 
-    // Mproducts json url
     private ProgressDialog pDialog;
     private List<Mproduct> productList = new ArrayList<Mproduct>();
     private ListView listView;
