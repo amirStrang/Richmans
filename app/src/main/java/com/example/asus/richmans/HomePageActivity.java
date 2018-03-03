@@ -168,7 +168,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
                     JSONObject jsonObject = new JSONObject(response);
 
-                    int prog = jsonObject.getInt("success") * 753000;
+                    int prog = jsonObject.getInt("success") * 256000;
                     int day = jsonObject.getInt("success") * 7;
 
                     txtDay.setText(day + "");

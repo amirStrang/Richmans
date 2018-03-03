@@ -121,11 +121,11 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        hidePDialog();
+          /*              hidePDialog();
                         tt("خطا در ارسال داده");
-
+*/
                         //////////////sample
-//                        tran(phn);
+                        tran();
                         //////////////sample
                     }
                 });

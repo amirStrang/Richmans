@@ -41,6 +41,7 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
                 Intent i = new Intent(context, TextTutorialActivity.class);
                 i.putExtra("name", tutorial.name);
                 i.putExtra("explain", tutorial.explain);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }
         });

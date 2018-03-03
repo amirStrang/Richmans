@@ -195,11 +195,12 @@ public class AddNewProductActivity extends AppCompatActivity {
 
 
         spinnerCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            ArrayAdapter<String> subCatAdapter;
-
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                ArrayAdapter<String> subCatAdapter = new ArrayAdapter<String>
+                        (getApplicationContext(), android.R.layout.simple_spinner_item, subCats0);
+
                 switch (position) {
                     case 0:
                         subCatAdapter = new ArrayAdapter<String>
@@ -250,8 +251,7 @@ public class AddNewProductActivity extends AppCompatActivity {
                 subCatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerSubCat.setAdapter(subCatAdapter);
 
-                spinnerSubCat.setVisibility(View.VISIBLE);
-                txtSubCat.setVisibility(View.VISIBLE);
+
             }
 
             @Override
