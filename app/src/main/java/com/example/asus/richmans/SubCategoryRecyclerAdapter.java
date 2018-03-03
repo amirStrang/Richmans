@@ -43,6 +43,7 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
                 String subCatName = holder.name.getText().toString();
                 Intent i = new Intent(context, ProductsListActivity.class);
                 i.putExtra("URI", subCatName);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }
         });
