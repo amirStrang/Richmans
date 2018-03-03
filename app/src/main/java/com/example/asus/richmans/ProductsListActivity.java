@@ -2,11 +2,14 @@ package com.example.asus.richmans;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.asus.richmans.adapter.GproductCustomListAdapter;
 import com.example.asus.richmans.app.AppController;
 import com.example.asus.richmans.model.Gproduct;
+import com.example.asus.richmans.model.Mproduct;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,8 +35,8 @@ public class ProductsListActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RecyclerView recProducts;
-    
-    private static final String TAG = MyShopActivity.class.getSimpleName();
+
+    private static final String TAG = ProductsListActivity.class.getSimpleName();
 
     // Gproducts json url
     private static final String url = "https://api.androidhive.info/json/movies.json";
@@ -70,6 +74,7 @@ public class ProductsListActivity extends AppCompatActivity {
                                 product.setName(obj.getString("title"));
                                 product.setThumbnailUrl(obj.getString("image"));
                                 product.setPrice(obj.get("rating") + "");
+                                product.setDesc(obj.get("rating") + "");
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -87,6 +92,21 @@ public class ProductsListActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(productReq);
+
+        ////////////////////////////////////// click item
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(ProductsListActivity.this, ProductDetailActivity.class);
+                Gproduct mproduct = (Gproduct) parent.getAdapter().getItem(position);
+                i.putExtra("product", new String[]{
+                        mproduct.getName(),
+                        mproduct.getPrice(),
+                        mproduct.getDesc(),
+                        mproduct.getThumbnailUrl()});
+                startActivity(i);
+            }
+        });
     }
 
     void init() {
@@ -105,6 +125,7 @@ public class ProductsListActivity extends AppCompatActivity {
     void tt(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
