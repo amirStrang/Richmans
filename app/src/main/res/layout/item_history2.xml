@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_row_selector"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/fromdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/todate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="1dip"
+        android:textSize="@dimen/rating" />
+
+    <TextView
+        android:id="@+id/totalday"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginTop="1dip"
+        android:textSize="@dimen/rating" />
+
+
+</LinearLayout>
