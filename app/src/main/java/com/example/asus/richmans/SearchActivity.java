@@ -34,7 +34,7 @@ public class SearchActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.item_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.requestFocus(View.FOCUS_UP);
+        searchView.requestFocus();
         searchView.setQueryHint("جستجو");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -42,7 +42,6 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
