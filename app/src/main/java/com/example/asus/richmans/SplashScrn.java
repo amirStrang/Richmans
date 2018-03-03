@@ -3,6 +3,7 @@ package com.example.asus.richmans;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -25,15 +26,24 @@ public class SplashScrn extends AppCompatActivity {
         } else {
             String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
             if (str.equals("")) {
-                Intent i = new Intent(SplashScrn.this, GetPhoneActivity.class);
-                startActivity(i);
-                this.finish();
+                tran(GetPhoneActivity.class);
             } else {
-                Intent i = new Intent(SplashScrn.this, HomePageActivity.class);
-                startActivity(i);
-                this.finish();
+                tran(HomePageActivity.class);
             }
         }
+    }
+
+    void tran(final Class c) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(SplashScrn.this, c);
+                startActivity(i);
+                SplashScrn.this.finish();
+            }
+        }, 2000);
+
     }
 
     public boolean isNetworkAvailable(final Context context) {
