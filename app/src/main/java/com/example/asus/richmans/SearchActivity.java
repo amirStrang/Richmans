@@ -2,6 +2,7 @@ package com.example.asus.richmans;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -147,6 +150,21 @@ public class SearchActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(productReq);
+
+        ////////////////////////////////////// click item
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(SearchActivity.this, ProductDetailActivity.class);
+                Mproduct mproduct = (Mproduct) parent.getAdapter().getItem(position);
+                i.putExtra("product", new String[]{
+                        mproduct.getName(),
+                        mproduct.getPrice(),
+                        mproduct.getDesc(),
+                        mproduct.getThumbnailUrl()});
+                startActivity(i);
+            }
+        });
 
     }
 
