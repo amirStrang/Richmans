@@ -114,6 +114,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
             se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
             httppost.setEntity(se);
 
+
             HttpResponse response = httpclient.execute(httppost);
             final String temp = EntityUtils.toString(response.getEntity());
 
