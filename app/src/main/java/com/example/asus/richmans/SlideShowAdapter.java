@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.bumptech.glide.Glide;
+import com.example.asus.richmans.app.AppController;
 
 import java.util.ArrayList;
 
@@ -18,16 +22,14 @@ import java.util.ArrayList;
 public class SlideShowAdapter extends PagerAdapter {
 
     private Context context;
-    private ArrayList<Integer> images = new ArrayList<>();
+    private ArrayList<String> images = new ArrayList<>();
 
-    public SlideShowAdapter(Context context) {
+    public SlideShowAdapter(Context context, String Uri1, String Uri2, String Uri3) {
         this.context = context;
 
-        images.add(R.drawable.sample1);
-        images.add(R.drawable.sample2);
-        images.add(R.drawable.sample3);
-        images.add(R.drawable.sample4);
-        images.add(R.drawable.sample5);
+        images.add(Uri1);
+        images.add(Uri2);
+        images.add(Uri3);
     }
 
     @Override
@@ -43,10 +45,11 @@ public class SlideShowAdapter extends PagerAdapter {
 
         View view = inflater.inflate(R.layout.slideshow_layout, container, false);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
+        NetworkImageView imageView = (NetworkImageView) view.findViewById(R.id.image);
 
-        Glide.with(context).load(images.get(position)).into(imageView);
-
+//        Glide.with(context).load(images.get(position)).into(imageView);
+        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+        imageView.setImageUrl(images.get(position), imageLoader);
         imageView.setOnClickListener(new View.OnClickListener() {
 
             @Override

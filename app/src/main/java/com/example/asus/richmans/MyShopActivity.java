@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -80,6 +82,7 @@ public class MyShopActivity extends AppCompatActivity {
                                 product.setThumbnailUrl(obj.getString("image"));
                                 product.setPrice(obj.get("rating") + "");
                                 product.setCat(obj.getString("title"));
+                                product.setDesc(obj.get("rating") + "");
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -97,6 +100,27 @@ public class MyShopActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(productReq);
+
+
+        ////////////////////////////////////// click item
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MyShopActivity.this, ProductDetailActivity.class);
+                Mproduct mproduct = (Mproduct) parent.getAdapter().getItem(position);
+                i.putExtra("product", new String[]{
+                        mproduct.getName(),
+                        mproduct.getPrice(),
+                        mproduct.getDesc(),
+                        mproduct.getThumbnailUrl()});
+                startActivity(i);
+            }
+        });
+
+    }
+
+    void tt(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

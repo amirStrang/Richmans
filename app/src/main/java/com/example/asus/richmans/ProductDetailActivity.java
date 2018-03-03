@@ -73,23 +73,23 @@ public class ProductDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        slideShowAdapter = new SlideShowAdapter(this);
+        slideShowAdapter = new SlideShowAdapter(this,
+                getIntent().getStringArrayExtra("product")[3],
+                getIntent().getStringArrayExtra("product")[3],
+                getIntent().getStringArrayExtra("product")[3]);
         viewPager.setAdapter(slideShowAdapter);
 
         indicator = (CircleIndicator) findViewById(R.id.circleIndicator);
         indicator.setViewPager(viewPager);
 
         txtName = (TextView) findViewById(R.id.txt_name);
+        txtName.setText(getIntent().getStringArrayExtra("product")[0]);
         txtPrice = (TextView) findViewById(R.id.txt_price);
+        txtPrice.setText(getIntent().getStringArrayExtra("product")[1]);
         txtDescription = (TextView) findViewById(R.id.txt_description);
+        txtDescription.setText(getIntent().getStringArrayExtra("product")[2]);
         btnBuy = (Button) findViewById(R.id.btn_buy);
         numberPicker = (NumberPicker) findViewById(R.id.number_picker);
 
     }
-
-
-    //initialize
-//        txtName.setText();
-//        txtPrice.setText();
-//        txtDescription.setText();
 }

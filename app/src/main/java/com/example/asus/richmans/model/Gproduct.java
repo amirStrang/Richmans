@@ -7,15 +7,16 @@ package com.example.asus.richmans.model;
 import java.util.ArrayList;
 
 public class Gproduct {
-    private String name, thumbnailUrl, price;
+    private String name, thumbnailUrl, price, desc;
 
     public Gproduct() {
     }
 
-    public Gproduct(String name, String thumbnailUrl, String price) {
+    public Gproduct(String name, String thumbnailUrl, String price, String desc) {
         this.name = name;
         this.thumbnailUrl = thumbnailUrl;
         this.price = price;
+        this.desc = desc;
     }
 
     public String getName() {
@@ -40,6 +41,14 @@ public class Gproduct {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
 
