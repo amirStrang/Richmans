@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +21,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     ViewPager viewPager;
     SlideShowAdapter slideShowAdapter;
     CircleIndicator indicator;
-    TextView txtName, txtPrice, txtDescription;
+    TextView txtName, txtPrice, txtDescription, txtTotalPrice;
     Button btnBuy;
     EditText etNumber;
 
@@ -82,7 +84,33 @@ public class ProductDetailActivity extends AppCompatActivity {
         txtDescription = (TextView) findViewById(R.id.txt_description);
         txtDescription.setText(getIntent().getStringArrayExtra("product")[2]);
         btnBuy = (Button) findViewById(R.id.btn_buy);
+        txtTotalPrice = (TextView) findViewById(R.id.txt_product_total_price);
+        txtTotalPrice.setText(getIntent().getStringArrayExtra("product")[1]);
         etNumber = (EditText) findViewById(R.id.et_number);
+        etNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etNumber.getText().toString().equals("")) txtTotalPrice.setText("0");
+                else {
+                    int tp = Integer.parseInt(etNumber.getText().toString()) *
+                            Integer.parseInt("50000");
+//                            Integer.parseInt(txtPrice.getText().toString());
+                    txtTotalPrice.setText(tp + "");
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
     }
 }

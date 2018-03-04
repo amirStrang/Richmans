@@ -41,10 +41,16 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -307,14 +313,15 @@ public class AddNewProductActivity extends AppCompatActivity {
                 // price handle
 
 
-                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
-                    tt("داشتن سه عکس الزامی است");
-                    return;
-                }
+//                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
+//                    tt("داشتن سه عکس الزامی است");
+//                    return;
+//                }
 
+                String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
                 Send("http://ahmaditest.sepantahost.com/api/AddToMyShop",
-                        "09123456789",
+                        phn,
                         spinnerCat.getSelectedItem().toString(),
                         spinnerSubCat.getSelectedItem().toString(),
                         etName.getText().toString(),
@@ -323,6 +330,23 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public String readFileAsString(Context context, String filePath) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        BufferedReader in = null;
+
+        try {
+            in = new BufferedReader(new FileReader(new File(filePath)));
+            while ((line = in.readLine()) != null) stringBuilder.append(line);
+        } catch (FileNotFoundException e) {
+            //
+        } catch (IOException e) {
+            //
+        }
+
+        return stringBuilder.toString();
     }
 
     void tt(String str) {
@@ -340,22 +364,23 @@ public class AddNewProductActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("Code", ID);
+        postParam.put("PhoneNumber", ID);
         postParam.put("Name", name);
         postParam.put("Note", Des);
         postParam.put("Price", price);
         postParam.put("CategoryName", cat);
         postParam.put("SubCatName", subcat);
 
+        /*
         //pics
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
 
-            options.inPreferredConfig = Bitmap.Config.RGB_565;
-            options.inDither = true;
-            options.inSampleSize = 8;
+//            options.inPreferredConfig = Bitmap.Config.RGB_565;
+//            options.inDither = true;
+//            options.inSampleSize = 8;
 
-            Bitmap bm1 = BitmapFactory.decodeFile(pic_path1, options);
+            Bitmap bm1 = BitmapFactory.decodeFile(pic_path1);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bm1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] b = baos.toByteArray();
@@ -384,9 +409,10 @@ public class AddNewProductActivity extends AppCompatActivity {
                     Base64.DEFAULT);
             postParam.put("Image3", encodedImage3);
         } catch (Exception e) {
-            //
+            Log.d("ppppppppiiiiiiiicccc", e.getMessage());
+            tt("خطا در ارسال عکس");
         }
-
+*/
 
         ////////////////////////////////////////////////////////
 
@@ -420,16 +446,15 @@ public class AddNewProductActivity extends AppCompatActivity {
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);
-            final String temp = EntityUtils.toString(response.getEntity());
+            String temp = EntityUtils.toString(response.getEntity());
 
             //handle temp
-            if (temp.length() != 0) {
+            if (temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        res.setText(temp);
                         hidePDialog();
-                        // closing activity for confirming
+                        tt("با موفقیت ثبت شد");
                         AddNewProductActivity.this.finish();
                     }
                 });
@@ -437,7 +462,8 @@ public class AddNewProductActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        res.setText("No Response");
+                        hidePDialog();
+                        tt("خطا در ارسال داده\nدوباره امتحان کنید");
                     }
                 });
             }
