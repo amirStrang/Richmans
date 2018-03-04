@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -178,13 +179,27 @@ public class AddNewProductActivity extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cats);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCat.setAdapter(adapter);
+        requestPermission();
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
+    private static final int REQUEST_WRITE_PERMISSION = 29843;
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
+        } else {
+//            openFilePicker();
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_WRITE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            openFilePicker();
+        }
+    }
 
     int pic = 1;
 
@@ -371,16 +386,16 @@ public class AddNewProductActivity extends AppCompatActivity {
         postParam.put("CategoryName", cat);
         postParam.put("SubCatName", subcat);
 
-        /*
+
         //pics
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
 
-//            options.inPreferredConfig = Bitmap.Config.RGB_565;
-//            options.inDither = true;
-//            options.inSampleSize = 8;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
+            options.inDither = true;
+            options.inSampleSize = 8;
 
-            Bitmap bm1 = BitmapFactory.decodeFile(pic_path1);
+            Bitmap bm1 = BitmapFactory.decodeFile(pic_path1, options);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bm1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] b = baos.toByteArray();
@@ -412,7 +427,7 @@ public class AddNewProductActivity extends AppCompatActivity {
             Log.d("ppppppppiiiiiiiicccc", e.getMessage());
             tt("خطا در ارسال عکس");
         }
-*/
+
 
         ////////////////////////////////////////////////////////
 
