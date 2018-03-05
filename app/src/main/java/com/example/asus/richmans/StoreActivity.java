@@ -403,9 +403,6 @@ public class StoreActivity extends AppCompatActivity implements NavigationView.O
                 startActivity(i);
                 this.finish();
                 break;
-            case R.id.item_list:
-
-                break;
             case R.id.item_my_shop:
                 i = new Intent(getApplicationContext(), MyShopActivity.class);
                 startActivity(i);

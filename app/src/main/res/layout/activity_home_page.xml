@@ -150,7 +150,7 @@
                     android:layout_height="40dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/cart" />
+                    android:src="@drawable/help" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,14 +158,14 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="15dp"
-                    android:text="@string/store"
+                    android:text="از کجا شورع کنم ؟"
                     android:textColor="@color/colorRaisedButtonText"
                     android:textStyle="bold" />
             </RelativeLayout>
 
 
             <RelativeLayout
-                android:id="@+id/btn_my_store"
+                android:id="@+id/btn_how_to_start"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_alignStart="@id/btn_store"
@@ -179,7 +179,7 @@
                     android:layout_height="40dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/store" />
+                    android:src="@drawable/cart" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="15dp"
-                    android:text="@string/my_shop"
+                    android:text="@string/store"
                     android:textColor="@color/colorRaisedButtonText"
                     android:textStyle="bold" />
 
@@ -201,7 +201,7 @@
                 android:layout_below="@+id/btn_store"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/btn_my_store"
+                android:layout_toEndOf="@id/btn_how_to_start"
                 android:background="@color/colorPrimary">
 
 
@@ -229,7 +229,7 @@
                 android:layout_height="50dp"
                 android:layout_alignEnd="@id/btn_learn"
                 android:layout_alignStart="@+id/btn_store"
-                android:layout_below="@+id/btn_my_store"
+                android:layout_below="@+id/btn_how_to_start"
                 android:layout_marginTop="5dp"
                 android:background="@color/colorPrimary">
 
@@ -290,7 +290,7 @@
                 android:id="@+id/btn_about_us"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_alignStart="@+id/btn_my_store"
+                android:layout_alignStart="@+id/btn_how_to_start"
                 android:layout_below="@+id/btn_share"
                 android:layout_marginTop="5dp"
                 android:background="@color/colorPrimary">

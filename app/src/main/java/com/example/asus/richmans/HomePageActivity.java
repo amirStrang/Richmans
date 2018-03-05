@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +39,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
-    RelativeLayout btnLearn, btnStore, btnMyStore, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnShare, btnReset;
+    RelativeLayout btnLearn, btnStore, btnHowToStart, btnHistory, btnAboutUs, btnAboutGame, btnContactUs, btnShare, btnReset;
     TextView txtCredit, txtDay;
     ProgressBar prbCredit;
 
@@ -71,9 +70,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         btnContactUs = (RelativeLayout) findViewById(R.id.btn_contact_us);
         btnHistory = (RelativeLayout) findViewById(R.id.btn_history);
         btnLearn = (RelativeLayout) findViewById(R.id.btn_learn);
-        btnMyStore = (RelativeLayout) findViewById(R.id.btn_my_store);
+        btnHowToStart = (RelativeLayout) findViewById(R.id.btn_store);
         btnReset = (RelativeLayout) findViewById(R.id.btn_reset);
-        btnStore = (RelativeLayout) findViewById(R.id.btn_store);
+        btnStore = (RelativeLayout) findViewById(R.id.btn_how_to_start);
         btnShare = (RelativeLayout) findViewById(R.id.btn_share);
 
         txtCredit = (TextView) findViewById(R.id.txtCredit);
@@ -86,7 +85,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         btnContactUs.setOnClickListener(this);
         btnHistory.setOnClickListener(this);
         btnLearn.setOnClickListener(this);
-        btnMyStore.setOnClickListener(this);
+        btnHowToStart.setOnClickListener(this);
         btnReset.setOnClickListener(this);
         btnStore.setOnClickListener(this);
         btnShare.setOnClickListener(this);
@@ -128,12 +127,12 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 i.putExtra("phn", phn);
                 startActivity(i);
                 break;
-            case R.id.btn_my_store:
+            case R.id.btn_how_to_start:
                 i = new Intent(HomePageActivity.this, MyShopActivity.class);
                 startActivity(i);
                 break;
             case R.id.btn_store:
-                i = new Intent(HomePageActivity.this, StoreActivity.class);
+                i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
                 startActivity(i);
                 break;
             case R.id.btn_share:
