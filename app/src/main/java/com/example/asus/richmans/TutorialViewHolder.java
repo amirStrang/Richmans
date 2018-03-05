@@ -9,17 +9,20 @@ import android.widget.TextView;
 
 public class TutorialViewHolder extends RecyclerView.ViewHolder {
 
+    //text
     public ImageView imgTutorial;
     public TextView txtName, txtExplain;
+
     public RelativeLayout layout;
     int type;
 
     public TutorialViewHolder(View itemView) {
         super(itemView);
 
-        imgTutorial = itemView.findViewById(R.id.img_tutorial);
-        txtName = itemView.findViewById(R.id.txt_tutorial_name);
-        txtExplain = itemView.findViewById(R.id.txt_tutorial_explain);
+        imgTutorial = (ImageView) itemView.findViewById(R.id.img_tutorial);
+        txtName = (TextView) itemView.findViewById(R.id.txt_tutorial_name);
+        txtExplain = (TextView) itemView.findViewById(R.id.txt_tutorial_explain);
+
         layout = (RelativeLayout) itemView.findViewById(R.id.layout_tutorial);
     }
 }

@@ -10,13 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class TextTutorialActivity extends AppCompatActivity implements View.OnClickListener {
+public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
     TextView txtTitle, txtExplain;
@@ -24,51 +25,86 @@ public class TextTutorialActivity extends AppCompatActivity implements View.OnCl
     VideoView videoView;
     String path;
 
+    TextView txtSoundName;
     SeekBar seekBar;
     Button btnPlay, btnNext, btnPreview;
     MediaPlayer player;
     Handler seekHandler = new Handler();
-    int song;
+    int sound;
+
+    RelativeLayout layoutText, layoutVoice, layoutVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text_tutorial);
+        setContentView(R.layout.activity_tutorial);
 
         init();
 
-        txtTitle.setText(getIntent().getStringExtra("name"));
-        txtExplain.setText(getIntent().getStringExtra("explain"));
+        String tutorialId = getIntent().getStringExtra("id");
 
-        //sample
-        path = "android.resource://" + getPackageName() + "/" + R.raw.arrow;
-        Uri uri = Uri.parse(path);
-        videoView.setVideoURI(uri);
-        videoView.start();
+        switch (getIntent().getIntExtra("type", 1)) {
+            //text
+            case 1:
+                int explainResId = getResources().getIdentifier(tutorialId, "string", getPackageName());
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    seekHandler.removeCallbacks(run);
-                    player.seekTo(progress);
-                    seekUpdation();
-                }
-            }
+                txtTitle.setText(getIntent().getStringExtra("name"));
+                txtExplain.setText(getString(explainResId));
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+                layoutText.setVisibility(View.VISIBLE);
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
+                break;
+            //video
+            case 2:
+                int videoResId = getResources().getIdentifier(tutorialId, "raw", getPackageName());
+                path = "android.resource://" + getPackageName() + "/" + videoResId;
+                Uri uri = Uri.parse(path);
+                videoView.setVideoURI(uri);
+                videoView.start();
+
+                layoutVideo.setVisibility(View.VISIBLE);
+
+                break;
+            //sound
+            case 3:
+                int soundResId = getResources().getIdentifier(tutorialId, "raw", getPackageName());
+
+                txtSoundName.setText(getIntent().getStringExtra("name"));
+                sound = soundResId;
+                player = MediaPlayer.create(this, sound);
+                seekBar.setMax(player.getDuration());
+
+                seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (fromUser) {
+                            seekHandler.removeCallbacks(run);
+                            player.seekTo(progress);
+                            seekUpdation();
+                        }
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
+                });
+
+                layoutVoice.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        layoutText = (RelativeLayout) findViewById(R.id.layout_text);
+        layoutVideo = (RelativeLayout) findViewById(R.id.layout_video);
+        layoutVoice = (RelativeLayout) findViewById(R.id.layout_voice);
 
         txtTitle = (TextView) findViewById(R.id.txt_title);
         txtExplain = (TextView) findViewById(R.id.txt_explain);
@@ -77,8 +113,6 @@ public class TextTutorialActivity extends AppCompatActivity implements View.OnCl
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
 
-        song = R.raw.helali;
-        player = MediaPlayer.create(this, song);
         btnPlay = (Button) findViewById(R.id.play_button);
         btnNext = (Button) findViewById(R.id.next_button);
         btnPreview = (Button) findViewById(R.id.prev_button);
@@ -86,7 +120,7 @@ public class TextTutorialActivity extends AppCompatActivity implements View.OnCl
         btnNext.setOnClickListener(this);
         btnPreview.setOnClickListener(this);
         seekBar = (SeekBar) findViewById(R.id.seek_bar);
-        seekBar.setMax(player.getDuration());
+        txtSoundName = (TextView) findViewById(R.id.txt_sound_name);
     }
 
     Runnable run = new Runnable() {

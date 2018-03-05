@@ -39,26 +39,12 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, TextTutorialActivity.class);
-                int tag = Integer.parseInt(holder.layout.getTag().toString());
-                switch (tag) {
-                    //text
-                    case 1:
-                        i.putExtra("name", tutorial.name);
-                        i.putExtra("explain", tutorial.explain);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(i);
-                        break;
-                    //video
-                    case 2:
-
-                        break;
-                    //voice
-                    case 3:
-
-                        break;
-                }
-
+                Intent i = new Intent(context, TutorialActivity.class);
+                i.putExtra("id", tutorial.id);
+                i.putExtra("name", tutorial.name);
+                i.putExtra("type", tutorial.type);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
             }
         });
     }

@@ -18,9 +18,11 @@
     <!--video-->
 
     <RelativeLayout
+        android:id="@+id/layout_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar">
+        android:layout_below="@id/toolbar"
+        android:visibility="gone">
 
         <VideoView
             android:id="@+id/video"
@@ -31,16 +33,17 @@
     </RelativeLayout>
 
 
-    <!--voice-->
+    <!--sound-->
 
     <RelativeLayout
+        android:id="@+id/layout_voice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/txt_sound_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -52,7 +55,7 @@
             android:id="@+id/img"
             android:layout_width="240dp"
             android:layout_height="240dp"
-            android:layout_below="@id/txt_name"
+            android:layout_below="@id/txt_sound_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/tutolial_defult" />
@@ -94,52 +97,58 @@
 
 
     <!--text-->
-
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/layout_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
         android:visibility="gone">
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txt_in_the_name_of_god"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="@string/in_the_name_of_god"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txt_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_in_the_name_of_god"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="بازی ثروتمندان، فقط یک بازی نیست"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_explain"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/txt_title"
-                android:layout_margin="10dp"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:text="@string/tutorial1"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_in_the_name_of_god"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/in_the_name_of_god"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_in_the_name_of_god"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="بازی ثروتمندان، فقط یک بازی نیست"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_explain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/txt_title"
+                    android:layout_margin="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/tutorial1"
+                    android:textSize="16sp" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </ScrollView>
+        </ScrollView>
+    </RelativeLayout>
+
 
 </RelativeLayout>
