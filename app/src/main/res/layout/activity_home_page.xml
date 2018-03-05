@@ -158,7 +158,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="15dp"
-                    android:text="از کجا شورع کنم ؟"
+                    android:text="از کجا شروع کنم ؟"
                     android:textColor="@color/colorRaisedButtonText"
                     android:textStyle="bold" />
             </RelativeLayout>

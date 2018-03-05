@@ -3,7 +3,8 @@
     android:id="@+id/layout_tutorial"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:tag="type">
 
     <ImageView
         android:id="@+id/img_tutorial"
@@ -11,7 +12,7 @@
         android:layout_height="96dp"
         android:layout_alignParentEnd="true"
         android:scaleType="fitXY"
-        android:src="@drawable/sample1" />
+        android:src="@drawable/tutolial_defult" />
 
 
     <TextView

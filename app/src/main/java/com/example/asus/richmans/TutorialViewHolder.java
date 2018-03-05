@@ -12,6 +12,7 @@ public class TutorialViewHolder extends RecyclerView.ViewHolder {
     public ImageView imgTutorial;
     public TextView txtName, txtExplain;
     public RelativeLayout layout;
+    int type;
 
     public TutorialViewHolder(View itemView) {
         super(itemView);
