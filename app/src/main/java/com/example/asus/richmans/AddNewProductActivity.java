@@ -175,8 +175,7 @@ public class AddNewProductActivity extends AppCompatActivity {
         txtSubCat = (TextView) findViewById(R.id.txt_sub_cat);
         etPrice = (EditText) findViewById(R.id.et_price);
 
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cats);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cats);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCat.setAdapter(adapter);
         requestPermission();
@@ -186,7 +185,9 @@ public class AddNewProductActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
     private static final int REQUEST_WRITE_PERMISSION = 29843;
+
     private void requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
@@ -194,6 +195,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 //            openFilePicker();
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == REQUEST_WRITE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -327,7 +329,6 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                 // price handle
 
-
 //                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
 //                    tt("داشتن سه عکس الزامی است");
 //                    return;
@@ -335,7 +336,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                 String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
-                Send("http://ahmaditest.sepantahost.com/api/AddToMyShop",
+                Send("http://ahmadiTest.sepantahost.com/api/AddToMyShop",
                         phn,
                         spinnerCat.getSelectedItem().toString(),
                         spinnerSubCat.getSelectedItem().toString(),
@@ -386,7 +387,7 @@ public class AddNewProductActivity extends AppCompatActivity {
         postParam.put("CategoryName", cat);
         postParam.put("SubCatName", subcat);
 
-
+/*
         //pics
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -427,7 +428,7 @@ public class AddNewProductActivity extends AppCompatActivity {
             Log.d("ppppppppiiiiiiiicccc", e.getMessage());
             tt("خطا در ارسال عکس");
         }
-
+*/
 
         ////////////////////////////////////////////////////////
 
@@ -462,7 +463,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
-
+            temp.substring(1, temp.length() - 1);
             //handle temp
             if (temp.equals("1")) {
                 runOnUiThread(new Runnable() {
