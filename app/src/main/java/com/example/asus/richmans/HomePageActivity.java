@@ -57,7 +57,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
 
-        loadCredit("http://techiesatish.com/demo_api/spinner.php?phn=" + phn);
+        loadCredit("http://178.32.129.19:8075/api/GetData?phn=" + phn);
 
     }
 
@@ -158,17 +158,14 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-
             @Override
-
             public void onResponse(String response) {
-
                 try {
 
                     JSONObject jsonObject = new JSONObject(response);
 
-                    int prog = jsonObject.getInt("success") * 256000;
-                    int day = jsonObject.getInt("success") * 7;
+                    int prog = jsonObject.getInt("credit");
+                    int day = jsonObject.getInt("Day");
 
                     txtDay.setText(day + "");
 
