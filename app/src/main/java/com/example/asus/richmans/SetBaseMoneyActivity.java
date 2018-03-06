@@ -66,7 +66,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     }
 
     void setBase(String bMoney, String phn) {
-        Send("http://ahmaditest.sepantahost.com/api/SetBase", phn, bMoney);
+        Send("http://178.32.129.19:8075/api/SetBase", phn, bMoney);
     }
 
     private ProgressDialog pDialog;
@@ -95,7 +95,6 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
 
             }
         });
-
         send.start();
     }
 
@@ -122,11 +121,11 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-          /*              hidePDialog();
+                        hidePDialog();
                         tt("خطا در ارسال داده");
-*/
+
                         //////////////sample
-                        tran();
+//                        tran();
                         //////////////sample
                     }
                 });

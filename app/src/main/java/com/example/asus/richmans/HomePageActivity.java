@@ -126,6 +126,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
                 i.putExtra("phn", phn);
                 startActivity(i);
+                HomePageActivity.this.finish();
                 break;
             case R.id.btn_how_to_start:
                 i = new Intent(HomePageActivity.this, MyShopActivity.class);
@@ -133,7 +134,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_store:
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
+                i.putExtra("phn", phn);
                 startActivity(i);
+                HomePageActivity.this.finish();
                 break;
             case R.id.btn_share:
                 share();
@@ -148,9 +151,9 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
             public void run() {
                 txtCredit.setText(from + "");
                 if (from < to)
-                    inc(from + 1000, to);
+                    inc(from + 100, to);
             }
-        }, 10);
+        }, 1);
     }
 
     private void loadCredit(String url) {
@@ -161,7 +164,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onResponse(String response) {
                 try {
-                    response = response.substring(1, response.length()-1);
+                    response = response.substring(1, response.length() - 1);
                     JSONObject jsonObject = new JSONObject(response);
 
                     int prog = jsonObject.getInt("credit");
