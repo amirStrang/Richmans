@@ -161,7 +161,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onResponse(String response) {
                 try {
-
+                    response = response.substring(1, response.length()-1);
                     JSONObject jsonObject = new JSONObject(response);
 
                     int prog = jsonObject.getInt("credit");
