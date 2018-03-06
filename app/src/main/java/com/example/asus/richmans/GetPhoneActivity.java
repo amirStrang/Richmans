@@ -77,7 +77,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     }
 
     void reg(String phn) {
-        Send("http://ahmadi1234.sepantahost.com/api/Register", phn);
+        Send("http://178.32.129.19:8075/api/Register", phn);
     }
 
     private ProgressDialog pDialog;
@@ -134,11 +134,12 @@ public class GetPhoneActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                  /*      hidePDialog();
+                        hidePDialog();
                         tt("خطا در ارسال داده");
-*/
+
+
                         //////////////sample
-                        tran(phn);
+//                        tran(phn);
                         //////////////sample
                     }
                 });
@@ -170,6 +171,12 @@ public class GetPhoneActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        hidePDialog();
+        super.onDestroy();
+    }
+
     private void hidePDialog() {
         if (pDialog != null) {
             pDialog.dismiss();
@@ -182,6 +189,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     }
 
     void tran(String phn) {
+        hidePDialog();
         Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
         i.putExtra("phn", phn);
         startActivity(i);

@@ -78,7 +78,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     }
 
     void save(String code, String phn) {
-        Send("http://ahmaditest.sepantahost.com/api/Identify", phn, code);
+        Send("http://178.32.129.19:8075/api/Identify", phn, code);
     }
 
     private ProgressDialog pDialog;
@@ -134,11 +134,11 @@ public class RegisterCodeActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-          /*              hidePDialog();
+                        hidePDialog();
                         tt("خطا در ارسال داده");
-*/
+
                         //////////////sample
-                        tran(phn);
+//                        tran(phn);
                         //////////////sample
                     }
                 });
@@ -177,13 +177,20 @@ public class RegisterCodeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        hidePDialog();
+        super.onDestroy();
+    }
+
     void tt(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     void tran(String phn) {
+        hidePDialog();
         SaveMe(phn);
-        Intent i = new Intent(RegisterCodeActivity.this, SetBaseMoneyActivity.class);
+        Intent i = new Intent(RegisterCodeActivity.this, HomePageActivity.class);
         i.putExtra("phn", phn);
         startActivity(i);
         this.finish();

@@ -463,8 +463,8 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
-            temp.substring(1, temp.length() - 1);
-            //handle temp
+//            temp.substring(1, temp.length() - 1);
+            tt(temp);
             if (temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -483,7 +483,6 @@ public class AddNewProductActivity extends AppCompatActivity {
                     }
                 });
             }
-
 
         } catch (ClientProtocolException e) {
             runOnUiThread(new Runnable() {
