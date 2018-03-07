@@ -387,7 +387,7 @@ public class AddNewProductActivity extends AppCompatActivity {
         postParam.put("CategoryName", cat);
         postParam.put("SubCatName", subcat);
 
-/*
+
         //pics
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -428,7 +428,7 @@ public class AddNewProductActivity extends AppCompatActivity {
             Log.d("ppppppppiiiiiiiicccc", e.getMessage());
             tt("خطا در ارسال عکس");
         }
-*/
+
 
         ////////////////////////////////////////////////////////
 
@@ -463,8 +463,8 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
-//            temp.substring(1, temp.length() - 1);
-            tt(temp);
+            temp.substring(1, temp.length() - 1);
+
             if (temp.equals("1")) {
                 runOnUiThread(new Runnable() {
                     @Override
