@@ -63,6 +63,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+    int price;
+
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +79,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         indicator = (CircleIndicator) findViewById(R.id.circleIndicator);
         indicator.setViewPager(viewPager);
 
+        price = Integer.parseInt(getIntent().getStringArrayExtra("product")[1]);
         txtName = (TextView) findViewById(R.id.txt_name);
         txtName.setText(getIntent().getStringArrayExtra("product")[0]);
         txtPrice = (TextView) findViewById(R.id.txt_product_price);
@@ -97,8 +100,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (etNumber.getText().toString().equals("")) txtTotalPrice.setText("0");
                 else {
-                    int tp = Integer.parseInt(etNumber.getText().toString()) *
-                            Integer.parseInt("50000");
+                    int tp = Integer.parseInt(etNumber.getText().toString()) * price;
 //                            Integer.parseInt(txtPrice.getText().toString());
                     txtTotalPrice.setText(tp + "");
                 }

@@ -326,13 +326,16 @@ public class AddNewProductActivity extends AppCompatActivity {
                     etDescription.setError("داشتن توضیحات الزامی است");
                     return;
                 }
+                if (etPrice.getText().toString().equals("")) {
+                    etPrice.setError("داشتن قیمت الزامی است");
+                    return;
+                }
 
-                // price handle
 
-//                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
-//                    tt("داشتن سه عکس الزامی است");
-//                    return;
-//                }
+                if (pic_path1 == "" || pic_path2 == "" || pic_path3 == "") {
+                    tt("داشتن سه عکس الزامی است");
+                    return;
+                }
 
                 String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
@@ -342,7 +345,7 @@ public class AddNewProductActivity extends AppCompatActivity {
                         spinnerSubCat.getSelectedItem().toString(),
                         etName.getText().toString(),
                         etDescription.getText().toString(),
-                        "50000");
+                        etPrice.getText().toString());
 
             }
         });
@@ -457,13 +460,13 @@ public class AddNewProductActivity extends AppCompatActivity {
             HttpPost httppost = new HttpPost(url.toString());
             httppost.setHeader("Content-type", "application/json");
 
-            StringEntity se = new StringEntity(obj.toString());
+            StringEntity se = new StringEntity(obj.toString(), HTTP.UTF_8);
             se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
-            temp.substring(1, temp.length() - 1);
+            temp = temp.substring(1, temp.length() - 1);
 
             if (temp.equals("1")) {
                 runOnUiThread(new Runnable() {

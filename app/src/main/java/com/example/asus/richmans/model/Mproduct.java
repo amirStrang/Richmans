@@ -7,14 +7,15 @@ package com.example.asus.richmans.model;
 import java.util.ArrayList;
 
 public class Mproduct {
-    private String name, thumbnailUrl, price, category, desc;
+    private String name, price, category, desc;
+    String thumbnailUrl1, thumbnailUrl2, thumbnailUrl3;
 
     public Mproduct() {
     }
 
-    public Mproduct(String name, String thumbnailUrl, String price, String cat, String desc) {
+    public Mproduct(String name, String thumbnailUrl1, String price, String cat, String desc) {
         this.name = name;
-        this.thumbnailUrl = thumbnailUrl;
+        this.thumbnailUrl1 = thumbnailUrl1;
         this.price = price;
         this.category = cat;
         this.desc = desc;
@@ -29,11 +30,11 @@ public class Mproduct {
     }
 
     public String getThumbnailUrl() {
-        return thumbnailUrl;
+        return thumbnailUrl1;
     }
 
     public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
+        this.thumbnailUrl1 = thumbnailUrl;
     }
 
     public String getPrice() {
@@ -58,6 +59,24 @@ public class Mproduct {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+/////////////////////////////////
+
+    public String getThumbnailUrl2() {
+        return thumbnailUrl2;
+    }
+
+    public void setThumbnailUrl2(String thumbnailUrl) {
+        this.thumbnailUrl2 = thumbnailUrl;
+    }
+
+    public String getThumbnailUrl3() {
+        return thumbnailUrl3;
+    }
+
+    public void setThumbnailUrl3(String thumbnailUrl) {
+        this.thumbnailUrl3 = thumbnailUrl;
     }
 
 

@@ -25,6 +25,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +43,7 @@ public class MyShopActivity extends AppCompatActivity {
     private static final String TAG = MyShopActivity.class.getSimpleName();
 
     // Mproducts json url
-    private static final String url = "https://api.androidhive.info/json/movies.json";
+    String url;
     private ProgressDialog pDialog;
     private List<Mproduct> productList = new ArrayList<Mproduct>();
     private ListView listView;
@@ -50,6 +55,9 @@ public class MyShopActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_shop);
 
         init();
+
+        String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
+        url = "http://ahmadiTest.sepantahost.com/api/Store?Data=" + phn;
 
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,11 +86,13 @@ public class MyShopActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Mproduct product = new Mproduct();
-                                product.setName(obj.getString("title"));
-                                product.setThumbnailUrl(obj.getString("image"));
-                                product.setPrice(obj.get("rating") + "");
-                                product.setCat(obj.getString("title"));
-                                product.setDesc(obj.get("rating") + "");
+                                product.setName(obj.getString("Name"));
+                                product.setThumbnailUrl(obj.getString("Image1"));
+                                product.setPrice(obj.getString("Price"));
+                                product.setCat(obj.getString("SubCatName"));
+                                product.setDesc(obj.getString("Note"));
+                                product.setThumbnailUrl2("Image2");
+                                product.setThumbnailUrl3("Image3");
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -149,5 +159,22 @@ public class MyShopActivity extends AppCompatActivity {
             pDialog.dismiss();
             pDialog = null;
         }
+    }
+
+    public String readFileAsString(Context context, String filePath) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        BufferedReader in = null;
+
+        try {
+            in = new BufferedReader(new FileReader(new File(filePath)));
+            while ((line = in.readLine()) != null) stringBuilder.append(line);
+        } catch (FileNotFoundException e) {
+            //
+        } catch (IOException e) {
+            //
+        }
+
+        return stringBuilder.toString();
     }
 }
