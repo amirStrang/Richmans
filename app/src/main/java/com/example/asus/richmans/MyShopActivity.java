@@ -122,11 +122,12 @@ public class MyShopActivity extends AppCompatActivity {
                         mproduct.getName(),
                         mproduct.getPrice(),
                         mproduct.getDesc(),
-                        mproduct.getThumbnailUrl()});
+                        mproduct.getThumbnailUrl(),
+                        mproduct.getThumbnailUrl2(),
+                        mproduct.getThumbnailUrl3()});
                 startActivity(i);
             }
         });
-
     }
 
     void tt(String msg) {
