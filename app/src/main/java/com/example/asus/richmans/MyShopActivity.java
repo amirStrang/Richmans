@@ -82,7 +82,7 @@ public class MyShopActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
                         hidePDialog();
-                        for (int i = 0; i < response.length(); i++) {
+                        for (int i = response.length() - 1; i >= 0; i--) {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Mproduct product = new Mproduct();
@@ -91,8 +91,8 @@ public class MyShopActivity extends AppCompatActivity {
                                 product.setPrice(obj.getString("Price"));
                                 product.setCat(obj.getString("SubCatName"));
                                 product.setDesc(obj.getString("Note"));
-                                product.setThumbnailUrl2("Image2");
-                                product.setThumbnailUrl3("Image3");
+                                product.setThumbnailUrl2(obj.getString("Image2"));
+                                product.setThumbnailUrl3(obj.getString("Image3"));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
