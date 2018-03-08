@@ -7,7 +7,8 @@ package com.example.asus.richmans.model;
 import java.util.ArrayList;
 
 public class Gproduct {
-    private String name, thumbnailUrl, price, desc;
+    private String name, price, desc;
+    String thumbnailUrl, thumbnailUrl2, thumbnailUrl3;
 
     public Gproduct() {
     }
@@ -49,6 +50,24 @@ public class Gproduct {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    /////////////////////////////////
+
+    public String getThumbnailUrl2() {
+        return thumbnailUrl2;
+    }
+
+    public void setThumbnailUrl2(String thumbnailUrl) {
+        this.thumbnailUrl2 = thumbnailUrl;
+    }
+
+    public String getThumbnailUrl3() {
+        return thumbnailUrl3;
+    }
+
+    public void setThumbnailUrl3(String thumbnailUrl) {
+        this.thumbnailUrl3 = thumbnailUrl;
     }
 
 

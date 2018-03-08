@@ -61,7 +61,8 @@ public class Mproduct {
         this.desc = desc;
     }
 
-/////////////////////////////////
+    /////////////////////////////////
+
 
     public String getThumbnailUrl2() {
         return thumbnailUrl2;

@@ -73,8 +73,8 @@ public class ProductsListActivity extends AppCompatActivity {
                                 Gproduct product = new Gproduct();
                                 product.setName(obj.getString("Name"));
                                 product.setThumbnailUrl(obj.getString("Image1"));
-//                                product.setThumbnailUrl(obj.getString("Image1"));
-//                                product.setThumbnailUrl(obj.getString("Image1"));
+                                product.setThumbnailUrl2(obj.getString("Image2"));
+                                product.setThumbnailUrl3(obj.getString("Image3"));
                                 product.setPrice(obj.getString("Price"));
                                 product.setDesc(obj.getString("Note"));
                                 productList.add(product);
@@ -105,7 +105,9 @@ public class ProductsListActivity extends AppCompatActivity {
                         mproduct.getName(),
                         mproduct.getPrice(),
                         mproduct.getDesc(),
-                        mproduct.getThumbnailUrl()});
+                        mproduct.getThumbnailUrl(),
+                        mproduct.getThumbnailUrl2(),
+                        mproduct.getThumbnailUrl3(),});
                 startActivity(i);
             }
         });
@@ -119,7 +121,7 @@ public class ProductsListActivity extends AppCompatActivity {
 
 //        url += getIntent().getStringExtra("URI");
 
-        url += "5";
+        url += "1";
 
     }
 
