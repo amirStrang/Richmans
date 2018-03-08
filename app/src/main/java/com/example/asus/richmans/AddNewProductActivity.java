@@ -491,7 +491,8 @@ public class AddNewProductActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    res.setText("No Response");
+                    hidePDialog();
+                    tt("خطا در ارسال داده\nدوباره امتحان کنید");
                 }
             });
 
@@ -499,7 +500,8 @@ public class AddNewProductActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    res.setText("No Response");
+                    hidePDialog();
+                    tt("خطا در ارسال داده\nدوباره امتحان کنید");
                 }
             });
         }
