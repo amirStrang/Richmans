@@ -117,13 +117,7 @@ public class ProductsListActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //func handle url
-
-//        url += getIntent().getStringExtra("URI");
-
         url += WhichCat(getIntent().getStringExtra("URI"));
-
-        tt(url);
     }
 
     @Override
