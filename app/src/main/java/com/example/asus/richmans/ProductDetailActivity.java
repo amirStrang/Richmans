@@ -72,8 +72,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         slideShowAdapter = new SlideShowAdapter(this,
                 getIntent().getStringArrayExtra("product")[3],
-                getIntent().getStringArrayExtra("product")[3],
-                getIntent().getStringArrayExtra("product")[3]);
+                getIntent().getStringArrayExtra("product")[4],
+                getIntent().getStringArrayExtra("product")[5]);
         viewPager.setAdapter(slideShowAdapter);
 
         indicator = (CircleIndicator) findViewById(R.id.circleIndicator);
