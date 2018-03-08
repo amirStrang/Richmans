@@ -121,8 +121,9 @@ public class ProductsListActivity extends AppCompatActivity {
 
 //        url += getIntent().getStringExtra("URI");
 
-        url += "1";
+        url += WhichCat(getIntent().getStringExtra("URI"));
 
+        tt(url);
     }
 
     @Override
@@ -145,5 +146,145 @@ public class ProductsListActivity extends AppCompatActivity {
             pDialog.dismiss();
             pDialog = null;
         }
+    }
+
+    String WhichCat(String str) {
+        switch (str) {
+            case "موبایل":
+                return "0";
+            case "تبلت و کتابخوان":
+                return "1";
+            case "لپ تاپ":
+                return "2";
+            case "دوربین":
+                return "3";
+            case "کامپیوتر و تجهیزات جانبی":
+                return "4";
+            case "ماشین های اداری":
+                return "5";
+            case "لوازم جانبی کالای دیجیتال":
+                return "6";
+            case "مردانه":
+                return "7";
+            case "زنانه":
+                return "8";
+            case "بچگانه":
+                return "9";
+            case "ورزشی":
+                return "10";
+            case "عطر":
+                return "11";
+            case "ساعت":
+                return "12";
+            case "اکسسوری لوازم شخصی":
+                return "13";
+            case "صوتی و تصویری":
+                return "14";
+            case "لوازم خانگی برقی":
+                return "15";
+            case "آشپزخانه":
+                return "16";
+            case "سرو و پذیرایی":
+                return "17";
+            case "دکوراتیو":
+                return "18";
+            case "خواب حمام":
+                return "19";
+            case "شستشو و نظافت":
+                return "20";
+            case "ابزار غیر برقی":
+                return "21";
+            case "ابزار برقی":
+                return "22";
+            case "باغبانی":
+                return "23";
+            case "نور و روشنایی":
+                return "24";
+            case "خوراکی و آشامیدنی":
+                return "25";
+            case "لوازم آرایشی":
+                return "26";
+            case "لوازم بهداشتی":
+                return "27";
+            case "لوازم شخصی برقی":
+                return "28";
+            case "عینک آفتابی":
+                return "29";
+            case "زیورآلات":
+                return "30";
+            case "ابزار سلامت":
+                return "31";
+            case "کتاب و مجلات":
+                return "32";
+            case "لوازم التحریر":
+                return "33";
+            case "صنایع دستی":
+                return "34";
+            case "فرش":
+                return "35";
+            case "آلات موسیسقی":
+                return "36";
+            case "موسیقی":
+                return "37";
+            case "فیلم":
+                return "38";
+            case "نرم افزار و بازی":
+                return "39";
+            case "محتوای آموزشی":
+                return "40";
+            case "پوشاک ورزشی":
+                return "41";
+            case "کفش ورزشی":
+                return "42";
+            case "لوازم ورزشی":
+                return "43";
+            case "دوچرخه و لوازم جانبی":
+                return "44";
+            case "تجهیزات سفر":
+                return "45";
+            case "اسباب بازی":
+                return "46";
+            case "حیوانات خانگی":
+                return "47";
+            case "ایمنی و مراقبت":
+                return "48";
+            case "غذاخوری":
+                return "49";
+            case "لوازم شخصی":
+                return "50";
+            case "بهداشت و حمام":
+                return "51";
+            case "گردش و سفر":
+                return "52";
+            case "سرگرمی و آموزشی":
+                return "53";
+            case "خواب کودک":
+                return "54";
+            case "خودرو":
+                return "55";
+            case "لوازم جانبی خودرو":
+                return "56";
+            case "لوازم مصرفی خودرو":
+                return "57";
+            case "موتور سیکلت":
+                return "58";
+            case "لوازم جانبی موتور سیکلت":
+                return "59";
+            case "لوازم مصرفی موتور سیکلت":
+                return "60";
+            case "دندانپزشکی":
+                return "61";
+            case "باشگاه":
+                return "62";
+            case "کلاس های آزاد":
+                return "63";
+            case "هتل":
+                return "64";
+            case "تور مسافرتی":
+                return "65";
+            case "کنسرت":
+                return "66";
+        }
+        return "0";
     }
 }
