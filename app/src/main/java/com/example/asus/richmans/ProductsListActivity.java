@@ -71,6 +71,7 @@ public class ProductsListActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Gproduct product = new Gproduct();
+                                product.setCode(obj.getString("Code"));
                                 product.setName(obj.getString("Name"));
                                 product.setThumbnailUrl(obj.getString("Image1"));
                                 product.setThumbnailUrl2(obj.getString("Image2"));
@@ -107,7 +108,9 @@ public class ProductsListActivity extends AppCompatActivity {
                         mproduct.getDesc(),
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
-                        mproduct.getThumbnailUrl3(),});
+                        mproduct.getThumbnailUrl3(),
+                        mproduct.getCode()
+                });
                 startActivity(i);
             }
         });

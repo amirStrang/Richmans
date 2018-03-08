@@ -7,7 +7,7 @@ package com.example.asus.richmans.model;
 import java.util.ArrayList;
 
 public class Mproduct {
-    private String name, price, category, desc;
+    private String code, name, price, category, desc;
     String thumbnailUrl1, thumbnailUrl2, thumbnailUrl3;
 
     public Mproduct() {
@@ -19,6 +19,14 @@ public class Mproduct {
         this.price = price;
         this.category = cat;
         this.desc = desc;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {

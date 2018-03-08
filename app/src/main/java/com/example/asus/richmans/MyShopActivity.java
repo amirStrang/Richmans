@@ -86,6 +86,7 @@ public class MyShopActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Mproduct product = new Mproduct();
+                                product.setCode(obj.getString("Code"));
                                 product.setName(obj.getString("Name"));
                                 product.setThumbnailUrl(obj.getString("Image1"));
                                 product.setPrice(obj.getString("Price"));
@@ -124,7 +125,9 @@ public class MyShopActivity extends AppCompatActivity {
                         mproduct.getDesc(),
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
-                        mproduct.getThumbnailUrl3()});
+                        mproduct.getThumbnailUrl3(),
+                        mproduct.getCode()
+                });
                 startActivity(i);
             }
         });
