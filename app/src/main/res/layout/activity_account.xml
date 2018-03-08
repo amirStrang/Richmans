@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.asus.richmans.Account">
 
+    <Button
+        android:id="@+id/silver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="silver" />
+
 </android.support.constraint.ConstraintLayout>

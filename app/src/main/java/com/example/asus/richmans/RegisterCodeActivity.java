@@ -190,6 +190,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     void tran(String phn) {
         hidePDialog();
         SaveMe(phn);
+        SaveAccess();
         Intent i = new Intent(RegisterCodeActivity.this, HomePageActivity.class);
         i.putExtra("phn", phn);
         startActivity(i);
@@ -207,6 +208,30 @@ public class RegisterCodeActivity extends AppCompatActivity {
             FileOutputStream f = new FileOutputStream(file);
             PrintWriter pw = new PrintWriter(f);
             pw.println(user);
+            pw.flush();
+            pw.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        }
+
+    }
+
+    void SaveAccess() {
+
+        File root = getFilesDir();
+        File dir = new File(root.getAbsolutePath() + "/.richmans");
+        dir.mkdirs();
+        File file = new File(dir, "acc.txt");
+
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(f);
+            pw.println("BRONZE");
             pw.flush();
             pw.close();
             f.close();
