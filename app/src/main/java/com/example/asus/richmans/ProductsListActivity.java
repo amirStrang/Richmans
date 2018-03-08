@@ -39,7 +39,7 @@ public class ProductsListActivity extends AppCompatActivity {
     private static final String TAG = ProductsListActivity.class.getSimpleName();
 
     // Gproducts json url
-    private static final String url = "https://api.androidhive.info/json/movies.json";
+    String url = "http://ahmadiTest.sepantahost.com/api/GlobalStore?Data=";
     private ProgressDialog pDialog;
     private List<Gproduct> productList = new ArrayList<Gproduct>();
     private ListView listView;
@@ -71,10 +71,12 @@ public class ProductsListActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Gproduct product = new Gproduct();
-                                product.setName(obj.getString("title"));
-                                product.setThumbnailUrl(obj.getString("image"));
-                                product.setPrice(obj.get("rating") + "");
-                                product.setDesc(obj.get("rating") + "");
+                                product.setName(obj.getString("Name"));
+                                product.setThumbnailUrl(obj.getString("Image1"));
+//                                product.setThumbnailUrl(obj.getString("Image1"));
+//                                product.setThumbnailUrl(obj.getString("Image1"));
+                                product.setPrice(obj.getString("Price"));
+                                product.setDesc(obj.getString("Note"));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -113,7 +115,11 @@ public class ProductsListActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tt(getIntent().getStringExtra("URI"));
+        //func handle url
+
+//        url += getIntent().getStringExtra("URI");
+
+        url += "5";
 
     }
 

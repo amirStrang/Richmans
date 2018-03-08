@@ -129,7 +129,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 HomePageActivity.this.finish();
                 break;
             case R.id.btn_how_to_start:
-                i = new Intent(HomePageActivity.this, MyShopActivity.class);
+                i = new Intent(HomePageActivity.this, StoreActivity.class);
                 startActivity(i);
                 break;
             case R.id.btn_store:
