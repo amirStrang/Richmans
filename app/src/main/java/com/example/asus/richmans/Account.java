@@ -36,7 +36,7 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        String base64EncodedPublicKey = "MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDpN2L+sU3aozLzDmaFOyHMliENtRV1Y/+Pc6D9t46FzuSAd2yFiOQh/6mhZQTN6CbafSyOw/Bz4LFyjgQ9dqdvTKRH4FAUBTFwbkwxU4O+UAR/5m9nTOmMpsDaE3zCmTFNASPINqaS0GB1bKrO1brvdiFiIVYEB40PgL2AOO4yQeXV+mVQUDE29Kh06ISzNYgfsB1wDyUYNbpDEkFSjgwuy7Qphbftu6rO+cSjfD8CAwEAAQ==";
+        String base64EncodedPublicKey = "MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDcqGPwNQIvhDlbGEHrSCQY58EMf0A6v5HGBagUvEXpzKYZwKARcOXxA7yhiIPFq9lwsrYIzad10gXdycFEZTctSIg0PlFuJxGA61YGxj63KdUWtfbOqrZ3U66zMn8kh85se9SIXs2hcKYuDDnG1Hhsm0r1PxxBAGR/01yxxLddC6QJQx0EgkjH983PCgKueVhh4axVLadqE5TF5O1JqmyqAjrJdPKAOdQlyEsfBncCAwEAAQ==";
 
         mHelper = new IabHelper(this, base64EncodedPublicKey);
 
