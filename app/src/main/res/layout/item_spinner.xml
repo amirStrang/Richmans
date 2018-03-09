@@ -5,8 +5,10 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_margin="10dp"
         android:id="@+id/txt_spinner_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:gravity="right"
+        android:textSize="16sp" />
 </LinearLayout>

@@ -63,7 +63,7 @@
             android:layout_marginStart="20dp"
             android:background="@drawable/flat_button"
             android:text="@string/buy"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     </RelativeLayout>
 
@@ -116,7 +116,7 @@
             android:layout_marginStart="20dp"
             android:background="@drawable/flat_button"
             android:text="@string/buy"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     </RelativeLayout>
 
@@ -148,7 +148,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/btn_buy_bronze"
-            android:text="@string/silver_explanation" />
+            android:text="@string/bronze_explanation" />
 
         <ImageView
             android:layout_width="64dp"

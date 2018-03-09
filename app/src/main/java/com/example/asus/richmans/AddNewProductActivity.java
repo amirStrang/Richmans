@@ -220,63 +220,67 @@ public class AddNewProductActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                CustomArrayAdapter subCatAdapter = new CustomArrayAdapter(
-                        getApplicationContext(),
-                        R.layout.item_spinner,
-                        subCats0
-                );
+                CustomSpinnerAdapter subCatAdapter = new CustomSpinnerAdapter(getApplicationContext(), subCats0);
 
                 switch (position) {
                     case 0:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats0);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats0);
                         break;
 
                     case 1:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats1);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats1);
                         break;
 
                     case 2:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats2);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats2);
                         break;
 
                     case 3:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats3);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats3);
                         break;
 
                     case 4:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats4);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats4);
                         break;
 
                     case 5:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats5);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats5);
                         break;
 
                     case 6:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats6);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats6);
                         break;
 
                     case 7:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats7);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats7);
                         break;
 
                     case 8:
-                        subCatAdapter = new CustomArrayAdapter
-                                (getApplicationContext(), R.layout.item_spinner, subCats8);
+                        subCatAdapter = new CustomSpinnerAdapter
+                                (getApplicationContext(), subCats8);
                         break;
                 }
 
-//                subCatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerSubCat.setAdapter(subCatAdapter);
+                spinnerSubCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    }
 
-
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    }
+                });
             }
 
             @Override
