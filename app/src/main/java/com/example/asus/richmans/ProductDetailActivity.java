@@ -36,27 +36,11 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //buy
-                showDialog();
+
             }
         });
     }
 
-    private void showDialog() {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.activity_dialog);
-        dialog.setCancelable(false);
-        dialog.show();
-
-        TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
-        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
-
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
 
     @Override
     protected void attachBaseContext(Context newBase) {

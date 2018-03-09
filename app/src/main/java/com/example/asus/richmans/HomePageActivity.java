@@ -1,6 +1,7 @@
 package com.example.asus.richmans;
 
 import android.app.AlarmManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -180,6 +182,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     private void loadCredit(String url) {
 
+        showDialog();
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -226,6 +230,24 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         requestQueue.add(stringRequest);
 
     }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.activity_dialog);
+        dialog.setCancelable(false);
+        dialog.show();
+
+        TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
+        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 
     private PendingIntent pendingIntent;
 
