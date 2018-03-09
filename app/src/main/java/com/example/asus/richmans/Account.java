@@ -15,11 +15,24 @@ import com.example.asus.richmans.util.IabResult;
 import com.example.asus.richmans.util.Inventory;
 import com.example.asus.richmans.util.Purchase;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account extends AppCompatActivity {
 
@@ -66,7 +79,8 @@ public class Account extends AppCompatActivity {
                 }
                 // Hooray, IAB is fully set up!
                 mHelper.queryInventoryAsync(mGotInventoryListener);
-                loadAccount();
+                String str = readFileAsString(getFilesDir().getAbsolutePath() + "/.richmans/acc.txt");
+                loadAccount(str);
             }
         });
         s = (Button) findViewById(R.id.btn_buy_silver);
@@ -105,26 +119,50 @@ public class Account extends AppCompatActivity {
         public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
             if (result.isFailure()) {
                 Log.d(TAG, "Error purchasing: " + result);
+
+                ////////////////////////////////
+/*
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Server
+                        send("BRONZE");
+                        //File
+                        SaveAccess("BRONZE");
+                        // UI
+                        loadAccount("BRONZE");
+                    }
+                });
+
+*/
+                ///////////////////////////////
                 return;
             } else if (purchase.getSku().equals(SKU_SILVER)) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //Server
-
+                        send("SILVER");
                         //File
-
+                        SaveAccess("SILVER");
                         // UI
-
+                        loadAccount("SILVER");
                     }
                 });
+                return;
             } else if (purchase.getSku().equals(SKU_GOLD)) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        //Server
+                        send("GOLD");
+                        //File
+                        SaveAccess("GOLD");
+                        // UI
+                        loadAccount("GOLD");
                     }
                 });
+                return;
             }
         }
     };
@@ -151,17 +189,19 @@ public class Account extends AppCompatActivity {
         mHelper = null;
     }
 
-    void loadAccount() {
-        String str = readFileAsString(getFilesDir().getAbsolutePath() + "/.richmans/acc.txt");
+    void loadAccount(String str) {
         if (str.equals("BRONZE")) {
             s.setVisibility(View.VISIBLE);
             g.setVisibility(View.VISIBLE);
         } else if (str.equals("SILVER")) {
             g.setVisibility(View.VISIBLE);
             silver.setVisibility(View.VISIBLE);
+            s.setVisibility(View.INVISIBLE);
         } else if (str.equals("GOLD")) {
             silver.setVisibility(View.VISIBLE);
             gold.setVisibility(View.VISIBLE);
+            s.setVisibility(View.INVISIBLE);
+            g.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -181,6 +221,49 @@ public class Account extends AppCompatActivity {
         }
 
         return stringBuilder.toString();
+    }
+
+    void SaveAccess(String acc) {
+
+        File root = getFilesDir();
+        File dir = new File(root.getAbsolutePath() + "/.richmans");
+        dir.mkdirs();
+        File file = new File(dir, "acc.txt");
+
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(f);
+            pw.println(acc);
+            pw.flush();
+            pw.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        }
+
+    }
+
+    void send(String str) {
+        String phn = readFileAsString(getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://www.yoursite.com/myexample.php");
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("Number", phn));
+            nameValuePairs.add(new BasicNameValuePair("Access", str));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            HttpResponse response = httpclient.execute(httppost);
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+        }
     }
 
 }
