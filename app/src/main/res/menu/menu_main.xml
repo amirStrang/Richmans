@@ -2,13 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/item_search"
-        android:icon="@drawable/magnify"
-        android:title="@string/search"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/item_my_store"
-        android:icon="@drawable/store"
-        android:title="@string/my_shop"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/item_buy_account"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/trophy"
+        android:title="خرید اکانت" />
 </menu>

@@ -45,13 +45,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -223,57 +220,60 @@ public class AddNewProductActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ArrayAdapter<String> subCatAdapter = new ArrayAdapter<String>
-                        (getApplicationContext(), android.R.layout.simple_spinner_item, subCats0);
+                CustomArrayAdapter subCatAdapter = new CustomArrayAdapter(
+                        getApplicationContext(),
+                        R.layout.item_spinner,
+                        subCats0
+                );
 
                 switch (position) {
                     case 0:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats0);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats0);
                         break;
 
                     case 1:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats1);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats1);
                         break;
 
                     case 2:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats2);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats2);
                         break;
 
                     case 3:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats3);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats3);
                         break;
 
                     case 4:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats4);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats4);
                         break;
 
                     case 5:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats5);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats5);
                         break;
 
                     case 6:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats6);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats6);
                         break;
 
                     case 7:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats7);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats7);
                         break;
 
                     case 8:
-                        subCatAdapter = new ArrayAdapter<String>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, subCats8);
+                        subCatAdapter = new CustomArrayAdapter
+                                (getApplicationContext(), R.layout.item_spinner, subCats8);
                         break;
                 }
 
-                subCatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                subCatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerSubCat.setAdapter(subCatAdapter);
 
 

@@ -1,12 +1,11 @@
 package com.example.asus.richmans;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.asus.richmans.util.IabHelper;
 import com.example.asus.richmans.util.IabResult;
@@ -55,7 +54,7 @@ public class Account extends AppCompatActivity {
                 mHelper.queryInventoryAsync(mGotInventoryListener);
             }
         });
-        Button s = (Button) findViewById(R.id.silver);
+        Button s = (Button) findViewById(R.id.btn_buy_silver);
         s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

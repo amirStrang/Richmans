@@ -52,8 +52,9 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 txtExplain.setText(getString(explainResId));
 
                 layoutText.setVisibility(View.VISIBLE);
-
                 break;
+
+
             //video
             case 2:
                 int videoResId = getResources().getIdentifier(tutorialId, "raw", getPackageName());
@@ -63,8 +64,11 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 videoView.start();
 
                 layoutVideo.setVisibility(View.VISIBLE);
-
                 break;
+
+
+
+
             //sound
             case 3:
                 int soundResId = getResources().getIdentifier(tutorialId, "raw", getPackageName());

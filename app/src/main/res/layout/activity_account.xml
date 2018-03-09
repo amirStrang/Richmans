@@ -1,15 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.asus.richmans.Account">
 
-    <Button
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <RelativeLayout
+        android:id="@+id/gold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:id="@+id/txt_gold_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/gold"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/txt_gold_title"
+            android:layout_below="@id/txt_gold_title"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/btn_buy_gold"
+            android:text="@string/gold_explanation" />
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/tick"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btn_buy_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/flat_button"
+            android:text="@string/buy" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/silver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="silver" />
+        android:layout_below="@id/gold"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/border">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/txt_silver_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/silver"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/txt_silver_title"
+            android:layout_below="@id/txt_silver_title"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/btn_buy_silver"
+            android:text="@string/silver_explanation" />
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/tick"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btn_buy_silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/flat_button"
+            android:text="@string/buy" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bronze"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/silver"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:id="@+id/txt_bronze_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/bronze"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/txt_bronze_title"
+            android:layout_below="@id/txt_bronze_title"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/btn_buy_bronze"
+            android:text="@string/silver_explanation" />
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/tick"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_buy_bronze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/flat_button"
+            android:text="@string/buy"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

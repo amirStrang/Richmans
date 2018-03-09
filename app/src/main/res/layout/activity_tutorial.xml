@@ -97,6 +97,7 @@
 
 
     <!--text-->
+
     <RelativeLayout
         android:id="@+id/layout_text"
         android:layout_width="match_parent"

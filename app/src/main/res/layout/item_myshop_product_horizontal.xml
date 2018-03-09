@@ -18,9 +18,10 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:gravity="left"
+        android:gravity="right"
         android:paddingLeft="5dp"
         android:textSize="@dimen/title"
         android:textStyle="bold" />
@@ -29,10 +30,11 @@
         android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/name"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/thumbnail"
-        android:gravity="left"
+        android:gravity="right"
         android:paddingLeft="5dp"
         android:textSize="@dimen/rating" />
 

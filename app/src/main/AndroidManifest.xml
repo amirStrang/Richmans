@@ -25,7 +25,13 @@
         <activity android:name=".MyShopActivity" />
         <activity android:name=".AddNewProductActivity" />
         <activity android:name=".ProductsListActivity" />
-        <activity android:name=".HomePageActivity" />
+        <activity android:name=".HomePageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".LearnPageActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".AboutUsActivity" />
