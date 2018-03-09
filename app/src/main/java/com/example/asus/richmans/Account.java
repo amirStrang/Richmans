@@ -1,16 +1,25 @@
 package com.example.asus.richmans;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.asus.richmans.util.IabHelper;
 import com.example.asus.richmans.util.IabResult;
 import com.example.asus.richmans.util.Inventory;
 import com.example.asus.richmans.util.Purchase;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Account extends AppCompatActivity {
 
@@ -18,12 +27,8 @@ public class Account extends AppCompatActivity {
     static final String TAG = "RICHMANS_ACCOUNT";
 
     // SKUs for our products: the premium upgrade (non-consumable)
-    static final String SKU_SILVER = "777";
-    static final String SKU_GOLD = "23423463623";
-
-
-    // Does the user have the premium upgrade?
-    boolean mIsPremium = false;
+    static final String SKU_SILVER = "SILVER";
+    static final String SKU_GOLD = "GOLD";
 
     // (arbitrary) request code for the purchase flow
     static final int RC_REQUEST = 10001;
@@ -31,10 +36,19 @@ public class Account extends AppCompatActivity {
     // The helper object
     IabHelper mHelper;
 
+    ImageView silver;
+    ImageView gold;
+
+    Button s;
+    Button g;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        gold = (ImageView) findViewById(R.id.check_gold);
+        silver = (ImageView) findViewById(R.id.check_silver);
 
         String base64EncodedPublicKey = "MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDcqGPwNQIvhDlbGEHrSCQY58EMf0A6v5HGBagUvEXpzKYZwKARcOXxA7yhiIPFq9lwsrYIzad10gXdycFEZTctSIg0PlFuJxGA61YGxj63KdUWtfbOqrZ3U66zMn8kh85se9SIXs2hcKYuDDnG1Hhsm0r1PxxBAGR/01yxxLddC6QJQx0EgkjH983PCgKueVhh4axVLadqE5TF5O1JqmyqAjrJdPKAOdQlyEsfBncCAwEAAQ==";
 
@@ -52,15 +66,21 @@ public class Account extends AppCompatActivity {
                 }
                 // Hooray, IAB is fully set up!
                 mHelper.queryInventoryAsync(mGotInventoryListener);
+                loadAccount();
             }
         });
-        Button s = (Button) findViewById(R.id.btn_buy_silver);
+        s = (Button) findViewById(R.id.btn_buy_silver);
         s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mHelper.launchPurchaseFlow(Account.this, SKU_SILVER, RC_REQUEST, mPurchaseFinishedListener, "payload-string");
-                int a = 2;
-
+            }
+        });
+        g = (Button) findViewById(R.id.btn_buy_gold);
+        g.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mHelper.launchPurchaseFlow(Account.this, SKU_GOLD, RC_REQUEST, mPurchaseFinishedListener, "payload-string");
             }
         });
 
@@ -75,12 +95,6 @@ public class Account extends AppCompatActivity {
                 return;
             } else {
                 Log.d(TAG, "Query inventory was successful.");
-                // does the user have the premium upgrade?
-                mIsPremium = inventory.hasPurchase(SKU_SILVER);
-
-                // update UI accordingly
-
-                Log.d(TAG, "User is " + (mIsPremium ? "PREMIUM" : "NOT PREMIUM"));
             }
 
             Log.d(TAG, "Initial inventory query finished; enabling main UI.");
@@ -93,7 +107,24 @@ public class Account extends AppCompatActivity {
                 Log.d(TAG, "Error purchasing: " + result);
                 return;
             } else if (purchase.getSku().equals(SKU_SILVER)) {
-                // give user access to premium content and update the UI
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Server
+
+                        //File
+
+                        // UI
+
+                    }
+                });
+            } else if (purchase.getSku().equals(SKU_GOLD)) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
             }
         }
     };
@@ -118,6 +149,38 @@ public class Account extends AppCompatActivity {
         super.onDestroy();
         if (mHelper != null) mHelper.dispose();
         mHelper = null;
+    }
+
+    void loadAccount() {
+        String str = readFileAsString(getFilesDir().getAbsolutePath() + "/.richmans/acc.txt");
+        if (str.equals("BRONZE")) {
+            s.setVisibility(View.VISIBLE);
+            g.setVisibility(View.VISIBLE);
+        } else if (str.equals("SILVER")) {
+            g.setVisibility(View.VISIBLE);
+            silver.setVisibility(View.VISIBLE);
+        } else if (str.equals("GOLD")) {
+            silver.setVisibility(View.VISIBLE);
+            gold.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    public String readFileAsString(String filePath) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        BufferedReader in = null;
+
+        try {
+            in = new BufferedReader(new FileReader(new File(filePath)));
+            while ((line = in.readLine()) != null) stringBuilder.append(line);
+        } catch (FileNotFoundException e) {
+            //
+        } catch (IOException e) {
+            //
+        }
+
+        return stringBuilder.toString();
     }
 
 }

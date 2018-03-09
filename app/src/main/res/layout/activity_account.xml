@@ -45,6 +45,7 @@
             android:text="@string/gold_explanation" />
 
         <ImageView
+            android:id="@+id/check_gold"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_alignParentStart="true"
@@ -61,7 +62,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:background="@drawable/flat_button"
-            android:text="@string/buy" />
+            android:text="@string/buy"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -96,6 +98,7 @@
             android:text="@string/silver_explanation" />
 
         <ImageView
+            android:id="@+id/check_silver"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_alignParentStart="true"
@@ -112,7 +115,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:background="@drawable/flat_button"
-            android:text="@string/buy" />
+            android:text="@string/buy"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -163,6 +167,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:background="@drawable/flat_button"
+            android:enabled="false"
             android:text="@string/buy"
             android:visibility="invisible" />
     </RelativeLayout>
