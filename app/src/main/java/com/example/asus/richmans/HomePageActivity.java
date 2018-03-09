@@ -192,7 +192,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                     int prog = jsonObject.getInt("credit");
                     int day = jsonObject.getInt("Day");
 
-                    txtDay.setText(day + "");
+                    txtDay.setText((day >= 0) ? day + "" : "0");
 
                     prbCredit.setVisibility(View.INVISIBLE);
                     txtCredit.setVisibility(View.VISIBLE);
