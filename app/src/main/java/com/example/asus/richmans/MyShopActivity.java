@@ -57,7 +57,7 @@ public class MyShopActivity extends AppCompatActivity {
         init();
 
         String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-        url = "http://ahmadiTest.sepantahost.com/api/Store?Data=" + phn;
+        url = "http://178.32.129.19:8075/api/Store?Data=" + phn;
 
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +126,8 @@ public class MyShopActivity extends AppCompatActivity {
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
                         mproduct.getThumbnailUrl3(),
-                        mproduct.getCode()
+                        mproduct.getCode(),
+                        "m"
                 });
                 startActivity(i);
             }

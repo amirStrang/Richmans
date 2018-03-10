@@ -343,7 +343,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                 String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
-                Send("http://ahmadiTest.sepantahost.com/api/AddToMyShop",
+                Send("http://178.32.129.19:8075/api/AddToMyShop",
                         phn,
                         spinnerCat.getSelectedItem().toString(),
                         spinnerSubCat.getSelectedItem().toString(),

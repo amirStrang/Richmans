@@ -69,7 +69,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Send("http://178.32.129.19:8075/api/BuyM",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
-                        "m",
+                        getIntent().getStringArrayExtra("product")[7],
                         txtTotalPrice.getText().toString()
                 );
             }

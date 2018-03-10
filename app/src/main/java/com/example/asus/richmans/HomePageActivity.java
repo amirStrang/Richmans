@@ -72,7 +72,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     protected void onResume() {
         super.onResume();
         loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
-        Toast.makeText(this, "Fffff", Toast.LENGTH_LONG).show();
     }
 
     void init() {

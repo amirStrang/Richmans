@@ -109,7 +109,8 @@ public class ProductsListActivity extends AppCompatActivity {
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
                         mproduct.getThumbnailUrl3(),
-                        mproduct.getCode()
+                        mproduct.getCode(),
+                        "s"
                 });
                 startActivity(i);
             }
