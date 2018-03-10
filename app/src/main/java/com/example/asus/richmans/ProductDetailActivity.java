@@ -66,7 +66,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //buy
                 String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-                Send("http://ahmadiTest.sepantahost.com/api/BuyM",
+                Send("http://178.32.129.19:8075/api/BuyM",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
                         "m",
@@ -211,6 +211,13 @@ public class ProductDetailActivity extends AppCompatActivity {
                         ProductDetailActivity.this.finish();
                     }
                 });
+            } else if (temp.equals("0")) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tt("موجودی برای خرید کافی نیست");
+                    }
+                });
             } else {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -244,7 +251,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     void tt(String str) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
     }
 
     private void hidePDialog() {

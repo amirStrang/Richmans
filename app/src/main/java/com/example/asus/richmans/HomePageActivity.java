@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -59,10 +60,19 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         ntf();
 
+        showDialog();
+
         phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
 
-        loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
+        //loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
+        Toast.makeText(this, "Fffff", Toast.LENGTH_LONG).show();
     }
 
     void init() {
@@ -168,21 +178,20 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    void inc(final int from, final int to) {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                txtCredit.setText(from + "");
-                if (from < to)
-                    inc(from + 100, to);
-            }
-        }, 1);
-    }
+//    void inc(final int from, final int to) {
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                txtCredit.setText(from + "");
+//                if (from < to)
+//                    inc(from + 100, to);
+//            }
+//        }, 1);
+//    }
 
     private void loadCredit(String url) {
-
-        showDialog();
+        prbCredit.setVisibility(View.VISIBLE);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -193,7 +202,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                     response = response.substring(1, response.length() - 1);
                     JSONObject jsonObject = new JSONObject(response);
 
-                    int prog = jsonObject.getInt("credit");
+                    int credit = jsonObject.getInt("credit");
                     int day = jsonObject.getInt("Day");
 
                     txtDay.setText((day >= 0) ? day + "" : "0");
@@ -201,7 +210,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                     prbCredit.setVisibility(View.INVISIBLE);
                     txtCredit.setVisibility(View.VISIBLE);
 
-                    inc(0, prog);
+                    txtCredit.setText((credit >= 0) ? credit + "" : "0");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
