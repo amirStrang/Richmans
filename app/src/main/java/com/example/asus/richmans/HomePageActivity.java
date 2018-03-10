@@ -61,7 +61,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
         phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
 
-        loadCredit("http://178.32.129.19:8075/api/GetData?phn=" + phn);
+        loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
 
     }
 

@@ -78,7 +78,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     }
 
     void save(String code, String phn) {
-        Send("http://178.32.129.19:8075/api/Identify", phn, code);
+        Send("http://ahmadiTest.sepantahost.com/api/Identify", phn, code);
     }
 
     private ProgressDialog pDialog;

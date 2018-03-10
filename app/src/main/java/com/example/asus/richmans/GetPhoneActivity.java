@@ -77,7 +77,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     }
 
     void reg(String phn) {
-        Send("http://178.32.129.19:8075/api/Register", phn);
+        Send("http://ahmadiTest.sepantahost.com/api/Register", phn);
     }
 
     private ProgressDialog pDialog;
