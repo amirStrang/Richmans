@@ -191,6 +191,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     private void loadCredit(String url) {
         prbCredit.setVisibility(View.VISIBLE);
+        txtCredit.setVisibility(View.INVISIBLE);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -204,11 +205,10 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                     int credit = jsonObject.getInt("credit");
                     int day = jsonObject.getInt("Day");
 
-                    txtDay.setText((day >= 0) ? day + "" : "0");
-
                     prbCredit.setVisibility(View.INVISIBLE);
                     txtCredit.setVisibility(View.VISIBLE);
 
+                    txtDay.setText((day >= 0) ? day + "" : "0");
                     txtCredit.setText((credit >= 0) ? credit + "" : "0");
 
                 } catch (JSONException e) {
