@@ -32,6 +32,8 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     Handler seekHandler = new Handler();
     int sound;
 
+    int stopPosition;
+
     RelativeLayout layoutText, layoutVoice, layoutVideo;
 
     @Override
@@ -65,8 +67,6 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
                 layoutVideo.setVisibility(View.VISIBLE);
                 break;
-
-
 
 
             //sound
@@ -182,6 +182,31 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 //UI Change
                 btnPlay.setBackgroundResource(android.R.drawable.ic_media_pause);
                 break;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+
+        if (videoView.isPlaying()) {
+            stopPosition = videoView.getCurrentPosition();
+            videoView.pause();
+
+        } else if (player.isPlaying()) {
+
+            seekHandler.removeCallbacks(run);
+            player.stop();
+            player.release();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (videoView != null) {
+            videoView.seekTo(stopPosition);
         }
     }
 }
