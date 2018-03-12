@@ -128,7 +128,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
