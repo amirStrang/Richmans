@@ -190,17 +190,16 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
         super.onPause();
 
-        if (videoView.isPlaying()) {
+        if (videoView != null && videoView.isPlaying()) {
             stopPosition = videoView.getCurrentPosition();
             videoView.pause();
 
-        } else if (player.isPlaying()) {
-
-            seekHandler.removeCallbacks(run);
-            player.stop();
-            player.release();
+        } else if (player != null && player.isPlaying()) {
+            player.pause();
+            btnPlay.setBackgroundResource(android.R.drawable.ic_media_play);
         }
     }
+
 
     @Override
     protected void onResume() {
