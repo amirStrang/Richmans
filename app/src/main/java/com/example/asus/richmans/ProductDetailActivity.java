@@ -66,7 +66,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //buy
                 String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-                Send("http://178.32.129.19:8075/api/BuyM",
+                Send("http://ahmadiTest.sepantahost.com/api/BuyM",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
                         getIntent().getStringArrayExtra("product")[7],
@@ -215,6 +215,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        hidePDialog();
                         tt("موجودی برای خرید کافی نیست");
                     }
                 });
