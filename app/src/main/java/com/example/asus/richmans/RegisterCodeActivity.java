@@ -8,11 +8,21 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.example.asus.richmans.app.AppController;
+import com.example.asus.richmans.model.Mproduct;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -26,6 +36,8 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -56,11 +68,11 @@ public class RegisterCodeActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etCode.getText().toString().equals("") || etCode.getText().toString().length() != 5) {
-                    etCode.setError("کد را صحیح وارد کنید");
+                if (etCode.getText().toString().equals("")) {
+                    etCode.setError("کد را وارد کنید");
                     return;
                 }
-                save(etCode.getText().toString(), getIntent().getStringExtra("phn"));
+                save(etCode.getText().toString());
             }
         });
     }
@@ -77,98 +89,64 @@ public class RegisterCodeActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    void save(String code, String phn) {
-        Send("http://ahmadiTest.sepantahost.com/api/Identify", phn, code);
+    void save(String code) {
+        Send("http://seyyedmahdi.eu-4.evennode.com/singupemail/" + code);
     }
 
     private ProgressDialog pDialog;
 
-    void Send(final String URL, final String phn, final String code) {
-        Log.d("req", "___send started");
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("لطفا صبر کنید");
+    void Send(final String URL) {
+
+        pDialog = new ProgressDialog(RegisterCodeActivity.this);
+        // Showing progress dialog before making http request
+        pDialog.setMessage("منتظر تایید بمانید");
         pDialog.show();
 
-        final Map<String, String> postParam = new HashMap<String, String>();
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
 
-        postParam.put("PHN", phn);
-        postParam.put("CODE", code);
+        StringRequest strReq = new StringRequest(Request.Method.GET,
+                URL, new Response.Listener<String>() {
 
-
-        ////////////////////////////////////////////////////////
-
-        final Thread send = new Thread(new Runnable() {
             @Override
-            public void run() {
+            public void onResponse(String response) {
+                Log.d("tag", "Login Response: " + response.toString());
+                pDialog.dismiss();
+                try {
+                    JSONObject jObj = new JSONObject(response);
 
-                JSONObject obj = new JSONObject(postParam);
+                    if (response.contains("id")) {
 
-                postData(URL, obj, phn);
+                        String code = jObj.getString("id");
+                        tran(code);
+//                        finish();
+                    } else {
+                        // Error in login. Get the error message
+                        Toast.makeText(getApplicationContext(),
+                                "کد وارد شده اشتباه است", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("tag", "Login Error: " + error.getMessage());
+                pDialog.dismiss();
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
-        send.start();
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
-    public void postData(String url, JSONObject obj, final String phn) {
-        // Create a new HttpClient and Post Header
-        HttpParams myParams = new BasicHttpParams();
-        HttpConnectionParams.setConnectionTimeout(myParams, 10000);
-        HttpConnectionParams.setSoTimeout(myParams, 10000);
-        HttpClient httpclient = new DefaultHttpClient(myParams);
-
-        try {
-            HttpPost httppost = new HttpPost(url.toString());
-            httppost.setHeader("Content-type", "application/json");
-
-            StringEntity se = new StringEntity(obj.toString());
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-            httppost.setEntity(se);
-
-            HttpResponse response = httpclient.execute(httppost);
-            final String temp = EntityUtils.toString(response.getEntity());
-
-            //handle temp
-            if (!temp.equals("1")) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        hidePDialog();
-                        tt("خطا در ارسال داده");
-
-                        //////////////sample
-//                        tran(phn);
-                        //////////////sample
-                    }
-                });
-            } else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tran(phn);
-                    }
-                });
-            }
-        } catch (ClientProtocolException e) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    //
-                }
-            });
-
-        } catch (IOException e) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    //
-                }
-            });
-        }
-
-
-    }
 
     private void hidePDialog() {
         if (pDialog != null) {
@@ -192,7 +170,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
         SaveMe(phn);
         SaveAccess();
         Intent i = new Intent(RegisterCodeActivity.this, HomePageActivity.class);
-        i.putExtra("phn", phn);
+//        i.putExtra("phn", phn);
         startActivity(i);
         this.finish();
     }

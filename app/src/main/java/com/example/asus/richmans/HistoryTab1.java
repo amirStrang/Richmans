@@ -69,7 +69,7 @@ public class HistoryTab1 extends Fragment {
 
     void getproduct(String phn) {
 
-        String url = "http://ahmadiTest.sepantahost.com/api/GetHistory?phn=" + phn;
+        String url = "http://178.32.164.112/api/GetHistory?phn=" + phn;
 
         pDialog = new ProgressDialog(getContext());
         // Showing progress dialog before making http request

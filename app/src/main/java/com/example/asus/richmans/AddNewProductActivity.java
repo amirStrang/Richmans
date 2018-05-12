@@ -343,7 +343,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                 String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
-                Send("http://178.32.129.19:8075/api/AddToMyShop",
+                Send("http://178.32.164.112/api/AddToMyShop",
                         phn,
                         spinnerCat.getSelectedItem().toString(),
                         spinnerSubCat.getSelectedItem().toString(),
@@ -478,6 +478,7 @@ public class AddNewProductActivity extends AppCompatActivity {
                     public void run() {
                         hidePDialog();
                         tt("با موفقیت ثبت شد");
+
                         AddNewProductActivity.this.finish();
                     }
                 });
@@ -510,7 +511,6 @@ public class AddNewProductActivity extends AppCompatActivity {
             });
         }
 
-
     }
 
     private void hidePDialog() {
@@ -519,7 +519,6 @@ public class AddNewProductActivity extends AppCompatActivity {
             pDialog = null;
         }
     }
-
 
     void pick() {
 

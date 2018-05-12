@@ -55,8 +55,8 @@ public class GetPhoneActivity extends AppCompatActivity {
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etPhone.getText().toString().equals("") || etPhone.getText().toString().length() != 11) {
-                    etPhone.setError("شماره تلفن را صحیح وارد کنید");
+                if (etPhone.getText().toString().equals("")) {
+                    etPhone.setError("ایمیل را وارد کنید");
                     return;
                 }
                 reg(etPhone.getText().toString());
@@ -77,7 +77,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     }
 
     void reg(String phn) {
-        Send("http://ahmadiTest.sepantahost.com/api/Register", phn);
+        Send("http://seyyedmahdi.eu-4.evennode.com/singup", phn);
     }
 
     private ProgressDialog pDialog;
@@ -90,7 +90,7 @@ public class GetPhoneActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("PHN", phn);
+        postParam.put("email", phn);
 
 
         ////////////////////////////////////////////////////////
@@ -127,31 +127,23 @@ public class GetPhoneActivity extends AppCompatActivity {
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
 
-            temp = temp.substring(1, temp.length() - 1);
-
             //handle temp
-            if (!temp.equals("1")) {
+            if (temp.contains("currectly")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        hidePDialog();
-                        tt("خطا در ارسال داده");
-
-
-                        //////////////sample
-//                        tran(phn);
-                        //////////////sample
+                        tt("ایمیل ثبت اولیه شد");
+                        tran();
                     }
                 });
             } else {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tran(phn);
+                        tt("خطا در ارسال داده");
                     }
                 });
             }
-
 
         } catch (ClientProtocolException e) {
             runOnUiThread(new Runnable() {
@@ -188,10 +180,9 @@ public class GetPhoneActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    void tran(String phn) {
+    void tran() {
         hidePDialog();
         Intent i = new Intent(GetPhoneActivity.this, RegisterCodeActivity.class);
-        i.putExtra("phn", phn);
         startActivity(i);
         this.finish();
     }

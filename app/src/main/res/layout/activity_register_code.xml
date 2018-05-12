@@ -63,8 +63,6 @@
                 android:ems="2"
                 android:gravity="center"
                 android:hint="@string/code"
-                android:inputType="phone"
-                android:maxLength="5"
                 android:maxLines="1"
                 android:paddingLeft="5dp"
                 android:singleLine="true"
