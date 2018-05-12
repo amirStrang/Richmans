@@ -66,7 +66,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     }
 
     void setBase(String bMoney, String phn) {
-        Send("http://178.32.129.19:8075/api/SetBase", phn, bMoney);
+        Send("http://seyyedmahdi.eu-4.evennode.com/resetday", phn, bMoney);
     }
 
     private ProgressDialog pDialog;
@@ -79,8 +79,8 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("PHN", phn);
-        postParam.put("BASEMONEY", bMoney);
+        postParam.put("id", phn);
+        postParam.put("base", bMoney);
 
 
         ////////////////////////////////////////////////////////
@@ -115,9 +115,8 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
 
 
             HttpResponse response = httpclient.execute(httppost);
-            final String temp = EntityUtils.toString(response.getEntity());
-
-            if (!temp.equals("1")) {
+            String temp = EntityUtils.toString(response.getEntity());
+            if (!temp.contains("ok")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

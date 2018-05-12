@@ -5,11 +5,15 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,16 +32,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.asus.richmans.NotificationManager.MyReceiver;
+import com.example.asus.richmans.app.AppController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -71,7 +79,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        loadCredit("http://ahmadiTest.sepantahost.com/api/GetData?phn=" + phn);
+        loadCredit("http://seyyedmahdi.eu-4.evennode.com/getmoney");
     }
 
     void init() {
@@ -192,51 +200,66 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         prbCredit.setVisibility(View.VISIBLE);
         txtCredit.setVisibility(View.INVISIBLE);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        // Tag used to cancel the request
+        String tag_string_req = "req_get_money";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                url, new Response.Listener<String>() {
+
             @Override
             public void onResponse(String response) {
-                try {
-                    response = response.substring(1, response.length() - 1);
-                    JSONObject jsonObject = new JSONObject(response);
+                Log.d("tag", "Login Response: " + response.toString());
 
-                    int credit = jsonObject.getInt("credit");
-                    int day = jsonObject.getInt("Day");
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    String status = jObj.getString("status");
+                    if (!status.equals("ok")) {
+                        return;
+                    }
+                    String credit = jObj.getString("money");
+                    String day = jObj.getString("day");
 
                     prbCredit.setVisibility(View.INVISIBLE);
                     txtCredit.setVisibility(View.VISIBLE);
 
-                    txtDay.setText((day >= 0) ? day + "" : "0");
-                    txtCredit.setText((credit >= 0) ? credit + "" : "0");
+                    txtDay.setText(day);
+                    txtCredit.setText(credit);
 
                 } catch (JSONException e) {
+                    // JSON error
                     e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
             }
-
         }, new Response.ErrorListener() {
 
             @Override
-
             public void onErrorResponse(VolleyError error) {
+                Log.e("tag", "Login Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
 
-                error.printStackTrace();
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
 
+                params.put("id", phn);
+//                params.put("password", password);
+
+
+                return params;
             }
 
-        });
+        };
 
-        int socketTimeout = 30000;
-
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-
-        stringRequest.setRetryPolicy(policy);
-
-        requestQueue.add(stringRequest);
-
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
+
 
     private void showDialog() {
         final Dialog dialog = new Dialog(this);
