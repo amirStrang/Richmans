@@ -66,10 +66,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //buy
                 String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-                Send("http://178.32.164.112/api/BuyM",
+                Send("http://seyyedmahdi.eu-4.evennode.com/buy",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
-                        getIntent().getStringArrayExtra("product")[7],
                         txtTotalPrice.getText().toString()
                 );
             }
@@ -153,7 +152,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private ProgressDialog pDialog;
 
-    void Send(final String URL, String ID, String PHN, String STORE, String TP) {
+    void Send(final String URL, String ID, String PHN, String TP) {
         Log.d("req", "___send started");
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request
@@ -162,10 +161,9 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("ID", ID);
-        postParam.put("PHN", PHN);
-        postParam.put("Store", STORE);
-        postParam.put("TP", TP);
+        postParam.put("itemid", ID);
+        postParam.put("id", PHN);
+        postParam.put("total", TP);
 
         ////////////////////////////////////////////////////////
 
@@ -202,7 +200,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             String temp = EntityUtils.toString(response.getEntity());
 //            temp = temp.substring(1, temp.length() - 1);
 
-            if (temp.equals("1")) {
+            if (temp.contains("ok")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -211,7 +209,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         ProductDetailActivity.this.finish();
                     }
                 });
-            } else if (temp.equals("0")) {
+            } else if (temp.contains("money")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

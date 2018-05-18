@@ -213,12 +213,13 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 try {
                     JSONObject jObj = new JSONObject(response);
                     String status = jObj.getString("status");
-                    if (!status.equals("ok")) {
-                        return;
-                    }
-                    String credit = jObj.getString("money");
-                    String day = jObj.getString("day");
 
+                    String credit = "0";
+                    String day = "0";
+                    if (status.equals("ok")) {
+                        credit = jObj.getString("money");
+                        day = jObj.getString("day");
+                    }
                     prbCredit.setVisibility(View.INVISIBLE);
                     txtCredit.setVisibility(View.VISIBLE);
 

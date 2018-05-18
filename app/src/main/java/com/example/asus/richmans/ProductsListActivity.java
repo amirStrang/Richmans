@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
@@ -39,7 +40,7 @@ public class ProductsListActivity extends AppCompatActivity {
     private static final String TAG = ProductsListActivity.class.getSimpleName();
 
     // Gproducts json url
-    String url = "http://ahmadiTest.sepantahost.com/api/GlobalStore?Data=";
+    String url = "http://seyyedmahdi.eu-4.evennode.com/getproduct/";
     private ProgressDialog pDialog;
     private List<Gproduct> productList = new ArrayList<Gproduct>();
     private ListView listView;
@@ -71,13 +72,14 @@ public class ProductsListActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Gproduct product = new Gproduct();
-                                product.setCode(obj.getString("Code"));
-                                product.setName(obj.getString("Name"));
-                                product.setThumbnailUrl(obj.getString("Image1"));
-                                product.setThumbnailUrl2(obj.getString("Image2"));
-                                product.setThumbnailUrl3(obj.getString("Image3"));
-                                product.setPrice(obj.getString("Price"));
-                                product.setDesc(obj.getString("Note"));
+                                product.setCode(obj.getString("_id"));
+                                product.setName(obj.optString("name"));
+                                product.setPrice(obj.getString("price"));
+                                product.setDesc(obj.optString("comment"));
+                                JSONArray pic = obj.getJSONArray("pictures");
+                                product.setThumbnailUrl("http://" + pic.getString(0));
+                                product.setThumbnailUrl2("http://" + pic.getString(1));
+                                product.setThumbnailUrl3("http://" + pic.getString(2));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -109,8 +111,7 @@ public class ProductsListActivity extends AppCompatActivity {
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
                         mproduct.getThumbnailUrl3(),
-                        mproduct.getCode(),
-                        "s"
+                        mproduct.getCode()
                 });
                 startActivity(i);
             }

@@ -66,7 +66,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     }
 
     void setBase(String bMoney, String phn) {
-        Send("http://seyyedmahdi.eu-4.evennode.com/resetday", phn, bMoney);
+        Send("http://seyyedmahdi.eu-4.evennode.com/startgame", phn, bMoney);
     }
 
     private ProgressDialog pDialog;

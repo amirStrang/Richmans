@@ -343,7 +343,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                 String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
                 //post
-                Send("http://178.32.164.112/api/AddToMyShop",
+                Send("http://seyyedmahdi.eu-4.evennode.com/addtomyshop",
                         phn,
                         spinnerCat.getSelectedItem().toString(),
                         spinnerSubCat.getSelectedItem().toString(),
@@ -387,12 +387,12 @@ public class AddNewProductActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("PhoneNumber", ID);
-        postParam.put("Name", name);
-        postParam.put("Note", Des);
-        postParam.put("Price", price);
-        postParam.put("CategoryName", cat);
-        postParam.put("SubCatName", subcat);
+        postParam.put("id", ID);
+        postParam.put("name", name);
+        postParam.put("comment", Des);
+        postParam.put("price", price);
+//        postParam.put("CategoryName", cat);
+        postParam.put("daste", subcat);
 
 
         //pics
@@ -412,7 +412,7 @@ public class AddNewProductActivity extends AppCompatActivity {
                     Base64.DEFAULT);
             // tt(encodedImage1.length()+"");
 
-            postParam.put("Image1", encodedImage1);
+            postParam.put("pic1", encodedImage1);
 
             Bitmap bm2 = BitmapFactory.decodeFile(pic_path2, options);
             ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
@@ -421,7 +421,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             String encodedImage2 = Base64.encodeToString(b2,
                     Base64.DEFAULT);
-            postParam.put("Image2", encodedImage2);
+            postParam.put("pic2", encodedImage2);
 
             Bitmap bm3 = BitmapFactory.decodeFile(pic_path3, options);
             ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
@@ -430,7 +430,7 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             String encodedImage3 = Base64.encodeToString(b3,
                     Base64.DEFAULT);
-            postParam.put("Image3", encodedImage3);
+            postParam.put("pic3", encodedImage3);
         } catch (Exception e) {
             Log.d("ppppppppiiiiiiiicccc", e.getMessage());
             tt("خطا در ارسال عکس");
@@ -470,9 +470,9 @@ public class AddNewProductActivity extends AppCompatActivity {
 
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
-            temp = temp.substring(1, temp.length() - 1);
+//            temp = temp.substring(1, temp.length() - 1);
 
-            if (temp.equals("1")) {
+            if (temp.contains("ok")) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

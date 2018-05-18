@@ -57,7 +57,7 @@ public class MyShopActivity extends AppCompatActivity {
         init();
 
         String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-        url = "http://178.32.129.19:8075/api/Store?Data=" + phn;
+        url = "http://seyyedmahdi.eu-4.evennode.com/getproduct/whit/" + phn;
 
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,14 +86,15 @@ public class MyShopActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Mproduct product = new Mproduct();
-                                product.setCode(obj.getString("Code"));
-                                product.setName(obj.getString("Name"));
-                                product.setThumbnailUrl(obj.getString("Image1"));
-                                product.setPrice(obj.getString("Price"));
-                                product.setCat(obj.getString("SubCatName"));
-                                product.setDesc(obj.getString("Note"));
-                                product.setThumbnailUrl2(obj.getString("Image2"));
-                                product.setThumbnailUrl3(obj.getString("Image3"));
+                                product.setCode(obj.getString("_id"));
+                                product.setName(obj.getString("name"));
+                                product.setPrice(obj.getString("price"));
+                                product.setCat(obj.getString("daste"));
+                                product.setDesc(obj.getString("comment"));
+                                JSONArray pic = obj.getJSONArray("pictures");
+                                product.setThumbnailUrl("http://" + pic.getString(0));
+                                product.setThumbnailUrl2("http://" + pic.getString(1));
+                                product.setThumbnailUrl3("http://" + pic.getString(2));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -126,8 +127,7 @@ public class MyShopActivity extends AppCompatActivity {
                         mproduct.getThumbnailUrl(),
                         mproduct.getThumbnailUrl2(),
                         mproduct.getThumbnailUrl3(),
-                        mproduct.getCode(),
-                        "m"
+                        mproduct.getCode()
                 });
                 startActivity(i);
             }
