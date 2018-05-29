@@ -33,4 +33,10 @@
         <item name="fontPath">fonts/BKoodakBold.ttf</item>
     </style>
 
+    <style name="Theme.App.Base" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlActivated">#ffffff</item>
+        <item name="colorControlHighlight">#ffffff</item>
+    </style>
+
 </resources>
