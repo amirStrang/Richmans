@@ -3,10 +3,8 @@ package com.example.asus.richmans;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -26,7 +24,7 @@ public class SplashScrn extends AppCompatActivity {
         } else {
             String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
             if (str.equals("")) {
-                tran(GetPhoneActivity.class);
+                tran(LoginActivity.class);
             } else {
                 tran(HomePageActivity.class);
             }

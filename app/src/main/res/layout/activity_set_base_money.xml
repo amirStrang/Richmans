@@ -7,12 +7,12 @@
     android:background="@color/colorPrimary"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.asus.richmans.GetPhoneActivity">
+    tools:context="com.example.asus.richmans.LoginActivity">
 
     <View
         android:layout_width="240dp"
         android:layout_height="360dp"
-        android:layout_alignBottom="@+id/main_layout"
+        android:layout_alignBottom="@+id/login_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/view_back_border" />
@@ -20,14 +20,14 @@
     <View
         android:layout_width="240dp"
         android:layout_height="360dp"
-        android:layout_alignBottom="@+id/main_layout"
+        android:layout_alignBottom="@+id/login_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:alpha="0.5"
         android:background="@drawable/view_shadow_border" />
 
     <RelativeLayout
-        android:id="@+id/main_layout"
+        android:id="@+id/login_layout"
         android:layout_width="250dp"
         android:layout_height="360dp"
         android:layout_centerInParent="true"

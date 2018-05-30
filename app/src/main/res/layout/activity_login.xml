@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.asus.richmans.LoginActivity">
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="380dp"
+        android:layout_alignBottom="@+id/login_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/view_back_border" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="380dp"
+        android:layout_alignBottom="@+id/login_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.5"
+        android:background="@drawable/view_shadow_border" />
+
+    <RelativeLayout
+        android:id="@+id/login_layout"
+        android:layout_width="250dp"
+        android:layout_height="380dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/view_white_border"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/hello"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_hello"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="به بازی ثروتمندان خوش آمدید"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_alignEnd="@+id/tv_welcome"
+            android:layout_alignStart="@+id/tv_welcome"
+            android:layout_below="@+id/tv_welcome"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewLine"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="نام کاربری"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="رمز ورود"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/flat_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="ورود"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tv_forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:text="رمز خود را فراموش کردید ؟"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_go_to_register"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@id/login_layout"
+        android:layout_alignTop="@id/login_layout"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/circle">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/plus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/register_layout"
+        android:layout_width="250dp"
+        android:layout_height="380dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/view_accent_border"
+        android:visibility="invisible">
+
+
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/close" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="ثبت نام"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <View
+            android:id="@+id/viewLine_r"
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:layout_below="@+id/tv_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_username_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewLine_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@android:color/white"
+            app:hintTextAppearance="@style/Theme.App.Base">
+
+            <EditText
+                android:id="@+id/et_username_r"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="نام کاربری"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_password_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_username_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@android:color/white"
+            app:hintTextAppearance="@style/Theme.App.Base">
+
+            <EditText
+                android:id="@+id/et_password_r"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="رمز ورود"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_confirm_password_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_password_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@android:color/white"
+            app:hintTextAppearance="@style/Theme.App.Base">
+
+            <EditText
+                android:id="@+id/et_confirm_password_r"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="تکرار رمز ورود"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textAppearance="@style/Theme.App.Base"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_confirm_password_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/flat_button_white"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="ثبت نام"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

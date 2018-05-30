@@ -80,7 +80,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     private void init() {
         etCode = (EditText) findViewById(R.id.et_code);
         etLayoutCode = (TextInputLayout) findViewById(R.id.et_layout_code);
-        btnRegister = (Button) findViewById(R.id.btn_regiser);
+        btnRegister = (Button) findViewById(R.id.btn_register);
         mainLayout = (RelativeLayout) findViewById(R.id.register_activity_layout);
     }
 
