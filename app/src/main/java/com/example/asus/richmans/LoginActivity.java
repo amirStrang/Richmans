@@ -234,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void log(String username, String password) {
-        Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwithpass", username, password);
+        Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwhitpass", username, password);
     }
 
     void reg(String username, String password) {
@@ -331,7 +331,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 //login
                 if (temp.contains("ok")) {
-                    String id = temp += "a";
+                    String id = temp.substring(21, temp.length()-2);
                     tran(id);
                 }
 
