@@ -108,61 +108,63 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnGoToRegister.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
 
-                final float defaultX = btnGoToRegister.getX();
-                final float defaultY = btnGoToRegister.getY();
+                if (Build.VERSION.SDK_INT >= 21) {
 
-//              ValueAnimator animBtn = v.animate().translationXBy(-100);
-                ValueAnimator animBtn = ValueAnimator.ofFloat(0f, -100f);
-                animBtn.setDuration(200);
-                animBtn.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        btnGoToRegister.setTranslationX((float) animation.getAnimatedValue());
-                    }
-                });
+                    final float defaultX = btnGoToRegister.getX();
+                    final float defaultY = btnGoToRegister.getY();
+                    ValueAnimator animBtn = ValueAnimator.ofFloat(0f, -100f);
+                    animBtn.setDuration(200);
+                    animBtn.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        public void onAnimationUpdate(ValueAnimator animation) {
+                            btnGoToRegister.setTranslationX((float) animation.getAnimatedValue());
+                        }
+                    });
 
-                int x = (int) registerLayout.getWidth();
-                int y = (int) registerLayout.getY() + 60;
+                    int x = (int) registerLayout.getWidth();
+                    int y = (int) registerLayout.getY() + 60;
 
-                int startRadius = 0;
-                int endRadius = (int) Math.hypot(loginLayout.getWidth(), loginLayout.getHeight());
+                    int startRadius = 0;
+                    int endRadius = (int) Math.hypot(loginLayout.getWidth(), loginLayout.getHeight());
 
-                final Animator animLayout = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
+                    final Animator animLayout = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
 
-                animBtn.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        animLayout.setDuration(500).start();
-                        registerLayout.setVisibility(View.VISIBLE);
-                    }
+                    animBtn.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            animLayout.setDuration(500).start();
+                            registerLayout.setVisibility(View.VISIBLE);
+                        }
 
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        loginLayout.setVisibility(View.INVISIBLE);
-                        btnGoToRegister.setVisibility(View.INVISIBLE);
-                        btnGoToRegister.setX(defaultX);
-                        btnGoToRegister.setY(defaultY);
-                    }
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            loginLayout.setVisibility(View.INVISIBLE);
+                            btnGoToRegister.setVisibility(View.INVISIBLE);
+                            btnGoToRegister.setX(defaultX);
+                            btnGoToRegister.setY(defaultY);
+                        }
 
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
 
-                    }
-                });
-                animBtn.start();
+                        }
+                    });
+                    animBtn.start();
+                }else {
+                    loginLayout.setVisibility(View.INVISIBLE);
+                    btnGoToRegister.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
         imgClose.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 close();
@@ -170,39 +172,44 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     void close() {
-        int x = (int) registerLayout.getWidth();
-        int y = (int) registerLayout.getY() + 60;
+        if (Build.VERSION.SDK_INT >= 21) {
+            int x = (int) registerLayout.getWidth();
+            int y = (int) registerLayout.getY() + 60;
 
-        int startRadius = Math.max(loginLayout.getWidth(), loginLayout.getHeight());
-        int endRadius = 0;
+            int startRadius = Math.max(loginLayout.getWidth(), loginLayout.getHeight());
+            int endRadius = 0;
 
-        Animator anim = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
-        anim.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {
+            Animator anim = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
+            anim.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {
 
-                loginLayout.setVisibility(View.VISIBLE);
-            }
+                    loginLayout.setVisibility(View.VISIBLE);
+                }
 
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                registerLayout.setVisibility(View.GONE);
-                btnGoToRegister.setVisibility(View.VISIBLE);
-            }
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    registerLayout.setVisibility(View.GONE);
+                    btnGoToRegister.setVisibility(View.VISIBLE);
+                }
 
-            @Override
-            public void onAnimationCancel(Animator animator) {
+                @Override
+                public void onAnimationCancel(Animator animator) {
 
-            }
+                }
 
-            @Override
-            public void onAnimationRepeat(Animator animator) {
+                @Override
+                public void onAnimationRepeat(Animator animator) {
 
-            }
-        });
-        anim.setDuration(500).start();
+                }
+            });
+            anim.setDuration(500).start();
+        } else {
+            loginLayout.setVisibility(View.VISIBLE);
+            registerLayout.setVisibility(View.GONE);
+            btnGoToRegister.setVisibility(View.VISIBLE);
+        }
     }
 
     void init() {
