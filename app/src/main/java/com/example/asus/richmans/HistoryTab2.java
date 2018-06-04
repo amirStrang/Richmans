@@ -130,7 +130,7 @@ public class HistoryTab2 extends Fragment {
                             History history = new History();
                             history.setFrom(tobj.getString("startTime"));
                             history.setTo(tobj.getString("endTime"));
-                            history.setDay("1");
+                            history.setDay("day");
                             historyList.add(history);
                         } catch (JSONException e) {
                             e.printStackTrace();

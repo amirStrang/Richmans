@@ -34,7 +34,11 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +68,29 @@ public class LoginActivity extends AppCompatActivity {
 
         init();
 
+        btnReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etUserNameReg.getText().toString().equals("")) {
+                    etUserNameReg.setError("لطفا نام کاربری خود را وارد کنید");
+                    return;
+                }
+                if (etPassReg.getText().toString().equals("")) {
+                    etPassReg.setError("لطفا رمز خود را وارد کنید");
+                    return;
+                }
+                if (etConfPassReg.getText().toString().equals("")) {
+                    etConfPassReg.setError("لطفا رمز خود را تکرار کنید");
+                    return;
+                }
+                if (!etConfPassReg.getText().toString().equals(etPassReg.getText().toString())) {
+                    etConfPassReg.setError("رمز ها تطابق ندارد");
+                    return;
+                } else {
+                    reg(etUserNameReg.getText().toString(), etPassReg.getText().toString());
+                }
+            }
+        });
         loginLayout.setOnClickListener(null);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +99,11 @@ public class LoginActivity extends AppCompatActivity {
                     etUserName.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
                 }
-                reg(etUserName.getText().toString());
+                if (etPass.getText().toString().equals("")) {
+                    etPass.setError("لطفا رمز عبور خود را وارد کنید");
+                    return;
+                }
+                log(etUserName.getText().toString(), etPass.getText().toString());
             }
         });
 
@@ -134,41 +165,44 @@ public class LoginActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+                close();
+            }
+        });
+    }
 
-                int x = (int) registerLayout.getWidth();
-                int y = (int) registerLayout.getY() + 60;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    void close() {
+        int x = (int) registerLayout.getWidth();
+        int y = (int) registerLayout.getY() + 60;
 
-                int startRadius = Math.max(loginLayout.getWidth(), loginLayout.getHeight());
-                int endRadius = 0;
+        int startRadius = Math.max(loginLayout.getWidth(), loginLayout.getHeight());
+        int endRadius = 0;
 
-                Animator anim = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
-                anim.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animator) {
+        Animator anim = ViewAnimationUtils.createCircularReveal(registerLayout, x, y, startRadius, endRadius);
+        anim.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
 
-                        loginLayout.setVisibility(View.VISIBLE);
-                    }
+                loginLayout.setVisibility(View.VISIBLE);
+            }
 
-                    @Override
-                    public void onAnimationEnd(Animator animator) {
-                        registerLayout.setVisibility(View.GONE);
-                        btnGoToRegister.setVisibility(View.VISIBLE);
-                    }
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                registerLayout.setVisibility(View.GONE);
+                btnGoToRegister.setVisibility(View.VISIBLE);
+            }
 
-                    @Override
-                    public void onAnimationCancel(Animator animator) {
+            @Override
+            public void onAnimationCancel(Animator animator) {
 
-                    }
+            }
 
-                    @Override
-                    public void onAnimationRepeat(Animator animator) {
-
-                    }
-                });
-                anim.setDuration(500).start();
+            @Override
+            public void onAnimationRepeat(Animator animator) {
 
             }
         });
+        anim.setDuration(500).start();
     }
 
     void init() {
@@ -199,13 +233,17 @@ public class LoginActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    void reg(String phn) {
-        Send("http://seyyedmahdi.eu-4.evennode.com/singup", phn);
+    void log(String username, String password) {
+        Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwithpass", username, password);
+    }
+
+    void reg(String username, String password) {
+        Sendr("http://seyyedmahdi.eu-4.evennode.com/singupwithpass", username, password);
     }
 
     private ProgressDialog pDialog;
 
-    void Send(final String URL, final String phn) {
+    void Sendl(final String URL, final String user, final String pass) {
         Log.d("req", "___send started");
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("لطفا صبر کنید");
@@ -213,8 +251,8 @@ public class LoginActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("email", phn);
-
+        postParam.put("username", user);
+        postParam.put("password", pass);
 
         ////////////////////////////////////////////////////////
 
@@ -224,7 +262,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 JSONObject obj = new JSONObject(postParam);
 
-                postData(URL, obj, phn);
+                postData(URL, obj, false);
 
             }
         });
@@ -232,7 +270,35 @@ public class LoginActivity extends AppCompatActivity {
         send.start();
     }
 
-    public void postData(String url, JSONObject obj, final String phn) {
+    void Sendr(final String URL, final String user, final String pass) {
+        Log.d("req", "___send started");
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("لطفا صبر کنید");
+        pDialog.show();
+
+        final Map<String, String> postParam = new HashMap<String, String>();
+
+        postParam.put("email", "BRONZE");
+        postParam.put("username", user);
+        postParam.put("password", pass);
+
+        ////////////////////////////////////////////////////////
+
+        final Thread send = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                JSONObject obj = new JSONObject(postParam);
+
+                postData(URL, obj, true);
+
+            }
+        });
+
+        send.start();
+    }
+
+    public void postData(String url, JSONObject obj, boolean reg) {
         // Create a new HttpClient and Post Header
         HttpParams myParams = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(myParams, 10000);
@@ -250,28 +316,31 @@ public class LoginActivity extends AppCompatActivity {
             HttpResponse response = httpclient.execute(httppost);
             String temp = EntityUtils.toString(response.getEntity());
 
-            //handle temp
-            if (temp.contains("currectly")) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tt("ایمیل ثبت اولیه شد");
-                        tran();
-                    }
-                });
+            if (reg) {
+                if (temp.contains("ok")) {
+                    runOnUiThread(new Runnable() {
+                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                        @Override
+                        public void run() {
+                            hidePDialog();
+                            close();
+                            tt("ثبت نام با موفقیت انجام شد\nلطفا وارد حساب خود شوید");
+                        }
+                    });
+                }
             } else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tt("خطا در ارسال داده");
-                    }
-                });
-            }
+                //login
+                if (temp.contains("ok")) {
+                    String id = temp += "a";
+                    tran(id);
+                }
 
+            }
         } catch (ClientProtocolException e) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    tt("خطا در برقراری ارتباط");
                 }
             });
 
@@ -279,6 +348,7 @@ public class LoginActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    tt("خطا در ورودی خروخی");
                 }
             });
         }
@@ -303,10 +373,61 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    void tran() {
+    void tran(String id) {
         hidePDialog();
-        Intent i = new Intent(LoginActivity.this, RegisterCodeActivity.class);
+        SaveMe(id);
+        SaveAccess();
+        Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+//        i.putExtra("phn", phn);
         startActivity(i);
         this.finish();
+    }
+
+    void SaveMe(String user) {
+
+        File root = getFilesDir();
+        File dir = new File(root.getAbsolutePath() + "/.richmans");
+        dir.mkdirs();
+        File file = new File(dir, "phn.txt");
+
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(f);
+            pw.println(user);
+            pw.flush();
+            pw.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        }
+
+    }
+
+    void SaveAccess() {
+
+        File root = getFilesDir();
+        File dir = new File(root.getAbsolutePath() + "/.richmans");
+        dir.mkdirs();
+        File file = new File(dir, "acc.txt");
+
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(f);
+            pw.println("BRONZE");
+            pw.flush();
+            pw.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //tt(e.getMessage());
+        }
+
     }
 }
