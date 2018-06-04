@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                     int x = (int) registerLayout.getWidth();
-                    int y = (int) registerLayout.getY() + 60;
+                    int y = (int) registerLayout.getY() ;
 
                     int startRadius = 0;
                     int endRadius = (int) Math.hypot(loginLayout.getWidth(), loginLayout.getHeight());
@@ -157,9 +157,10 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                     animBtn.start();
-                }else {
+                } else {
                     loginLayout.setVisibility(View.INVISIBLE);
                     btnGoToRegister.setVisibility(View.INVISIBLE);
+                    registerLayout.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -338,7 +339,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 //login
                 if (temp.contains("ok")) {
-                    String id = temp.substring(21, temp.length()-2);
+                    String id = temp.substring(21, temp.length() - 2);
                     tran(id);
                 }
 
