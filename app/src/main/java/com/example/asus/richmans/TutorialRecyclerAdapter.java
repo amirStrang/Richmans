@@ -43,6 +43,15 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
                 i.putExtra("id", tutorial.id);
                 i.putExtra("name", tutorial.name);
                 i.putExtra("type", tutorial.type);
+                if (tutorial.type == 1) {
+                    i.putExtra("url", tutorial.video);
+                }
+                if (tutorial.type == 2) {
+                    i.putExtra("url", tutorial.sound);
+                }
+                if (tutorial.type == 3) {
+                    i.putExtra("url", tutorial.text);
+                }
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }

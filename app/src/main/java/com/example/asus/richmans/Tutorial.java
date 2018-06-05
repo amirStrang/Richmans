@@ -7,10 +7,11 @@ public class Tutorial {
     int image;
 
     String explain;
-    int video;
-    int sound;
+    String video;
+    String sound;
+    String text;
 
     public Tutorial() {
-        image = R.drawable.tutolial_defult;
+//        image = R.drawable.tutolial_defult;
     }
 }
