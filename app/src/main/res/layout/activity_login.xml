@@ -12,7 +12,7 @@
 
     <View
         android:layout_width="240dp"
-        android:layout_height="380dp"
+        android:layout_height="500dp"
         android:layout_alignBottom="@+id/login_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
@@ -20,7 +20,7 @@
 
     <View
         android:layout_width="240dp"
-        android:layout_height="380dp"
+        android:layout_height="500dp"
         android:layout_alignBottom="@+id/login_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
@@ -30,7 +30,7 @@
     <RelativeLayout
         android:id="@+id/login_layout"
         android:layout_width="250dp"
-        android:layout_height="380dp"
+        android:layout_height="500dp"
         android:layout_centerInParent="true"
         android:background="@drawable/view_white_border"
         android:visibility="visible">
@@ -70,15 +70,15 @@
 
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/et_layout_username"
+            android:id="@+id/et_layout_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewLine"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp">
 
             <EditText
-                android:id="@+id/et_username"
+                android:id="@+id/et_phone"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -98,9 +98,9 @@
             android:id="@+id/et_layout_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et_layout_username"
+            android:layout_below="@+id/et_layout_phone"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="25dp">
 
             <EditText
                 android:id="@+id/et_password"
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/et_layout_password"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/flat_button"
             android:gravity="center"
             android:padding="10dp"
@@ -137,9 +137,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_login"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:text="رمز خود را فراموش کردید ؟"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="بازیابی رمز عبور"
+            android:textSize="15sp"
             android:textColor="@color/colorAccent" />
 
     </RelativeLayout>
@@ -154,17 +155,25 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/circle">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/plus" />
+            android:text="ثبت نام"
+            android:textColor="@android:color/white"/>
+
+        <!--<ImageView-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:src="@drawable/plus" />-->
+
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/register_layout"
         android:layout_width="250dp"
-        android:layout_height="380dp"
+        android:layout_height="500dp"
         android:layout_centerInParent="true"
         android:background="@drawable/view_accent_border"
         android:visibility="invisible">
@@ -194,7 +203,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
         <View
             android:id="@+id/viewLine_r"
             android:layout_width="100dp"
@@ -222,7 +230,7 @@
                 android:layout_gravity="center"
                 android:ems="2"
                 android:gravity="center"
-                android:hint="نام کاربری"
+                android:hint="نام و نام خانوادگی"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingLeft="5dp"
@@ -233,12 +241,67 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_phone_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_username_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@android:color/white"
+            app:hintTextAppearance="@style/Theme.App.Base">
+
+            <EditText
+                android:id="@+id/et_phone_r"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="شماره موبایل"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_layout_email_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_layout_phone_r"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@android:color/white"
+            app:hintTextAppearance="@style/Theme.App.Base">
+
+            <EditText
+                android:id="@+id/et_email_r"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="2"
+                android:gravity="center"
+                android:hint="ایمیل"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/et_layout_password_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et_layout_username_r"
+            android:layout_below="@+id/et_layout_email_r"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:textColorHint="@android:color/white"
@@ -260,7 +323,6 @@
                 android:textSize="14sp" />
 
         </android.support.design.widget.TextInputLayout>
-
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/et_layout_confirm_password_r"
@@ -297,7 +359,7 @@
             android:layout_below="@+id/et_layout_confirm_password_r"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/flat_button_white"
             android:gravity="center"
             android:padding="10dp"

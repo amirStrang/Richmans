@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //login page :
     RelativeLayout loginLayout;
-    EditText etUserName, etPass;
-    TextInputLayout etlayoutUserName, etlayoutPass;
+    EditText etPhone, etPass;
+    TextInputLayout etlayoutPhone, etlayoutPass;
     Button btnLogin;
     TextView tvForgottenPass;
     RelativeLayout btnGoToRegister;
@@ -57,8 +57,8 @@ public class LoginActivity extends AppCompatActivity {
     //register page :
     RelativeLayout registerLayout;
     ImageView imgClose;
-    EditText etUserNameReg, etPassReg, etConfPassReg;
-    TextInputLayout etlayoutUserNameReg, etlayoutPassReg, etlayoutConfPassReg;
+    EditText etUserNameReg, etPassReg, etConfPassReg, etPhoneReg, etEmailReg;
+    TextInputLayout etlayoutUserNameReg, etlayoutPassReg, etlayoutConfPassReg, etlayoutPhoneReg, etlayoutEmailReg;
     Button btnReg;
 
     @Override
@@ -91,19 +91,27 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         loginLayout.setOnClickListener(null);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etUserName.getText().toString().equals("")) {
-                    etUserName.setError("لطفا نام کاربری خود را وارد کنید");
+                if (etPhone.getText().toString().equals("")) {
+                    etPhone.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
                 }
                 if (etPass.getText().toString().equals("")) {
                     etPass.setError("لطفا رمز عبور خود را وارد کنید");
                     return;
                 }
-                log(etUserName.getText().toString(), etPass.getText().toString());
+                log(etPhone.getText().toString(), etPass.getText().toString());
+            }
+        });
+
+        tvForgottenPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -124,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                     int x = (int) registerLayout.getWidth();
-                    int y = (int) registerLayout.getY() ;
+                    int y = (int) registerLayout.getY();
 
                     int startRadius = 0;
                     int endRadius = (int) Math.hypot(loginLayout.getWidth(), loginLayout.getHeight());
@@ -216,9 +224,9 @@ public class LoginActivity extends AppCompatActivity {
     void init() {
         //login page :
         loginLayout = (RelativeLayout) findViewById(R.id.login_layout);
-        etUserName = (EditText) findViewById(R.id.et_username);
+        etPhone = (EditText) findViewById(R.id.et_phone);
         etPass = (EditText) findViewById(R.id.et_password);
-        etlayoutUserName = (TextInputLayout) findViewById(R.id.et_layout_username);
+        etlayoutPhone = (TextInputLayout) findViewById(R.id.et_layout_phone);
         etlayoutPass = (TextInputLayout) findViewById(R.id.et_layout_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
         tvForgottenPass = (TextView) findViewById(R.id.tv_forgotPass);
@@ -230,6 +238,10 @@ public class LoginActivity extends AppCompatActivity {
         etUserNameReg = (EditText) findViewById(R.id.et_username_r);
         etPassReg = (EditText) findViewById(R.id.et_password_r);
         etConfPassReg = (EditText) findViewById(R.id.et_confirm_password_r);
+        etPhoneReg = (EditText) findViewById(R.id.et_phone_r);
+        etEmailReg = (EditText) findViewById(R.id.et_email_r);
+        etlayoutPhoneReg = (TextInputLayout) findViewById(R.id.et_layout_phone_r);
+        etlayoutEmailReg = (TextInputLayout) findViewById(R.id.et_layout_email_r);
         etlayoutUserNameReg = (TextInputLayout) findViewById(R.id.et_layout_username_r);
         etlayoutPassReg = (TextInputLayout) findViewById(R.id.et_layout_password_r);
         etlayoutConfPassReg = (TextInputLayout) findViewById(R.id.et_layout_confirm_password_r);
