@@ -75,6 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                     etUserNameReg.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
                 }
+                if (etEmailReg.getText().toString().equals("")) {
+                    etUserNameReg.setError("لطفا ایمیل خود را وارد کنید");
+                    return;
+                }
+                if (etPhoneReg.getText().toString().equals("")) {
+                    etUserNameReg.setError("لطفا شماره خود را وارد کنید");
+                    return;
+                }
                 if (etPassReg.getText().toString().equals("")) {
                     etPassReg.setError("لطفا رمز خود را وارد کنید");
                     return;
@@ -87,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                     etConfPassReg.setError("رمز ها تطابق ندارد");
                     return;
                 } else {
-                    reg(etUserNameReg.getText().toString(), etPassReg.getText().toString());
+                    reg(etUserNameReg.getText().toString(), etPhoneReg.getText().toString()
+                            , etPassReg.getText().toString(), etEmailReg.getText().toString());
                 }
             }
         });
@@ -254,11 +263,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void log(String username, String password) {
-        Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwhitpass", username, password);
+        Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwithpass", username, password);
     }
 
-    void reg(String username, String password) {
-        Sendr("http://seyyedmahdi.eu-4.evennode.com/singupwithpass", username, password);
+    void reg(String name, String phn, String password, String mail) {
+        Sendr("http://seyyedmahdi.eu-4.evennode.com/singupwithpass", name, phn, password, mail);
     }
 
     private ProgressDialog pDialog;
@@ -271,7 +280,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("username", user);
+        postParam.put("phone", user);
         postParam.put("password", pass);
 
         ////////////////////////////////////////////////////////
@@ -290,7 +299,7 @@ public class LoginActivity extends AppCompatActivity {
         send.start();
     }
 
-    void Sendr(final String URL, final String user, final String pass) {
+    void Sendr(final String URL, final String user, final String phn, final String pass, final String mail) {
         Log.d("req", "___send started");
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("لطفا صبر کنید");
@@ -298,8 +307,9 @@ public class LoginActivity extends AppCompatActivity {
 
         final Map<String, String> postParam = new HashMap<String, String>();
 
-        postParam.put("email", "BRONZE");
+        postParam.put("email", mail);
         postParam.put("username", user);
+        postParam.put("phone", phn);
         postParam.put("password", pass);
 
         ////////////////////////////////////////////////////////
@@ -347,12 +357,23 @@ public class LoginActivity extends AppCompatActivity {
                             tt("ثبت نام با موفقیت انجام شد\nلطفا وارد حساب خود شوید");
                         }
                     });
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hidePDialog();
+                            tt("خطا در اطلاعات وارد شده");
+                        }
+                    });
                 }
             } else {
                 //login
                 if (temp.contains("ok")) {
                     String id = temp.substring(21, temp.length() - 2);
                     tran(id);
+                } else {
+                    hidePDialog();
+                    tt("شما تصدیق نشدید\nدوباره سعی کنید");
                 }
 
             }
@@ -361,6 +382,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     tt("خطا در برقراری ارتباط");
+                    hidePDialog();
                 }
             });
 
@@ -368,7 +390,8 @@ public class LoginActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    tt("خطا در ورودی خروخی");
+                    tt("خطا در ورودی خروجی");
+                    hidePDialog();
                 }
             });
         }

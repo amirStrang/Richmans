@@ -84,7 +84,7 @@
                 android:layout_gravity="center"
                 android:ems="2"
                 android:gravity="center"
-                android:hint="نام کاربری"
+                android:hint="شماره موبایل"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingLeft="5dp"
@@ -137,11 +137,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_login"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
             android:text="بازیابی رمز عبور"
-            android:textSize="15sp"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 
@@ -160,13 +160,13 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="ثبت نام"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
         <!--<ImageView-->
-            <!--android:layout_width="24dp"-->
-            <!--android:layout_height="24dp"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:src="@drawable/plus" />-->
+        <!--android:layout_width="24dp"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:src="@drawable/plus" />-->
 
     </RelativeLayout>
 
@@ -183,11 +183,11 @@
             android:id="@+id/img_close"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:padding="12dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
+            android:padding="12dp"
             android:src="@drawable/close" />
 
         <TextView
