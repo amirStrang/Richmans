@@ -123,18 +123,21 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         return super.onCreateOptionsMenu(menu);
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        Intent i;
-//        switch (id) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent i;
+        switch (id) {
+            case R.id.item_log_out:
+
+                break;
 //            case R.id.item_buy_account:
 //                i = new Intent(this, Account.class);
 //                startActivity(i);
 //                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onClick(View v) {
