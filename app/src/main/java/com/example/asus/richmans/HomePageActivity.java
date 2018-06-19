@@ -129,7 +129,11 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         Intent i;
         switch (id) {
             case R.id.item_log_out:
-
+                File f = new File(getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
+                f.delete();
+                Intent intent = new Intent(HomePageActivity.this, SplashScrn.class);
+                startActivity(intent);
+                HomePageActivity.this.finish();
                 break;
 //            case R.id.item_buy_account:
 //                i = new Intent(this, Account.class);

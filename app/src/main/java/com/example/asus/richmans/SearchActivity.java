@@ -111,6 +111,7 @@ public class SearchActivity extends AppCompatActivity {
 
         /////////////////////////////////get datas
         String url = "https://api.androidhive.info/json/movies.json?query=" + query;
+        http://seyyedmahdi.eu-4.evennode.com/getmoney
 
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request

@@ -372,8 +372,14 @@ public class LoginActivity extends AppCompatActivity {
                     String id = temp.substring(21, temp.length() - 2);
                     tran(id);
                 } else {
-                    hidePDialog();
-                    tt("شما تصدیق نشدید\nدوباره سعی کنید");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hidePDialog();
+                            tt("شما تصدیق نشدید\nدوباره سعی کنید");
+                        }
+                    });
+
                 }
 
             }
