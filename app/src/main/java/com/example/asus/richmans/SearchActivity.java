@@ -63,7 +63,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                tt(query);
+//                tt(query);
                 executeQuery(query);
                 return false;
             }
@@ -82,9 +82,9 @@ public class SearchActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void tt(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
+//    void tt(String msg) {
+//        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+//    }
 
     void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -110,8 +110,7 @@ public class SearchActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         /////////////////////////////////get datas
-        String url = "https://api.androidhive.info/json/movies.json?query=" + query;
-        http://seyyedmahdi.eu-4.evennode.com/getmoney
+        String url = "http://seyyedmahdi.eu-4.evennode.com/search/" + query;
 
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request
@@ -129,11 +128,15 @@ public class SearchActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Mproduct product = new Mproduct();
-                                product.setName(obj.getString("title"));
-                                product.setThumbnailUrl(obj.getString("image"));
-                                product.setPrice(obj.get("rating") + "");
-                                product.setCat(obj.getString("title"));
-                                product.setDesc(obj.get("rating") + "");
+                                product.setCode(obj.getString("_id"));
+                                product.setName(obj.getString("name"));
+                                product.setPrice(obj.getString("price"));
+                                product.setCat(obj.getString("daste"));
+                                product.setDesc(obj.getString("comment"));
+                                JSONArray pic = obj.getJSONArray("pictures");
+                                product.setThumbnailUrl("http://" + pic.getString(0));
+                                product.setThumbnailUrl2("http://" + pic.getString(1));
+                                product.setThumbnailUrl3("http://" + pic.getString(2));
                                 productList.add(product);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -162,7 +165,11 @@ public class SearchActivity extends AppCompatActivity {
                         mproduct.getName(),
                         mproduct.getPrice(),
                         mproduct.getDesc(),
-                        mproduct.getThumbnailUrl()});
+                        mproduct.getThumbnailUrl(),
+                        mproduct.getThumbnailUrl2(),
+                        mproduct.getThumbnailUrl3(),
+                        mproduct.getCode()
+                });
                 startActivity(i);
             }
         });
