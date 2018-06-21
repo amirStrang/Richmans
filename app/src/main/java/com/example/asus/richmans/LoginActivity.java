@@ -120,7 +120,11 @@ public class LoginActivity extends AppCompatActivity {
         tvForgottenPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (etPhone.getText().toString().equals("")) {
+                    etPhone.setError("لطفا نام کاربری خود را وارد کنید");
+                    return;
+                }
+                forgotten(etPhone.getText().toString());
             }
         });
 
@@ -262,6 +266,10 @@ public class LoginActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+    void forgotten(String username) {
+        Sendf("http://seyyedmahdi.eu-4.evennode.com/passregister", username);
+    }
+
     void log(String username, String password) {
         Sendl("http://seyyedmahdi.eu-4.evennode.com/singinwithpass", username, password);
     }
@@ -292,6 +300,32 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject obj = new JSONObject(postParam);
 
                 postData(URL, obj, false);
+
+            }
+        });
+
+        send.start();
+    }
+
+    void Sendf(final String URL, final String user) {
+        Log.d("req", "___send started");
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("در حال ارسال");
+        pDialog.show();
+
+        final Map<String, String> postParam = new HashMap<String, String>();
+
+        postParam.put("id", user);
+
+        ////////////////////////////////////////////////////////
+
+        final Thread send = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                JSONObject obj = new JSONObject(postParam);
+
+                pDforgot(URL, obj);
 
             }
         });
@@ -383,6 +417,75 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             }
+        } catch (ClientProtocolException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tt("خطا در برقراری ارتباط");
+                    hidePDialog();
+                }
+            });
+
+        } catch (IOException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tt("خطا در ورودی خروجی");
+                    hidePDialog();
+                }
+            });
+        }
+
+
+    }
+
+    public void pDforgot(String url, JSONObject obj) {
+        // Create a new HttpClient and Post Header
+        HttpParams myParams = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(myParams, 10000);
+        HttpConnectionParams.setSoTimeout(myParams, 10000);
+        HttpClient httpclient = new DefaultHttpClient(myParams);
+
+        try {
+            HttpPost httppost = new HttpPost(url.toString());
+            httppost.setHeader("Content-type", "application/json");
+
+            StringEntity se = new StringEntity(obj.toString());
+            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            httppost.setEntity(se);
+
+            HttpResponse response = httpclient.execute(httppost);
+            String temp = EntityUtils.toString(response.getEntity());
+
+            if (temp.contains("ok")) {
+                runOnUiThread(new Runnable() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void run() {
+                        hidePDialog();
+                        close();
+                        tt("ایمیل خود را چک کنید");
+                    }
+                });
+            } else if (temp.contains("found")) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hidePDialog();
+                        tt("چنین کاربری موجود نیست");
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hidePDialog();
+                        tt("خطا در ارسال ایمیل");
+                    }
+                });
+            }
+
+
         } catch (ClientProtocolException e) {
             runOnUiThread(new Runnable() {
                 @Override
