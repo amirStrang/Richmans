@@ -74,13 +74,22 @@ public class LoginActivity extends AppCompatActivity {
                 if (etUserNameReg.getText().toString().equals("")) {
                     etUserNameReg.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
+                }else if (etUserNameReg.getText().toString().length() > 15 || etUserNameReg.getText().toString().length() < 3) {
+                    etUserNameReg.setError("لطفا نام کاربری معتبر وارد کنید");
+                    return;
                 }
                 if (etEmailReg.getText().toString().equals("")) {
-                    etUserNameReg.setError("لطفا ایمیل خود را وارد کنید");
+                    etEmailReg.setError("لطفا ایمیل خود را وارد کنید");
+                    return;
+                }else if (etEmailReg.getText().toString().length() > 30 || etEmailReg.getText().toString().length() < 9) {
+                    etEmailReg.setError("لطفا ایمیل معتبر وارد کنید");
                     return;
                 }
                 if (etPhoneReg.getText().toString().equals("")) {
-                    etUserNameReg.setError("لطفا شماره خود را وارد کنید");
+                    etPhoneReg.setError("لطفا شماره خود را وارد کنید");
+                    return;
+                } else if (etPhoneReg.getText().toString().length() != 11) {
+                    etPhoneReg.setError("لطفا شماره تلفن معتبر وارد کنید");
                     return;
                 }
                 if (etPassReg.getText().toString().equals("")) {
@@ -106,7 +115,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (etPhone.getText().toString().equals("")) {
-                    etPhone.setError("لطفا نام کاربری خود را وارد کنید");
+                    etPhone.setError("لطفا شماره تلفن خود را وارد کنید");
+                    return;
+                } else if (etPhone.getText().toString().length() != 11) {
+                    etPhone.setError("لطفا شماره تلفن معتبر وارد کنید");
                     return;
                 }
                 if (etPass.getText().toString().equals("")) {
@@ -121,7 +133,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (etPhone.getText().toString().equals("")) {
-                    etPhone.setError("لطفا نام کاربری خود را وارد کنید");
+                    etPhone.setError("لطفا شماره تلفن خود را وارد کنید");
+                    return;
+                } else if (etPhone.getText().toString().length() != 11) {
+                    etPhone.setError("لطفا شماره تلفن معتبر وارد کنید");
                     return;
                 }
                 forgotten(etPhone.getText().toString());
@@ -183,6 +198,12 @@ public class LoginActivity extends AppCompatActivity {
                     btnGoToRegister.setVisibility(View.INVISIBLE);
                     registerLayout.setVisibility(View.VISIBLE);
                 }
+
+                etPhone.setText("");
+                etPass.setText("");
+
+                etPhone.setError(null);
+                etPass.setError(null);
             }
         });
 
@@ -232,6 +253,17 @@ public class LoginActivity extends AppCompatActivity {
             registerLayout.setVisibility(View.GONE);
             btnGoToRegister.setVisibility(View.VISIBLE);
         }
+
+        etUserNameReg.setText("");
+        etUserNameReg.setError(null);
+        etPassReg.setText("");
+        etPassReg.setError(null);
+        etConfPassReg.setText("");
+        etConfPassReg.setError(null);
+        etPhoneReg.setText("");
+        etPhoneReg.setError(null);
+        etEmailReg.setText("");
+        etEmailReg.setError(null);
     }
 
     void init() {
