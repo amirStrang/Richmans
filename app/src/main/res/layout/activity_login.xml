@@ -66,7 +66,9 @@
             android:layout_alignStart="@+id/tv_welcome"
             android:layout_below="@+id/tv_welcome"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/colorPrimary"
+            android:layout_alignRight="@+id/tv_welcome"
+            android:layout_alignLeft="@+id/tv_welcome" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -153,7 +155,9 @@
         android:layout_alignTop="@id/login_layout"
         android:layout_marginStart="220dp"
         android:layout_marginTop="80dp"
-        android:background="@drawable/circle">
+        android:background="@drawable/circle"
+        android:layout_marginLeft="220dp"
+        android:layout_alignStart="@id/login_layout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -188,7 +192,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:padding="12dp"
-            android:src="@drawable/close" />
+            android:src="@drawable/close"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/tv_register"
@@ -237,7 +243,8 @@
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:paddingStart="5dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -265,7 +272,8 @@
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:paddingStart="5dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -293,7 +301,8 @@
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:paddingStart="5dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -348,7 +357,8 @@
                 android:singleLine="true"
                 android:textAppearance="@style/Theme.App.Base"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:paddingStart="5dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -362,11 +372,9 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/flat_button_white"
             android:gravity="center"
-            android:padding="10dp"
             android:text="ثبت نام"
             android:textColor="@android:color/white" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>
