@@ -406,7 +406,9 @@ public class LoginActivity extends AppCompatActivity {
             httppost.setHeader("Content-type", "application/json");
 
             StringEntity se = new StringEntity(obj.toString());
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+//            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json; charset=utf-8"));
+//            se.setContentEncoding("UTF-8");
+            se.setContentType("application/json");
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);
@@ -483,7 +485,9 @@ public class LoginActivity extends AppCompatActivity {
             httppost.setHeader("Content-type", "application/json");
 
             StringEntity se = new StringEntity(obj.toString());
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+//            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json; charset=utf-8"));
+//            se.setContentEncoding("UTF-8");
+            se.setContentType("application/json");
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);

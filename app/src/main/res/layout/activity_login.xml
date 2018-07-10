@@ -9,6 +9,14 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context="com.example.asus.richmans.LoginActivity">
+ 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="نسخه 1.5.3"
+        android:textColor="@android:color/darker_gray" />
 
     <View
         android:layout_width="240dp"
