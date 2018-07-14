@@ -405,7 +405,7 @@ public class LoginActivity extends AppCompatActivity {
             HttpPost httppost = new HttpPost(url.toString());
             httppost.setHeader("Content-type", "application/json");
 
-            StringEntity se = new StringEntity(obj.toString());
+            StringEntity se = new StringEntity(obj.toString(), HTTP.UTF_8);
 //            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json; charset=utf-8"));
 //            se.setContentEncoding("UTF-8");
             se.setContentType("application/json");

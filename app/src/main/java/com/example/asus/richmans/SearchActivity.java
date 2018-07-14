@@ -27,6 +27,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +112,12 @@ public class SearchActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         /////////////////////////////////get datas
+        try {
+            query = URLEncoder.encode(query, "utf-8");
+        } catch (Exception e) {
+            //
+        }
+
         String url = "http://seyyedmahdi.eu-4.evennode.com/search/" + query;
 
         pDialog = new ProgressDialog(this);

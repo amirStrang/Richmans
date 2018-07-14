@@ -70,8 +70,33 @@ public class MyShopActivity extends AppCompatActivity {
         adapter = new MproductCustomListAdapter(this, productList);
         listView.setAdapter(adapter);
 
+    }
+
+    void tt(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        btnAddNew = (FloatingActionButton) findViewById(R.id.btn_add_new);
+
+        List<Product> products = new ArrayList<>();
+
+    }
+
+    void refresh() {
+        productList = new ArrayList<Mproduct>();
+        adapter = new MproductCustomListAdapter(this, productList);
+        listView.setAdapter(adapter);
         pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
+        pDialog.setCancelable(false);
         pDialog.setMessage("لطفا صبر کنید");
         pDialog.show();
 
@@ -134,25 +159,6 @@ public class MyShopActivity extends AppCompatActivity {
         });
     }
 
-    void tt(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    void init() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        btnAddNew = (FloatingActionButton) findViewById(R.id.btn_add_new);
-
-        List<Product> products = new ArrayList<>();
-
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -161,6 +167,7 @@ public class MyShopActivity extends AppCompatActivity {
 
     private void hidePDialog() {
         if (pDialog != null) {
+            pDialog.setCancelable(true  );
             pDialog.dismiss();
             pDialog = null;
         }
@@ -181,5 +188,11 @@ public class MyShopActivity extends AppCompatActivity {
         }
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
     }
 }

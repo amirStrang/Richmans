@@ -110,7 +110,8 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
             httppost.setHeader("Content-type", "application/json");
 
             StringEntity se = new StringEntity(obj.toString());
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+//            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            se.setContentType("application/json");
             httppost.setEntity(se);
 
 
@@ -166,8 +167,8 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     }
 
     void tran() {
-        Intent i = new Intent(SetBaseMoneyActivity.this, HomePageActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(SetBaseMoneyActivity.this, HomePageActivity.class);
+//        startActivity(i);
         this.finish();
     }
 

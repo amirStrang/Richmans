@@ -173,7 +173,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
                 i.putExtra("phn", phn);
                 startActivity(i);
-                HomePageActivity.this.finish();
+//                HomePageActivity.this.finish();
                 break;
             case R.id.btn_how_to_start:
                 i = new Intent(HomePageActivity.this, StoreActivity.class);
@@ -183,7 +183,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 i = new Intent(HomePageActivity.this, SetBaseMoneyActivity.class);
                 i.putExtra("phn", phn);
                 startActivity(i);
-                HomePageActivity.this.finish();
+//                HomePageActivity.this.finish();
                 break;
             case R.id.btn_share:
                 share();

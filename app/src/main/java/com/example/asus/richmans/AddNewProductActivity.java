@@ -465,7 +465,8 @@ public class AddNewProductActivity extends AppCompatActivity {
             httppost.setHeader("Content-type", "application/json");
 
             StringEntity se = new StringEntity(obj.toString(), HTTP.UTF_8);
-            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+//            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            se.setContentType("application/json");
             httppost.setEntity(se);
 
             HttpResponse response = httpclient.execute(httppost);
