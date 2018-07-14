@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="نسخه 1.5.3"
+        android:text="نسخه 1.5.7"
         android:textColor="@android:color/darker_gray" />
 
     <View
