@@ -110,6 +110,7 @@ public class LearnPageActivity extends AppCompatActivity {
                                 Tutorial t = new Tutorial();
                                 t.id = obj.getString("_id");
                                 t.name = obj.getString("name");
+                                t.plan = obj.getString("plan");
                                 t.explain = obj.getString("comment");
                                 t.type = Integer.parseInt(obj.getString("type"));
                                 switch (t.type) {

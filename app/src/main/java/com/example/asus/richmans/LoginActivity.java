@@ -74,14 +74,14 @@ public class LoginActivity extends AppCompatActivity {
                 if (etUserNameReg.getText().toString().equals("")) {
                     etUserNameReg.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
-                }else if (etUserNameReg.getText().toString().length() > 15 || etUserNameReg.getText().toString().length() < 3) {
+                } else if (etUserNameReg.getText().toString().length() > 15 || etUserNameReg.getText().toString().length() < 3) {
                     etUserNameReg.setError("لطفا نام کاربری معتبر وارد کنید");
                     return;
                 }
                 if (etEmailReg.getText().toString().equals("")) {
                     etEmailReg.setError("لطفا ایمیل خود را وارد کنید");
                     return;
-                }else if (etEmailReg.getText().toString().length() > 30 || etEmailReg.getText().toString().length() < 9) {
+                } else if (etEmailReg.getText().toString().length() > 30 || etEmailReg.getText().toString().length() < 9) {
                     etEmailReg.setError("لطفا ایمیل معتبر وارد کنید");
                     return;
                 }
@@ -377,6 +377,7 @@ public class LoginActivity extends AppCompatActivity {
         postParam.put("username", user);
         postParam.put("phone", phn);
         postParam.put("password", pass);
+        postParam.put("plan", "u");
 
         ////////////////////////////////////////////////////////
 

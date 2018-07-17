@@ -5,6 +5,7 @@ public class Tutorial {
     String id;
     String name;
     int image;
+    String plan;
 
     String explain;
     String video;
