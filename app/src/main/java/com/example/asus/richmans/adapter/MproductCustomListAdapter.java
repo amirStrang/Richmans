@@ -4,12 +4,6 @@ package com.example.asus.richmans.adapter;
  * Created by Mr.Anonymous on 2/24/2018.
  */
 
-import com.example.asus.richmans.R;
-import com.example.asus.richmans.app.AppController;
-import com.example.asus.richmans.model.Mproduct;
-
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,6 +14,11 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.asus.richmans.R;
+import com.example.asus.richmans.app.AppController;
+import com.example.asus.richmans.model.Mproduct;
+
+import java.util.List;
 
 public class MproductCustomListAdapter extends BaseAdapter {
     private Activity activity;
@@ -73,10 +72,30 @@ public class MproductCustomListAdapter extends BaseAdapter {
         name.setText(m.getName() + "");
 
         // price
-        price.setText(m.getPrice());
+        price.setText(Separate3digits(m.getPrice()));
         cat.setText(m.getCat());
 
         return convertView;
+    }
+
+
+    private String Separate3digits(String value) {
+        char[] temp = value.toCharArray();
+        String result = "";
+        int counter = 0;
+        for (int i = value.length() - 1; i >= 0; i--) {
+            result += temp[i];
+            counter++;
+            if (counter % 3 == 0 && i != 0) {
+                result += ",";
+            }
+        }
+        temp = result.toCharArray();
+        result = "";
+        for (int i = temp.length - 1; i >= 0; i--) {
+            result += temp[i];
+        }
+        return result;
     }
 
 }

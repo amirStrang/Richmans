@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/toolbar">
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentLeft="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -41,28 +42,32 @@
 
                     <TextView
                         android:id="@+id/txtCredit"
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:textColor="@color/colorPrimary"
                         android:textSize="26sp"
                         android:visibility="invisible" />
 
 
-                    <ImageView
-                        android:id="@+id/img_coin"
+                    <TextView
+                        android:id="@+id/img_toman"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_toEndOf="@+id/txtCredit"
-                        android:src="@drawable/coins" />
+                        android:layout_toRightOf="@+id/txtCredit"
+                        android:gravity="center"
+                        android:text="@string/toman"
+                        android:textSize="16sp" />
 
                     <ProgressBar
                         android:id="@+id/prb_credit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/img_coin"
+                        android:layout_alignTop="@+id/img_toman"
                         android:layout_marginTop="10dp"
                         android:theme="@style/ProgressBarTheme" />
 
@@ -70,6 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/view_back_border"
@@ -101,6 +107,7 @@
 
 
                 </RelativeLayout>
+
 
             </android.support.v7.widget.CardView>
 
@@ -149,7 +156,8 @@
                     android:layout_height="100dp"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/home_button">
+                    android:background="@drawable/home_button"
+                    android:layout_marginLeft="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -217,7 +225,8 @@
                     android:layout_height="100dp"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/home_button">
+                    android:background="@drawable/home_button"
+                    android:layout_marginLeft="5dp">
 
 
                     <ImageView
@@ -260,7 +269,9 @@
                     android:layout_marginStart="20dp"
                     android:layout_toEndOf="@id/txt_share"
                     android:src="@drawable/share"
-                    android:textColor="@color/colorRaisedButtonText" />
+                    android:textColor="@color/colorRaisedButtonText"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/txt_share" />
 
                 <TextView
                     android:id="@+id/txt_share"
@@ -317,7 +328,8 @@
                     android:layout_height="100dp"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/home_button">
+                    android:background="@drawable/home_button"
+                    android:layout_marginLeft="5dp">
 
 
                     <ImageView
@@ -390,7 +402,9 @@
                     android:layout_marginStart="20dp"
                     android:layout_toEndOf="@id/txt_reset"
                     android:src="@drawable/reset"
-                    android:textColor="@color/colorRaisedButtonText" />
+                    android:textColor="@color/colorRaisedButtonText"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/txt_reset" />
 
                 <TextView
                     android:id="@+id/txt_reset"

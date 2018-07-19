@@ -121,4 +121,26 @@
     <string name="silver_explanation">تنها با پرداخت x تومان میتوانید بازی را تا مرحله 40 روزه بازی کنید و به تعداد بیشتری از آموزش ها دسترسی داشته باشید</string>
     <string name="bronze">برنزی</string>
     <string name="bronze_explanation">این سطح از بازی رایگان در اختیار شماست و شما می توانید تا 7 روز از این نرمافزار رایگان استفاده کنید و به تعدادی از فایلهای آموزشی دسترسی داشته باشید.</string>
+    <string name="toman">تومان</string>
+
+    <string name="msg_test1">تست 1</string>
+    <string name="msg_test2">تست 2</string>
+    <string name="msg_test3">تست 3</string>
+    <string name="msg_test4">تست 4</string>
+    <string name="msg_test5">تست 5</string>
+    <string name="msg_test6">تست 6</string>
+    <string name="msg_test7">تست 7</string>
+    <string name="msg_test8">تست 8</string>
+    <string name="msg_test9">تست 9</string>
+    <string name="msg_test10">تست 10</string>
+    <string name="msg_test11">تست 11</string>
+    <string name="msg_test12">تست 12</string>
+    <string name="msg_test13">تست 13</string>
+    <string name="msg_test14">تست 14</string>
+    <string name="msg_test15">تست 15</string>
+    <string name="msg_test16">تست 16</string>
+    <string name="msg_test17">تست 17</string>
+    <string name="msg_test18">تست 18</string>
+    <string name="msg_test19">تست 19</string>
+    <string name="msg_test20">تست 20</string>
 </resources>

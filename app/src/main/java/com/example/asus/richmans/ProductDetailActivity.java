@@ -41,6 +41,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import me.relex.circleindicator.CircleIndicator;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -53,6 +54,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     TextView txtName, txtPrice, txtDescription, txtTotalPrice;
     Button btnBuy;
     EditText etNumber;
+
+    int price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Send("http://seyyedmahdi.eu-4.evennode.com/buy",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
-                        txtTotalPrice.getText().toString()
+                        (Integer.parseInt(etNumber.getText().toString()) * price)+""
                 );
             }
         });
@@ -97,7 +100,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    int price;
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -117,12 +119,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         txtName = (TextView) findViewById(R.id.txt_name);
         txtName.setText(getIntent().getStringArrayExtra("product")[0]);
         txtPrice = (TextView) findViewById(R.id.txt_product_price);
-        txtPrice.setText(getIntent().getStringArrayExtra("product")[1]);
+        txtPrice.setText(Separate3digits(getIntent().getStringArrayExtra("product")[1]));
         txtDescription = (TextView) findViewById(R.id.txt_description);
         txtDescription.setText(getIntent().getStringArrayExtra("product")[2]);
         btnBuy = (Button) findViewById(R.id.btn_buy);
         txtTotalPrice = (TextView) findViewById(R.id.txt_product_total_price);
-        txtTotalPrice.setText(getIntent().getStringArrayExtra("product")[1]);
+        txtTotalPrice.setText(Separate3digits(getIntent().getStringArrayExtra("product")[1]));
         etNumber = (EditText) findViewById(R.id.et_number);
         etNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -136,7 +138,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 else {
                     int tp = Integer.parseInt(etNumber.getText().toString()) * price;
 //                            Integer.parseInt(txtPrice.getText().toString());
-                    txtTotalPrice.setText(tp + "");
+                    txtTotalPrice.setText(Separate3digits(tp + ""));
                 }
 
             }
@@ -207,6 +209,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     public void run() {
                         hidePDialog();
                         tt("با موفقیت انجام شد");
+                        showDialog();
                         ProductDetailActivity.this.finish();
                     }
                 });
@@ -259,5 +262,48 @@ public class ProductDetailActivity extends AppCompatActivity {
             pDialog.dismiss();
             pDialog = null;
         }
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.activity_dialog);
+        dialog.setCancelable(false);
+
+        TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
+        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+
+        Random random = new Random();
+        int msgNumber = random.nextInt(19)+1;
+        int msgResId = getResources().getIdentifier("msg_test" + msgNumber, "string", getPackageName());
+
+        txtMessage.setText(getResources().getText(msgResId));
+
+        dialog.show();
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private String Separate3digits(String value) {
+        char[] temp = value.toCharArray();
+        String result = "";
+        int counter = 0;
+        for (int i = value.length() - 1; i >= 0; i--) {
+            result += temp[i];
+            counter++;
+            if (counter % 3 == 0 && i != 0) {
+                result += ",";
+            }
+        }
+        temp = result.toCharArray();
+        result = "";
+        for (int i = temp.length - 1; i >= 0; i--) {
+            result += temp[i];
+        }
+        return result;
     }
 }

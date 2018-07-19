@@ -73,9 +73,29 @@ public class GproductCustomListAdapter extends BaseAdapter {
         name.setText(m.getName() + "");
 
         // price
-        price.setText(m.getPrice());
+        price.setText(Separate3digits(m.getPrice()));
 
         return convertView;
+    }
+
+
+    private String Separate3digits(String value) {
+        char[] temp = value.toCharArray();
+        String result = "";
+        int counter = 0;
+        for (int i = value.length() - 1; i >= 0; i--) {
+            result += temp[i];
+            counter++;
+            if (counter % 3 == 0 && i != 0) {
+                result += ",";
+            }
+        }
+        temp = result.toCharArray();
+        result="";
+        for (int i = temp.length - 1; i >= 0; i--) {
+            result += temp[i];
+        }
+        return result;
     }
 
 }
