@@ -65,7 +65,7 @@ public class HistoryTab2 extends Fragment {
 
 //    void getHistory(String phn) {
 //
-//        String url = "http://seyyedmahdi.eu-4.evennode.com" + phn;
+//        String url = "http://89.163.249.183:3000" + phn;
 //
 //        pDialog = new ProgressDialog(getContext());
 //        pDialog.setMessage("لطفا صبر کنید");
@@ -108,7 +108,7 @@ public class HistoryTab2 extends Fragment {
         // Tag used to cancel the request
         String tag_string_req = "req_get_history";
 
-        String url = "http://seyyedmahdi.eu-4.evennode.com/gethistory";
+        String url = "http://89.163.249.183:3000/gethistory";
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>() {

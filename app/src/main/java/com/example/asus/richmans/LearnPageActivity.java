@@ -96,7 +96,7 @@ public class LearnPageActivity extends AppCompatActivity {
         pDialog.setMessage("لطفا صبر کنید");
         pDialog.show();
 
-        String url = "http://seyyedmahdi.eu-4.evennode.com/getfilmlist";
+        String url = "http://89.163.249.183:3000/getfilmlist";
         // Creating volley request obj
         JsonArrayRequest Req = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {

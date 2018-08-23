@@ -90,7 +90,7 @@ public class RegisterCodeActivity extends AppCompatActivity {
     }
 
     void save(String code) {
-        Send("http://seyyedmahdi.eu-4.evennode.com/singupemail/" + code);
+        Send("http://89.163.249.183:3000/singupemail/" + code);
     }
 
     private ProgressDialog pDialog;

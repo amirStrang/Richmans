@@ -118,7 +118,7 @@ public class SearchActivity extends AppCompatActivity {
             //
         }
 
-        String url = "http://seyyedmahdi.eu-4.evennode.com/search/" + query;
+        String url = "http://89.163.249.183:3000/search/" + query;
 
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request

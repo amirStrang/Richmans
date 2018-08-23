@@ -46,6 +46,8 @@ public class TutorialRecyclerAdapter extends RecyclerView.Adapter<TutorialViewHo
             @Override
             public void onClick(View v) {
                 if (tutorial.plan.equals("p")) {
+                    Intent i = new Intent(context, ContactUsActivity.class);
+                    context.startActivity(i);
                     Toast.makeText(view.getContext(), "برای استفاده از این آموزش نسخه اصلی برنامه را تهیه کنید", Toast.LENGTH_LONG).show();
                     return;
                 } else {
