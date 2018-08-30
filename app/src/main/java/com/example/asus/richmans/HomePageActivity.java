@@ -337,7 +337,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
 
         Random random = new Random();
-        int msgNumber = random.nextInt(19) + 1;
+        int msgNumber = random.nextInt(34) + 1;
         int msgResId = getResources().getIdentifier("msg_test" + msgNumber, "string", getPackageName());
 
         txtMessage.setText(getResources().getText(msgResId));

@@ -3,6 +3,7 @@ package com.example.asus.richmans;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -32,15 +33,15 @@ public class SplashScrn extends AppCompatActivity {
     }
 
     void tran(final Class c) {
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 Intent i = new Intent(SplashScrn.this, c);
                 startActivity(i);
                 SplashScrn.this.finish();
-//            }
-//        }, 2000);
+            }
+        }, 1000);
 
     }
 
