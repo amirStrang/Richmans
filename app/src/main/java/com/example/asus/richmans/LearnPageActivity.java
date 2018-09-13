@@ -32,11 +32,14 @@ public class LearnPageActivity extends AppCompatActivity {
 
     private static final String TAG = LearnPageActivity.class.getSimpleName();
 
+    String pl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learn_page);
 
+        pl = getIntent().getStringExtra("plan");
         recTutorials = (RecyclerView) findViewById(R.id.rec_tutorials);
         tutorials = new ArrayList<>();
 
@@ -130,7 +133,11 @@ public class LearnPageActivity extends AppCompatActivity {
                                         t.image = R.drawable.text;
                                         break;
                                 }
-                                tutorials.add(t);
+                                if (pl.equals(t.plan)) {
+                                    tutorials.add(t);
+                                } else {
+                                    //
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

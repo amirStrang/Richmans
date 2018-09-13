@@ -46,6 +46,28 @@
         android:textSize="17sp" />
 
     <TextView
+        android:id="@+id/txt1_email_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txt1_email"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_toStartOf="@id/txt_email"
+        android:text="09109295004"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txt1_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_email"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/img_email"
+        android:text="پیامک"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
         android:id="@+id/txt_email_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,5 +149,50 @@
         android:layout_marginTop="10dp"
         android:text="\@hamid8r5ir"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtw2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txtw1"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_toStartOf="@id/txt_email"
+        android:text="www.madresetavangari.ir"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtw1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tid"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@id/img_email"
+        android:text="وبسایت"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txtw3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txtw4"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_toStartOf="@id/txt_email"
+        android:text="www.faraagahy.ir"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtw4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtw1"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@id/img_email"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
 
 </RelativeLayout>

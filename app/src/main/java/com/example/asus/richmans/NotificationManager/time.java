@@ -22,15 +22,15 @@ public class time {
     public static void notify(final Context context) {
         final Resources res = context.getResources();
 
-        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
+        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.logo_img);
 
         final String ticker = "ticker";
-        final String title = "title";
-        final String text = "text";
+        final String title = "شما را به خرید از فروشگاه ثروتمندان دعوت می کنیم";
+        final String text = "با ما ثروتمند شوید";
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setDefaults(Notification.DEFAULT_ALL)
-                .setSmallIcon(R.drawable.ic_stat_time)
+                .setSmallIcon(R.drawable.coins)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -39,7 +39,7 @@ public class time {
                 .setNumber(77)
                 .addAction(
                         R.drawable.ic_action_stat_share,
-                        "خرید کردن از فروشگاه ثروتمندان",
+                        "ورود به فروشگاه ثروتمندان",
                         PendingIntent.getActivity(
                                 context,
                                 0,

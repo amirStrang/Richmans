@@ -208,9 +208,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         hidePDialog();
-                        tt("با موفقیت انجام شد");
                         showDialog();
-                        ProductDetailActivity.this.finish();
+
                     }
                 });
             } else if (temp.contains("money")) {
@@ -272,18 +271,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
         Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
 
-        Random random = new Random();
-        int msgNumber = random.nextInt(19)+1;
-        int msgResId = getResources().getIdentifier("msg_test" + msgNumber, "string", getPackageName());
-
-        txtMessage.setText(getResources().getText(msgResId));
+        txtMessage.setText("از اعتماد و خرید شما متشکریم، همراهی پر ثمر ما با شما تا پایان راهی " +
+                "که آغازش کرده اید، از هم اکنون شروع شد.");
 
         dialog.show();
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                ProductDetailActivity.this.finish();
             }
         });
     }

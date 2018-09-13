@@ -11,11 +11,11 @@
         <ImageView
             android:id="@+id/img_logo"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="74dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:scaleType="fitXY"
-            android:src="@drawable/logo" />
+            android:src="@drawable/splash" />
 
         <TextView
             android:id="@+id/txt_message"

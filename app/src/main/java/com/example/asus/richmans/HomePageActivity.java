@@ -158,7 +158,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
             case R.id.btn_learn:
-                i = new Intent(HomePageActivity.this, LearnPageActivity.class);
+                i = new Intent(HomePageActivity.this, MiddleTut.class);
                 startActivity(i);
                 break;
             case R.id.btn_reset:
@@ -269,7 +269,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 1, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
 //        calendar.set(Calendar.AM_PM, Calendar.PM);
@@ -284,7 +284,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     }
 
     void share() {
-        String message = "ما را دنبال کنید";
+        String message = "ما را دنبال کنید\nلینک کانال تلگرام: @madrasetavangari";
 
         Intent i = new Intent(Intent.ACTION_SEND);
         i.putExtra(Intent.EXTRA_TEXT, message);

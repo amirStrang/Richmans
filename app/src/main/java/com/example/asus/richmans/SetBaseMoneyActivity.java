@@ -4,11 +4,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -35,6 +39,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
 
     EditText etBaseMoney;
     Button btnStart;
+    TextView tvv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +58,48 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
                 setBase(etBaseMoney.getText().toString(), getIntent().getStringExtra("phn"));
             }
         });
+
+        etBaseMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tvv.setText("مبلغ پایه مورد نظر شما"+"\n"+Separate3digits(etBaseMoney.getText().toString())+"\n"+"تومان");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private String Separate3digits(String value) {
+        char[] temp = value.toCharArray();
+        String result = "";
+        int counter = 0;
+        for (int i = value.length() - 1; i >= 0; i--) {
+            result += temp[i];
+            counter++;
+            if (counter % 3 == 0 && i != 0) {
+                result += ",";
+            }
+        }
+        temp = result.toCharArray();
+        result = "";
+        for (int i = temp.length - 1; i >= 0; i--) {
+            result += temp[i];
+        }
+        return result;
     }
 
     private void init() {
         etBaseMoney = (EditText) findViewById(R.id.et_base_money);
         btnStart = (Button) findViewById(R.id.btn_start);
+        tvv=(TextView)findViewById(R.id.tvv);
     }
 
     @Override
