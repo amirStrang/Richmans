@@ -299,15 +299,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void forgotten(String username) {
-        Sendf("http://89.163.249.183:3000/passregister", username);
+        Sendf("http://madresetavangari.ir/passregister", username);
     }
 
     void log(String username, String password) {
-        Sendl("http://89.163.249.183:3000/singinwithpass", username, password);
+        Sendl("http://madresetavangari.ir/singinwithpass", username, password);
     }
 
     void reg(String name, String phn, String password, String mail) {
-        Sendr("http://89.163.249.183:3000/singupwithpass", name, phn, password, mail);
+        Sendr("http://madresetavangari.ir/singupwithpass", name, phn, password, mail);
     }
 
     private ProgressDialog pDialog;

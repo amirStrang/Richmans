@@ -71,7 +71,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        loadCredit("http://89.163.249.183:3000/getmoney");
+        loadCredit("http://madresetavangari.ir/getmoney");
     }
 
     void init() {

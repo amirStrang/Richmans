@@ -108,7 +108,7 @@ public class SetBaseMoneyActivity extends AppCompatActivity {
     }
 
     void setBase(String bMoney, String phn) {
-        Send("http://89.163.249.183:3000/startgame", phn, bMoney);
+        Send("http://madresetavangari.ir/startgame", phn, bMoney);
     }
 
     private ProgressDialog pDialog;

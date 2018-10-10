@@ -69,15 +69,15 @@ public class HistoryActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             //returning current tabs
-            switch (position) {
-                case 0:
-                    HistoryTab1 tab1 = new HistoryTab1();
-                    return tab1;
-                case 1:
-                    HistoryTab2 tab2 = new HistoryTab2();
-                    return tab2;
-                default:
-                    return null;
+                switch (position) {
+                    case 0:
+                        HistoryTab1 tab1 = new HistoryTab1();
+                        return tab1;
+                    case 1:
+                        HistoryTab2 tab2 = new HistoryTab2();
+                        return tab2;
+                    default:
+                        return null;
             }
         }
 

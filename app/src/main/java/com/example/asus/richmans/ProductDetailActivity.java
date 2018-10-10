@@ -69,7 +69,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //buy
                 String str = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-                Send("http://89.163.249.183:3000/buy",
+                Send("http://madresetavangari.ir/buy",
                         getIntent().getStringArrayExtra("product")[6],
                         str,
                         (Integer.parseInt(etNumber.getText().toString()) * price)+""

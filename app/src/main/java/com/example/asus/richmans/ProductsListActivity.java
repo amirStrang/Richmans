@@ -40,7 +40,7 @@ public class ProductsListActivity extends AppCompatActivity {
     private static final String TAG = ProductsListActivity.class.getSimpleName();
 
     // Gproducts json url
-    String url = "http://89.163.249.183:3000/getproduct/";
+    String url = "http://madresetavangari.ir/getproduct/";
     private ProgressDialog pDialog;
     private List<Gproduct> productList = new ArrayList<Gproduct>();
     private ListView listView;

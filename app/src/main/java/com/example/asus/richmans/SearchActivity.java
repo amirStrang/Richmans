@@ -118,7 +118,7 @@ public class SearchActivity extends AppCompatActivity {
             //
         }
 
-        String url = "http://89.163.249.183:3000/search/" + query;
+        String url = "http://madresetavangari.ir/search/" + query;
 
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request

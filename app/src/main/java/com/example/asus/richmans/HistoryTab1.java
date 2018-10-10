@@ -74,7 +74,7 @@ public class HistoryTab1 extends Fragment {
 
     private void getproduct(String phn) {
         String tag_string_req = "req_get_history";
-        String url = "http://89.163.249.183:3000/getmyshop/" + phn;
+        String url = "http://madresetavangari.ir/getmyshop/" + phn;
 
         pDialog = new ProgressDialog(getContext());
         // Showing progress dialog before making http request

@@ -99,7 +99,7 @@ public class LearnPageActivity extends AppCompatActivity {
         pDialog.setMessage("لطفا صبر کنید");
         pDialog.show();
 
-        String url = "http://89.163.249.183:3000/getfilmlist";
+        String url = "http://madresetavangari.ir/getfilmlist";
         // Creating volley request obj
         JsonArrayRequest Req = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {

@@ -108,7 +108,7 @@ public class HistoryTab2 extends Fragment {
         // Tag used to cancel the request
         String tag_string_req = "req_get_history";
 
-        String url = "http://89.163.249.183:3000/gethistory";
+        String url = "http://madresetavangari.ir/gethistory";
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>() {

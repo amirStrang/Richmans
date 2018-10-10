@@ -57,7 +57,7 @@ public class MyShopActivity extends AppCompatActivity {
         init();
 
         String phn = readFileAsString(getBaseContext(), getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
-        url = "http://89.163.249.183:3000/getproduct/whit/" + phn;
+        url = "http://madresetavangari.ir/getproduct/whit/" + phn;
 
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
