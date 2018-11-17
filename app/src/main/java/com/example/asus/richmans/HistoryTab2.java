@@ -57,7 +57,7 @@ public class HistoryTab2 extends Fragment {
 
         ///////////////////////////////// get phn
         String phn = readFileAsString(getContext(),
-                getContext().getFilesDir().getAbsolutePath() + "/.richmans/phn.txt");
+                getContext().getFilesDir().getAbsolutePath() + "/richmans/phn.txt");
         getHistory(phn);
 
         return rootView;
@@ -65,7 +65,7 @@ public class HistoryTab2 extends Fragment {
 
 //    void getHistory(String phn) {
 //
-//        String url = "http://89.163.249.183:3000" + phn;
+//        String url = "http://madresetavangari.ir:3000" + phn;
 //
 //        pDialog = new ProgressDialog(getContext());
 //        pDialog.setMessage("لطفا صبر کنید");

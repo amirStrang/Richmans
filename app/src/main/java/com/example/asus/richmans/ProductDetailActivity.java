@@ -271,8 +271,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         TextView txtMessage = (TextView) dialog.findViewById(R.id.txt_message);
         Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
 
-        txtMessage.setText("از اعتماد و خرید شما متشکریم، همراهی پر ثمر ما با شما تا پایان راهی " +
-                "که آغازش کرده اید، از هم اکنون شروع شد.");
+        txtMessage.setText("خرید شما با موفقیت انجام شد");
 
         dialog.show();
 
